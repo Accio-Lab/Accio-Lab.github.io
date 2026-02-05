@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="We introduce SwimBird, a hybrid autoregressive MLLM that dynamically switches among three reasoning modes conditioned on the input: (1) text-only reasoning, (2) vision-only reasoning (continuous hidden states
+as visual thoughts), and (3) interleaved vision–text reasoning. By enabling flexible, query-adaptive mode selection, SwimBird preserves strong textual logic while substantially improving performance on vision-dense tasks.">
+  <!-- Keywords for SEO -->
+  <meta name="keywords" content="SwimBird, MLLM, Multimodal Large Language Models, Visual Reasoning, Hybrid Autoregressive, Vision-Language Models, Chain of Thought, Visual Thinking, AI Research, Deep Learning, Computer Vision, Natural Language Processing">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Jintao Tong, Shilin Yan, Hongwei Xue, Xiaojun Tang, Kunyu Shi, Guannan Zhang, Ruixuan Li, Yixiong Zou">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SwimBird - Accio Lab Research">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs">
+  <meta property="og:description" content="SwimBird: A hybrid autoregressive MLLM that dynamically switches among text-only, vision-only, and interleaved vision-text reasoning modes. Achieves state-of-the-art performance on vision-dense tasks.">
+  <meta property="og:url" content="https://Accio-Lab.github.io/SwimBird">
+  <meta property="og:image" content="https://Accio-Lab.github.io/SwimBird/static/images/method.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs - Research Preview">
+  <meta property="article:published_time" content="2026-02-05T00:00:00.000Z">
+  <meta property="article:author" content="Jintao Tong, Shilin Yan, Hongwei Xue, Xiaojun Tang, Kunyu Shi, Guannan Zhang, Ruixuan Li, Yixiong Zou">
+  <meta property="article:section" content="AI Research">
+  <meta property="article:tag" content="Multimodal Learning">
+  <meta property="article:tag" content="Large Language Models">
+  <meta property="article:tag" content="Visual Reasoning">
+  <meta property="article:tag" content="Chain of Thought">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AccioLab">
+  <meta name="twitter:creator" content="@AccioLab">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs">
+  <meta name="twitter:description" content="SwimBird: A hybrid autoregressive MLLM that dynamically switches among text-only, vision-only, and interleaved vision-text reasoning modes. Achieves state-of-the-art performance on vision-dense tasks.">
+  <meta name="twitter:image" content="https://Accio-Lab.github.io/SwimBird/static/images/method.png">
+  <meta name="twitter:image:alt" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs">
+  <meta name="citation_author" content="Jintao Tong">
+  <meta name="citation_author" content="Shilin Yan">
+  <meta name="citation_author" content="Hongwei Xue">
+  <meta name="citation_author" content="Xiaojun Tang">
+  <meta name="citation_author" content="Kunyu Shi">
+  <meta name="citation_author" content="Guannan Zhang">
+  <meta name="citation_author" content="Ruixuan Li">
+  <meta name="citation_author" content="Yixiong Zou">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="arXiv preprint">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/ARXIV_ID.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="msapplication-TileColor" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>SwimBird - Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</title>
+  
+  <!-- Favicon and App Icons -->
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/github-logo.pdf">  -->
+  <!-- <link rel="apple-touch-icon" href="static/images/github-logo.pdf"> -->
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs",
+    "description": "A hybrid autoregressive MLLM that dynamically switches among text-only, vision-only, and interleaved vision-text reasoning modes for enhanced multimodal understanding.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Jintao Tong",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Huazhong University of Science and Technology"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Shilin Yan",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Hongwei Xue",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Xiaojun Tang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Kunyu Shi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Guannan Zhang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Ruixuan Li",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Huazhong University of Science and Technology"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yixiong Zou",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Huazhong University of Science and Technology"
+        }
+      }
+    ],
+    "datePublished": "2026-02-05",
+    "publisher": {
+      "@type": "Organization",
+      "name": "arXiv"
+    },
+    "url": "https://Accio-Lab.github.io/SwimBird",
+    "image": "https://Accio-Lab.github.io/SwimBird/static/images/method.png",
+    "keywords": ["Multimodal Large Language Models", "Visual Reasoning", "Hybrid Autoregressive", "Chain of Thought", "Vision-Language Models", "MLLM", "Visual Thinking", "Switchable Reasoning"],
+    "abstract": "Multimodal Large Language Models (MLLMs) have made remarkable progress in multimodal perception and reasoning by bridging vision and language. However, most existing MLLMs perform reasoning primarily with textual CoT, which limits their effectiveness on vision-intensive tasks. Recent approaches inject a fixed number of continuous hidden states as visual thoughts into the reasoning process and improve visual performance, but often at the cost of degraded text-based logical reasoning. We argue that the core limitation lies in a rigid, pre-defined reasoning pattern that cannot adaptively choose the most suitable thinking modality for different user queries. We introduce SwimBird, a reasoning-switchable MLLM that dynamically switches among three reasoning modes conditioned on the input: (1) text-only reasoning, (2) vision-only reasoning (continuous hidden states as visual thoughts), and (3) interleaved vision-text reasoning. By enabling flexible, query-adaptive mode selection, SwimBird preserves strong textual logic while substantially improving performance on vision-dense tasks.",
+    "citation": "@article{SwimBird2026, title={SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs}, author={Jintao Tong and Shilin Yan and Hongwei Xue and Xiaojun Tang and Kunyu Shi and Guannan Zhang and Ruixuan Li and Yixiong Zou}, year={2026}, url={https://Accio-Lab.github.io/SwimBird}}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://Accio-Lab.github.io/SwimBird"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Multimodal Machine Learning"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Visual Reasoning"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Large Language Models"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Computer Vision"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Accio Lab, Alibaba Group",
+    "url": "https://Accio-Lab.github.io",
+    "logo": "https://Accio-Lab.github.io/SwimBird/static/images/accio.png",
+    "sameAs": [
+      "https://twitter.com/AccioLab",
+      "https://github.com/Accio-Lab"
+    ],
+    "description": "Accio Lab focuses on cutting-edge research in multimodal AI, large language models, and vision-language understanding."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <!-- Animated Background with Particles -->
+    <div class="hero-background">
+      <!-- Particle Canvas -->
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      
+      <!-- Grid Background -->
+      <div class="grid-background"></div>
+      
+      <!-- Floating Shapes -->
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+      
+      <!-- Spotlight Effect -->
+      <div class="spotlight" id="spotlight"></div>
+    </div>
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title">SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Jintao Tong</a><sup>1,2</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Shilin Yan</a><sup>2†‡</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Hongwei Xue</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Xiaojun Tang</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Kunyu Shi</a><sup>2</sup></span><br>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Guannan Zhang</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Ruixuan Li</a><sup>1‡</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Yixiong Zou</a><sup>1‡</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block"><sup>1</sup>Huazhong University of Science and Technology<br><sup>2</sup>Accio Team, Alibaba Group</span>
+                  </div>
+                  
+                  <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="proj-lead"><small><sup>†</sup>Project Leader</small></span>
+                    <span class="cor_author"><small><sup>‡</sup>Corresponding Author</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+
+                      <!-- TODO: Update with your arXiv paper ID -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                          </span>
+                          <span>arXiv</span>
+                        </a>
+                      </span>
+
+                         <!-- TODO: Update with your arXiv paper ID 
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>-->
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/Accio-Lab/SwimBird" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://huggingface.co/Accio-Lab/SwimBird-8B" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <span>🤗</span>
+                    </span>
+                    <span>Model</span>
+                  </a>
+                </span>
+              <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/Accio-Lab/SwimBird-SFT-92K" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <span>🤗</span>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-arrow">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          <i class="fas fa-book-open" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+          Abstract
+        </h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            Multimodal Large Language Models (MLLMs) have made remarkable progress in multimodal perception and reasoning by bridging vision and language. However, most existing MLLMs perform reasoning primarily with textual CoT, which limits their effectiveness on vision-intensive tasks. Recent approaches inject a fixed number of continuous hidden states as "visual thoughts" into the reasoning process and improve visual performance, but often at the cost of degraded text-based logical reasoning. We argue that the core limitation lies in a rigid, pre-defined reasoning pattern that cannot adaptively choose the most suitable thinking modality for different user queries. We introduce SwimBird, a reasoning-switchable MLLM that dynamically switches among three reasoning modes conditioned on the input: (1) text-only reasoning, (2) vision-only reasoning (continuous hidden states as visual thoughts), and (3) interleaved vision-text reasoning. To enable this capability, we adopt a hybrid autoregressive formulation that unifies next-token prediction for textual thoughts with next-embedding prediction for visual thoughts, and design a systematic reasoning-mode curation strategy to construct SwimBird-SFT-92K, a diverse supervised fine-tuning dataset covering all three reasoning patterns. By enabling flexible, query-adaptive mode selection, SwimBird preserves strong textual logic while substantially improving performance on vision-dense tasks.
+          </p>
+        </div>
+        <div class="item method-diagram">
+          <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+            <img src="static/images/method.png" 
+                alt="SwimBird Method Architecture" 
+                style="width: 100%; margin: 0 auto; display: block;" 
+                class="clickable-image"/>
+            <div class="image-overlay">
+              <div class="overlay-text">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small showcase-section">
+  <div class="hero-body">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">
+        <i class="fas fa-images" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+        Key Features & Results
+      </h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-star"></i>
+          <span>Core Concept</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/intro.jpg" alt="SwimBird adaptive reasoning modes visualization" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Query-Adaptive Multimodal Reasoning</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">SwimBird dynamically switches among text-only, vision-only, and interleaved vision-text modes</span>
+          </h2>
+        </div>
+      </div>
+      <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-lightbulb"></i>
+          <span>Examples</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/case.jpg" alt="Different reasoning mode examples" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Different Reasoning-Mode Cases</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Real-world examples demonstrating adaptive mode selection</span>
+          </h2>
+        </div>
+      </div>
+      <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-chart-pie"></i>
+          <span>Analysis</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/dis.jpg" alt="Reasoning mode distribution analysis" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Mode Distribution Across Benchmarks</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Analysis of reasoning mode usage patterns in different tasks</span>
+          </h2>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+
+
+<!-- Paper poster -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">
+        <i class="fas fa-chart-line" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+        Performance Results
+      </h2>
+      
+      <div class="performance-grid">
+        <div class="performance-card">
+          <div class="performance-badge">
+            <i class="fas fa-eye"></i>
+            <span>Visual Understanding</span>
+          </div>
+          <div class="image-wrapper-performance">
+            <img src="static/images/main1.jpg" 
+                 alt="Performance on fine-grained visual understanding benchmarks" 
+                 loading="lazy"
+                 onclick="openLightbox(this)"
+                 class="clickable-image"/>
+          </div>
+          <h3 class="subtitle has-text-centered performance-subtitle">
+            Fine-grained Visual Understanding Benchmarks
+          </h3>
+        </div>
+
+        <div class="performance-card">
+          <div class="performance-badge">
+            <i class="fas fa-brain"></i>
+            <span>Reasoning Tasks</span>
+          </div>
+          <div class="image-wrapper-performance">
+            <img src="static/images/main2.jpg" 
+                 alt="Performance on general VQA and multimodal reasoning tasks" 
+                 loading="lazy"
+                 onclick="openLightbox(this)"
+                 class="clickable-image"/>
+          </div>
+          <h3 class="subtitle has-text-centered performance-subtitle">
+            General VQA & Multimodal Reasoning
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End paper poster -->
+
+
+<!-- Contact & Opportunities Section -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          <i class="fas fa-envelope" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+          Contact & Opportunities
+        </h2>
+        
+        <!-- Main Contact Box -->
+        <div class="contact-box">
+          <div class="contact-content">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); text-align: center; margin-bottom: 1.5rem;">
+              If you have any questions about this project, please feel free to contact:
+            </p>
+            <div class="email-container">
+              <a href="mailto:tattoo.ysl@gmail.com" class="email-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>tattoo.ysl@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recruitment Box -->
+        <div class="recruitment-box" style="margin-top: 2rem;">
+          <div class="recruitment-header">
+            <i class="fas fa-users"></i>
+            <h3>We're Hiring!</h3>
+          </div>
+          <div class="recruitment-content">
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+              <strong style="color: var(--text-primary);">Accio Lab</strong> is actively seeking <strong style="background: linear-gradient(135deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">self-motivated researchers</strong> and <strong style="background: linear-gradient(135deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">research interns</strong> to join our team!
+            </p>
+            
+            <div class="opportunities-grid">
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>Research Areas</h4>
+                  <p>Multimodal Large Language Models, Large Language Models, Agentic AI, Agent</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What We Look For</h4>
+                  <p>Passion for AI research, strong coding skills, and independent thinking</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What We Offer</h4>
+                  <p>Cutting-edge research, mentorship, and collaboration opportunities</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-gift"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What You'll Get</h4>
+                  <p>Cutting-edge technology, mature Agent products, and flexible work environment</p>
+                </div>
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+              <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Interested? Send your CV and research interests to:
+              </p>
+              <a href="mailto:tattoo.ysl@gmail.com?subject=Research%20Position%20Application%20-%20SwimBird" class="apply-button">
+                <i class="fas fa-paper-plane"></i>
+                <span>Apply Now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<!--End Contact & Opportunities Section -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">
+          <i class="fas fa-quote-right" style="margin-right: 0.5rem; font-size: 0.8em; opacity: 0.7;"></i>
+          BibTeX
+        </h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
+  title={SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs},
+  author={Jintao Tong, Shilin Yan, Hongwei Xue, Xiaojun Tang, Kunyu Shi, Guannan Zhang, Ruixuan Li, Yixiong Zou},
+  journal={Conference/Journal Name},
+  year={2026},
+  url={https://your-domain.com/your-project-page}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+ 
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <div style="margin-bottom: 1.5rem;">
+        <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+          SwimBird Research Project
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+          Accio Team, Alibaba Group
+        </p>
+      </div>
+      
+      <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <i class="ai ai-arxiv"></i>
+          <span>arXiv</span>
+        </a>
+        <a href="https://github.com/Accio-Lab/SwimBird" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://huggingface.co/Accio-Lab/SwimBird-8B" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>Model</span>
+        </a>
+        <a href="https://huggingface.co/datasets/Accio-Lab/SwimBird-SFT-92K" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>Dataset</span>
+        </a>
+      </div>
+      
+      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+          © 2026 SwimBird Team. Built with ❤️ for advancing multimodal AI research.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </main>
+  </body>
+  </html>
