@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>You Only Forward Once: An Efficient Compositional Judging Paradigm</title>
+  <meta name="title" content="You Only Forward Once: An Efficient Compositional Judging Paradigm">
+  <meta name="description" content="YOFO: A template-conditioned judging paradigm that judges whether inputs satisfy requirements specified by a predefined template in a single forward pass.">
+  <meta name="keywords" content="YOFO, Cross-Modal Retrieval, MLLM-as-Judge, MLLM, Multimodal Large Language Models, AI Research, Deep Learning, Computer Vision, Natural Language Processing">
+  <meta name="author" content="Tianlong Zhang, Hongwei Xue, Shilin Yan, Di Wu, Chen Xu, Guannan Zhang, Yunyun Yang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="YOFO - Accio Lab Research">
+  <meta property="og:title" content="You Only Forward Once: An Efficient Compositional Judging Paradigm">
+  <meta property="og:description" content="YOFO: A template-conditioned judging paradigm that verifies multiple requirements in a single forward pass with state-of-the-art efficiency.">
+  <meta property="og:url" content="https://Accio-Lab.github.io/YOFO">
+  <meta property="og:image" content="https://Accio-Lab.github.io/YOFO/static/images/method.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YOFO: An Efficient Compositional Judging Paradigm">
+  <meta property="article:published_time" content="2025-11-21T00:00:00.000Z">
+  <meta property="article:author" content="Tianlong Zhang, Hongwei Xue, Shilin Yan, Di Wu, Chen Xu, Guannan Zhang, Yunyun Yang">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AccioLab">
+  <meta name="twitter:title" content="You Only Forward Once: An Efficient Compositional Judging Paradigm">
+  <meta name="twitter:description" content="YOFO: A template-conditioned judging paradigm that verifies multiple requirements in a single forward pass.">
+  <meta name="twitter:image" content="https://Accio-Lab.github.io/YOFO/static/images/method.png">
+
+  <!-- Academic Meta Tags -->
+  <meta name="citation_title" content="You Only Forward Once: An Efficient Compositional Judging Paradigm">
+  <meta name="citation_author" content="Tianlong Zhang">
+  <meta name="citation_author" content="Hongwei Xue">
+  <meta name="citation_author" content="Shilin Yan">
+  <meta name="citation_author" content="Di Wu">
+  <meta name="citation_author" content="Chen Xu">
+  <meta name="citation_author" content="Guannan Zhang">
+  <meta name="citation_author" content="Yunyun Yang">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="arXiv preprint">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2511.16600">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- JS -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list"></div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <!-- Animated Background -->
+    <div class="hero-background">
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      <div class="grid-background"></div>
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div><div class="shape shape-2"></div>
+        <div class="shape shape-3"></div><div class="shape shape-4"></div><div class="shape shape-5"></div>
+      </div>
+      <div class="spotlight" id="spotlight"></div>
+    </div>
+    
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">You Only Forward Once: An Efficient Compositional Judging Paradigm</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="#" target="_blank">Tianlong Zhang</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Hongwei Xue</a><sup>2†</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Shilin Yan</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Di Wu</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Chen Xu</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Guannan Zhang</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="#" target="_blank">Yunyun Yang</a><sup>1‡</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Harbin Institute of Technology, Shenzhen<br><sup>2</sup>Accio Team, Alibaba Group</span>
+            </div>
+            
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="proj-lead"><small><sup>†</sup>Project Leader</small></span>
+              <span class="cor_author"><small><sup>‡</sup>Corresponding Author</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2511.16600" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/JayGarrick/yofo-Qwen3-VL-2B-Instruct" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><span>🤗</span></span>
+                    <span>Model</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-indicator-arrow"><i class="fas fa-chevron-down"></i></div></div>
+  </section>
+
+  <!-- Abstract Section -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><i class="fas fa-book-open" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Multimodal large language models (MLLMs) show strong potential as judges. However, existing approaches face a fundamental trade-off: adapting MLLMs to output a single score misaligns with the generative nature of MLLMs and limits fine-grained requirement understanding, whereas autoregressively generating judging analyses is prohibitively slow in high-throughput settings. Observing that judgment reduces to verifying whether inputs satisfy a set of structured requirements, we propose <strong>YOFO</strong>, a template-conditioned method that judges all requirements in a single forward pass. Built on an autoregressive model, YOFO accepts a structured requirement template and, in one inference step, produces a binary yes/no decision for each requirement by reading the logits of the final token associated with that requirement. This design yields orders-of-magnitude speedups while preserving interpretability. Extensive experiments show that YOFO not only achieves state-of-the-art results on standard recommendation datasets, but also supports dependency-aware analysis—where subsequent judgments are conditioned on previous ones—and further benefits from post-hoc CoT.
+            </p>
+          </div>
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/method.png" alt="YOFO Method Architecture" class="clickable-image" style="width: 100%; display: block;"/>
+              <div class="image-overlay"><div class="overlay-text"><i class="fas fa-search-plus"></i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Carousel -->
+  <section class="hero is-small showcase-section">
+    <div class="hero-body">
+      <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">
+          <i class="fas fa-images" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+          Key Features & Results
+        </h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <!-- Item 1: Paradigm Comparison -->
+          <div class="item carousel-item-enhanced">
+            <div class="carousel-image-container">
+              <img src="static/images/prev.png" alt="Paradigm Evolution" onclick="openLightbox(this)" class="clickable-image"/>
+            </div>
+            <div class="carousel-caption">
+              <h2 class="subtitle has-text-centered">
+                <strong>Paradigm Comparison</strong><br>
+                <span style="font-size: 0.9em;">Transitioning from single score prediction to single-forward compositional judging.</span>
+              </h2>
+            </div>
+          </div>
+          <!-- Item 2: Accuracy and Interpretability -->
+          <div class="item carousel-item-enhanced">
+            <div class="carousel-image-container">
+              <img src="static/images/comp.png" alt="YOFO Efficiency Comparison" onclick="openLightbox(this)" class="clickable-image"/>
+            </div>
+            <div class="carousel-caption">
+              <h2 class="subtitle has-text-centered">
+                <strong>Accuracy and Interpretability</strong><br>
+                <span style="font-size: 0.9em;">YOFO enables fine-grained understanding and enhances interpretability.</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Results -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;"><i class="fas fa-chart-line" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>Performance Results</h2>
+        <div class="columns is-centered">
+          <div class="column is-12 has-text-centered">
+            <!-- 修改点：将 box 容器宽度设为 50% 并水平居中，移除 padding -->
+            <div class="box p-0" style="width: 50%; margin: 0 auto; overflow: hidden; border-radius: 6px;">
+              <figure class="image">
+                <img src="static/images/exp1.png" alt="YOFO Experimental Results" class="clickable-image" onclick="openLightbox(this)" style="width: 100%; height: auto; display: block;">
+              </figure>
+            </div>
+            <h3 class="subtitle is-6 mt-4">Comprehensive evaluation shows YOFO outperforming existing judges in accuracy and ranking metrics.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Opportunities Section -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered"><div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered"><i class="fas fa-envelope" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>Contact & Opportunities</h2>
+        
+        <div class="contact-box"><div class="contact-content">
+          <p style="font-size: 1.1rem; color: var(--text-secondary); text-align: center; margin-bottom: 1.5rem;">Interested in YOFO or seeking collaboration? Contact us:</p>
+          <div class="email-container" style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+            <a href="mailto:xuehongwei@mail.ustc.edu.cn" class="email-link"><i class="fas fa-paper-plane"></i><span>xuehongwei@mail.ustc.edu.cn</span></a>
+            <a href="mailto:24b958007@stu.hit.edu.cn" class="email-link"><i class="fas fa-paper-plane"></i><span>24b958007@stu.hit.edu.cn</span></a>
+          </div>
+        </div></div>
+
+        <div class="recruitment-box" style="margin-top: 2rem;">
+          <div class="recruitment-header"><i class="fas fa-users"></i><h3>We're Hiring!</h3></div>
+          <div class="recruitment-content">
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;"><strong style="color: var(--text-primary);">Accio Lab</strong> is actively seeking researchers and interns!</p>
+            
+            <div class="opportunities-grid">
+              <div class="opportunity-item">
+                <div class="opportunity-icon"><i class="fas fa-rocket"></i></div>
+                <div class="opportunity-text"><h4>Research Areas</h4><p>MLLM, MLLM-as-Judge, Efficient Inference, Agentic AI</p></div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon"><i class="fas fa-star"></i></div>
+                <div class="opportunity-text"><h4>What We Look For</h4><p>Passion for AI research, strong coding skills, and independent thinking</p></div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="opportunity-text"><h4>What We Offer</h4><p>Cutting-edge research, mentorship, and collaboration opportunities</p></div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon"><i class="fas fa-gift"></i></div>
+                <div class="opportunity-text"><h4>What You'll Get</h4><p>Cutting-edge technology, mature Agent products, and flexible work environment</p></div>
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+              <a href="mailto:xuehongwei@mail.ustc.edu.cn?subject=Research%20Position%20Application%20-%20YOFO" class="apply-button"><i class="fas fa-paper-plane"></i><span>Apply Now</span></a>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header"><h2 class="title"><i class="fas fa-quote-right" style="margin-right: 0.5rem; font-size: 0.8em; opacity: 0.7;"></i>BibTeX</h2>
+      <button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i><span class="copy-text">Copy</span></button></div>
+      <pre id="bibtex-code"><code>@article{zhang2025you,
+  title={You Only Forward Once: An Efficient Compositional Judging Paradigm},
+  author={Zhang, Tianlong and Xue, Hongwei and Yan, Shilin and Wu, Di Institue and Xu, Chen and Guannan Zhang and Yang, Yunyun},
+  journal={arXiv preprint arXiv:2511.16600},
+  year={2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container has-text-centered">
+      <div style="margin-bottom: 1.5rem;"><p style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">YOFO Research Project</p><p style="color: var(--text-secondary);">Accio Lab, Alibaba Group & HIT Shenzhen</p></div>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <a href="https://arxiv.org/abs/2511.16600" target="_blank" class="footer-link"><i class="ai ai-arxiv"></i><span>arXiv</span></a>
+        <a href="https://huggingface.co/JayGarrick/yofo-Qwen3-VL-2B-Instruct" target="_blank" class="footer-link"><span>🤗</span><span>Model</span></a>
+      </div>
+      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-color);"><p style="color: var(--text-light); font-size: 0.9rem;">© 2025 YOFO Team. Built with ❤️ for advancing multimodal AI research.</p></div>
+    </div>
+  </footer>
+  </main>
+</body>
+</html>
