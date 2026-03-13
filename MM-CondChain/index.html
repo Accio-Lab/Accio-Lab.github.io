@@ -1,57 +1,81 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MM-CondChain</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning">
+  <meta name="description" content="MM-CondChain is a benchmark for visually grounded deep compositional reasoning in Multimodal Large Language Models (MLLMs), featuring multi-layer reasoning chains with verifiable programmatic intermediate representations.">
+  <meta name="keywords" content="MM-CondChain, MLLM, Multimodal Large Language Models, Visual Reasoning, Compositional Reasoning, Benchmark, VPIR, AI Research, Deep Learning, Computer Vision">
+  <meta name="author" content="Haozhan Shen, Shilin Yan, Hongwei Xue, Shuaiqi Lu, Xiaojun Tang, Guannan Zhang, Tiancheng Zhao, Jianwei Yin">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MM-CondChain - Accio Lab Research">
+  <meta property="og:title" content="MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning">
+  <meta property="og:description" content="MM-CondChain is a benchmark for visually grounded deep compositional reasoning in MLLMs, featuring multi-layer reasoning chains with verifiable programmatic intermediate representations.">
+  <meta property="og:url" content="https://Accio-Lab.github.io/MM-CondChain">
+  <meta property="og:image" content="https://Accio-Lab.github.io/MM-CondChain/static/images/overview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AccioLab">
+  <meta name="twitter:title" content="MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning">
+  <meta name="twitter:description" content="MM-CondChain is a benchmark for visually grounded deep compositional reasoning in MLLMs.">
+  <meta name="twitter:image" content="https://Accio-Lab.github.io/MM-CondChain/static/images/overview.png">
 
-  <!-- [PLACEHOLDER: favicon] -->
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#4f8cff">
+  <meta name="msapplication-TileColor" content="#4f8cff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <title>MM-CondChain - Visually Grounded Deep Compositional Reasoning</title>
+  
+  <!-- Favicon -->
   <link rel="icon" href="static/images/mmcondchain_logo.png">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-
+  <!-- Leaderboard specific styles -->
   <style>
-    body {
-      font-family: 'Google Sans', 'Noto Sans', sans-serif;
-    }
-
-    .publication-title {
-      font-weight: 700;
-    }
-
-    .mmcondchain {
-      color: #4f8cff;
-    }
-
-    .publication-authors {
-      margin-top: 10px;
-    }
-
-    .author-block {
-      margin-right: 8px;
-    }
-
-    .publication-links {
-      margin-top: 20px;
-    }
-
-    .link-block {
-      margin: 5px;
-    }
-
-    .external-link {
-      font-size: 14px;
-    }
-
-    .content h2 {
-      margin-top: 30px;
-    }
-
     .js-sort-table {
       width: 100%;
       border-collapse: collapse;
@@ -261,40 +285,6 @@
       margin: 0;
     }
 
-    .figure-placeholder {
-      background: #f5f5f5;
-      border: 2px dashed #ccc;
-      border-radius: 8px;
-      padding: 40px;
-      text-align: center;
-      color: #888;
-      font-size: 14px;
-      margin: 20px auto;
-    }
-
-    .figure-placeholder code {
-      background: #e8e8e8;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-
-    .box {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    pre {
-      background-color: #f4f4f4;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-
-    code {
-      font-family: Consolas, "Courier New", monospace;
-    }
-
     .category-header {
       background: #f0f0f0;
       font-weight: 700;
@@ -302,25 +292,87 @@
     }
   </style>
 </head>
-
 <body>
 
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://accio-lab.github.io/SwimBird" target="_blank" class="work-item">
+          <div class="work-info">
+            <h5>SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</h5>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://accio-lab.github.io/YOFO" target="_blank" class="work-item">
+          <div class="work-info">
+            <h5>You Only Forward Once: An Efficient Compositional Judging Paradigm</h5>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
   <!-- Hero Section -->
   <section class="hero">
+    <!-- Animated Background with Particles -->
+    <div class="hero-background">
+      <!-- Particle Canvas -->
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      
+      <!-- Grid Background -->
+      <div class="grid-background"></div>
+      
+      <!-- Floating Shapes -->
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+      
+      <!-- Spotlight Effect -->
+      <div class="spotlight" id="spotlight"></div>
+    </div>
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title is-bold">
-              <!-- [PLACEHOLDER: logo image] -->
-              <span class="mmcondchain">MM-CondChain</span>
-            </h1>
-            <h2 class="subtitle is-3 publication-subtitle" style="margin-bottom: 20px;">
+            <h1 class="title is-1 publication-title">MM-CondChain</h1>
+            <h2 class="subtitle is-4 publication-subtitle" style="margin-bottom: 20px; color: var(--text-secondary);">
               A Programmatically Verified Benchmark for <br> Visually Grounded Deep Compositional Reasoning
             </h2>
 
             <div class="is-size-5 publication-authors">
-              <!-- [PLACEHOLDER: Author Names] -->
               <span class="author-block"><a href="https://scholar.google.com/citations?user=Wp5CuPIAAAAJ&hl=en" target="_blank">Haozhan Shen</a><sup>1,2</sup>,</span>
               <span class="author-block"><a href="https://scholar.google.com/citations?user=2VhjOykAAAAJ&hl=zh-CN&oi=ao" target="_blank">Shilin Yan</a><sup>1†</sup>,</span>
               <span class="author-block">Hongwei Xue<sup>1‡</sup>,</span>
@@ -331,13 +383,12 @@
               <span class="author-block">Jianwei Yin<sup>2</sup></span>
             </div>
 
-            <div class="is-size-6 publication-authors" style="margin-top: 5px;">
-              <span><sup>†</sup>Project Leader</span>
-              <span style="margin-left: 15px;"><sup>‡</sup>Corresponding Author</span>
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="proj-lead"><small><sup>†</sup>Project Leader</small></span>
+              <span class="cor_author"><small><sup>‡</sup>Corresponding Author</small></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <!-- [PLACEHOLDER: Affiliations] -->
               <span class="author-block"><sup>1</sup>Accio Team, Alibaba Group</span>
               <span class="author-block"><sup>2</sup>Zhejiang University</span>
               <span class="author-block"><sup>3</sup>ZJU-BJ</span>
@@ -347,14 +398,14 @@
               <div class="publication-links">
                 <!-- Paper Link -->
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <a href="https://arxiv.org/pdf/2603.12266" class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Paper</span>
                   </a>
                 </span>
                 <!-- arXiv Link -->
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <a href="https://arxiv.org/abs/2603.12266" class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon"><i class="ai ai-arxiv"></i></span>
                     <span>arXiv</span>
                   </a>
@@ -363,20 +414,20 @@
                 <span class="link-block">
                   <a href="https://github.com/Accio-Lab/MM-CondChain" class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>GitHub</span>
+                    <span>Code</span>
                   </a>
                 </span>
                 <!-- Dataset Link -->
                 <span class="link-block">
                   <a href="https://huggingface.co/datasets/Accio-Lab/MM-CondChain" class="external-link button is-normal is-rounded is-dark" target="_blank">
-                    <span class="icon" style="font-size:18px;">&#129303;</span>
+                    <span class="icon"><span>🤗</span></span>
                     <span>Dataset</span>
                   </a>
                 </span>
                 <!-- Leaderboard Link -->
                 <span class="link-block">
                   <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon" style="font-size:18px;">&#127942;</span>
+                    <span class="icon"><span>🏆</span></span>
                     <span>Leaderboard</span>
                   </a>
                 </span>
@@ -386,20 +437,40 @@
         </div>
       </div>
     </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-indicator-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
   </section>
 
-  <!-- Introduction Section -->
-  <section class="section">
+  <!-- Introduction / Abstract Section -->
+  <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Introduction</h2>
+          <h2 class="title is-3">
+            <i class="fas fa-book-open" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            Introduction
+          </h2>
           
-          <!-- [FIGURE_OVERVIEW] - figures/overview.pdf -->
-          <figure>
-            <img src="static/images/overview.png" alt="MM-CondChain Overview" style="width: 100%; max-width: 100%;">
-            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Figure 1: MM-CondChain overview showing comparison with prior benchmarks, example multi-layer reasoning chain, and model performance summary.</figcaption>
-          </figure>
+          <!-- Overview Figure -->
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/overview.png" 
+                  alt="MM-CondChain Overview" 
+                  style="width: 100%; margin: 0 auto; display: block;" 
+                  class="clickable-image"/>
+              <div class="image-overlay">
+                <div class="overlay-text">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <figcaption style="margin-top:10px; font-size:12px; color: #666; text-align: center;">Figure 1: MM-CondChain overview showing comparison with prior benchmarks, example multi-layer reasoning chain, and model performance summary.</figcaption>
+          </div>
           
           <div class="content has-text-justified">
             <p>
@@ -426,7 +497,10 @@
       <div class="columns is-centered">
         <div class="column is-full has-text-centered content">
 
-          <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+          <h2 class="title is-3" id="leaderboard">
+            <i class="fas fa-trophy" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            Leaderboard
+          </h2>
           <p class="mt-3">
             Overall performance on MM-CondChain. Results show that visually grounded deep compositional reasoning remains highly challenging for current MLLMs.
           </p>
@@ -735,7 +809,6 @@
           </table>
 
           <p class="mt-3" style="font-size: 14px; color: #666;">
-            <!-- [PLACEHOLDER: contact email] -->
             If you want to add your model to our leaderboard, please contact <a href="mailto:your-email@example.com">your-email@example.com</a>.
           </p>
 
@@ -756,54 +829,81 @@
       <!-- VPIR Pipeline -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">VPIR-based Benchmark Construction Pipeline</h2>
+          <h2 class="title is-3">
+            <i class="fas fa-cogs" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            VPIR-based Benchmark Construction Pipeline
+          </h2>
           <div class="content has-text-justified">
             <p>
               We propose a VPIR-based agentic benchmark construction pipeline that decouples logical construction from language rendering. The pipeline iteratively builds multi-layer reasoning chains where each layer is first expressed as an executable predicate and mechanically verified against structured visual facts, and only then rendered into natural language.
             </p>
           </div>
           
-          <!-- [FIGURE_PIPELINE] - figures/pipeline.pdf -->
-          <figure>
-            <img src="static/images/pipeline.png" alt="MM-CondChain Pipeline" style="width: 100%; max-width: 100%;">
-            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Overview of the MM-CondChain agentic synthesis pipeline. Given a multimodal input, the Planner iteratively extends a conditional chain with VPIR predicates verified via code execution.</figcaption>
-          </figure>
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/pipeline.png" alt="MM-CondChain Pipeline" style="width: 100%; margin: 0 auto; display: block;" class="clickable-image"/>
+              <div class="image-overlay">
+                <div class="overlay-text">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <figcaption style="margin-top:10px; font-size:12px; color: #666; text-align: center;">Overview of the MM-CondChain agentic synthesis pipeline. Given a multimodal input, the Planner iteratively extends a conditional chain with VPIR predicates verified via code execution.</figcaption>
+          </div>
         </div>
       </div>
 
       <!-- Data Statistics -->
       <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Fact and VPIR Attribute Statistics</h2>
+          <h2 class="title is-3">
+            <i class="fas fa-chart-bar" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            Fact and VPIR Attribute Statistics
+          </h2>
           <div class="content has-text-justified">
             <p>
               We observe clear domain-specific patterns across the three visual domains. Natural instances mainly rely on object attributes and spatial relations, Chart instances concentrate on numerical and structural statistics, and GUI instances emphasize action, state, and trajectory-level metadata.
             </p>
           </div>
           
-          <!-- [FIGURE_ATTR_STATS] - attribute distribution 2x3 grid -->
-          <figure>
-            <img src="static/images/VPIR1.png" alt="Attribute Statistics" style="width: 100%; max-width: 100%;">
-            <figcaption style="margin-top:10px; font-size:12px; color: #666;">(Left column) Top attributes in extracted facts; (Right column) Top variables used in VPIR predicates for Natural, Chart, and GUI domains.</figcaption>
-          </figure>
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/VPIR1.png" alt="Attribute Statistics" style="width: 100%; margin: 0 auto; display: block;" class="clickable-image"/>
+              <div class="image-overlay">
+                <div class="overlay-text">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <figcaption style="margin-top:10px; font-size:12px; color: #666; text-align: center;">(Left column) Top attributes in extracted facts; (Right column) Top variables used in VPIR predicates for Natural, Chart, and GUI domains.</figcaption>
+          </div>
         </div>
       </div>
 
       <!-- Logic Pattern Composition -->
       <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Logic Pattern Composition</h2>
+          <h2 class="title is-3">
+            <i class="fas fa-project-diagram" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            Logic Pattern Composition
+          </h2>
           <div class="content has-text-justified">
             <p>
               VPIR expressions in MM-CondChain exhibit substantial structural diversity. The benchmark is not dominated by one or two simple templates: the top-20 templates cover only 50.07% of all expressions, and 128 unique templates are needed to reach 80% coverage.
             </p>
           </div>
           
-          <!-- [FIGURE_LOGIC_PATTERNS] - figures/logic_patterns.pdf -->
-          <figure>
-            <img src="static/images/VPIR2.png" alt="Logic Patterns" style="width: 100%; max-width: 100%;">
-            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Left: distribution of VPIR logic families. Middle: top-20 dominant templates. Right: example instantiation showing predicate mapping and natural language rendering.</figcaption>
-          </figure>
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/VPIR2.png" alt="Logic Patterns" style="width: 100%; margin: 0 auto; display: block;" class="clickable-image"/>
+              <div class="image-overlay">
+                <div class="overlay-text">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <figcaption style="margin-top:10px; font-size:12px; color: #666; text-align: center;">Left: distribution of VPIR logic families. Middle: top-20 dominant templates. Right: example instantiation showing predicate mapping and natural language rendering.</figcaption>
+          </div>
         </div>
       </div>
 
@@ -822,18 +922,26 @@
       <!-- Ablation Studies -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Design Ablations</h2>
+          <h2 class="title is-3">
+            <i class="fas fa-flask" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+            Design Ablations
+          </h2>
           <div class="content has-text-justified">
             <p>
               We investigate how chain depth and predicate complexity affect model performance. From depth 2 to depth 6, Path F1 drops by approximately 29-33% in relative terms across all tested models. Similarly, increasing predicate complexity leads to substantial performance drops (27-36% relative degradation).
             </p>
           </div>
           
-          <div class="box">
-            <figure>
-              <img src="static/images/Ablation.png" alt="Ablation Study" style="width: 100%; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
-              <figcaption style="margin-top:10px; font-size:12px; color: #666;">Left: Effect of chain depth (D=2,4,6) on Path F1. Right: Effect of predicate complexity (Simple vs Complex) on Path F1.</figcaption>
-            </figure>
+          <div class="item method-diagram">
+            <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img src="static/images/Ablation.png" alt="Ablation Study" style="width: 100%; margin: 0 auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" class="clickable-image"/>
+              <div class="image-overlay">
+                <div class="overlay-text">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <figcaption style="margin-top:10px; font-size:12px; color: #666; text-align: center;">Left: Effect of chain depth (D=2,4,6) on Path F1. Right: Effect of predicate complexity (Simple vs Complex) on Path F1.</figcaption>
           </div>
         </div>
       </div>
@@ -841,32 +949,59 @@
     </div>
   </section>
 
-  <!-- Citation Section Header -->
-  <div class="section-header">
-    <h1 class="title is-1" id="citation">Citation</h1>
-  </div>
-
-  <!-- Citation Section -->
-  <section class="section">
+  <!-- BibTeX Section -->
+  <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
-      <pre><code><!-- [PLACEHOLDER: BibTeX citation] -->
-@article{author2025mmcondchain,
+      <div class="bibtex-header">
+        <h2 class="title">
+          <i class="fas fa-quote-right" style="margin-right: 0.5rem; font-size: 0.8em; opacity: 0.7;"></i>
+          BibTeX
+        </h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{shen2026mmcondchain,
   title={MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning},
-  author={[Author Names]},
-  journal={arXiv preprint arXiv:xxxx.xxxxx},
-  year={2025}
-}
-      </code></pre>
+  author={Shen, Haozhan and Yan, Shilin and Xue, Hongwei and Lu, Shuaiqi and Tang, Xiaojun and Zhang, Guannan and Zhao, Tiancheng and Yin, Jianwei},
+  journal={arXiv preprint arXiv:2603.12266},
+  year={2026}
+}</code></pre>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer Section -->
   <footer class="footer">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content" style="text-align: center;">
-          <p>
-            This website template is adapted from <a href="https://mathvista.github.io/">MathVista</a>, 
+    <div class="container">
+      <div class="content has-text-centered">
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+            MM-CondChain Research Project
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Accio Team, Alibaba Group
+          </p>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+          <a href="https://arxiv.org/abs/2603.12266" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="ai ai-arxiv"></i>
+            <span>arXiv</span>
+          </a>
+          <a href="https://github.com/Accio-Lab/MM-CondChain" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://huggingface.co/datasets/Accio-Lab/MM-CondChain" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>🤗</span>
+            <span>Dataset</span>
+          </a>
+        </div>
+        
+        <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+          <p style="color: var(--text-light); font-size: 0.9rem;">
+            This website template is adapted from <a href="https://accio-lab.github.io/SwimBird">SwimBird</a>, 
             licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
             Creative Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
@@ -874,6 +1009,8 @@
       </div>
     </div>
   </footer>
+
+  </main>
 
   <!-- JavaScript for Leaderboard -->
   <script>
@@ -998,5 +1135,4 @@
   </script>
 
 </body>
-
 </html>
