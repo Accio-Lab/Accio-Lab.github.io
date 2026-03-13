@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM-CondChain</title>
+
+  <!-- [PLACEHOLDER: favicon] -->
+  <link rel="icon" href="static/images/mmcondchain_logo.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    body {
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+    }
+
+    .publication-title {
+      font-weight: 700;
+    }
+
+    .mmcondchain {
+      color: #4f8cff;
+    }
+
+    .publication-authors {
+      margin-top: 10px;
+    }
+
+    .author-block {
+      margin-right: 8px;
+    }
+
+    .publication-links {
+      margin-top: 20px;
+    }
+
+    .link-block {
+      margin: 5px;
+    }
+
+    .external-link {
+      font-size: 14px;
+    }
+
+    .content h2 {
+      margin-top: 30px;
+    }
+
+    .js-sort-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .js-sort-table th,
+    .js-sort-table td {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .js-sort-table th {
+      background: #f5f5f5;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .js-sort-table th:hover {
+      background: #e8e8e8;
+    }
+
+    .js-sort-table tbody tr:hover {
+      background: #f9f9f9;
+    }
+
+    .model-name {
+      text-align: left !important;
+      font-weight: 600;
+    }
+
+    .model-org {
+      font-size: 11px;
+      color: #888;
+      font-weight: normal;
+    }
+
+    .f1-col {
+      font-weight: 700;
+      background: #f0f7ff;
+    }
+
+    .avg-col {
+      font-weight: 700;
+      background: #fff3e0;
+    }
+
+    .leaderboard-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .leaderboard-filters .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .leaderboard-filters label {
+      font-weight: 600;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .filter-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: #444;
+      background: #f7f9fc;
+      border: 1px solid #d6e5ff;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .leaderboard-chart-wrap {
+      width: 100%;
+      max-width: 100%;
+      margin: 8px auto 24px;
+      padding: 14px 16px;
+      border: 1px solid #e7e7e7;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .leaderboard-chart-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+
+    .leaderboard-legend {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 8px;
+    }
+
+    .leaderboard-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .leaderboard-legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    .leaderboard-legend-swatch.open-source {
+      background: linear-gradient(90deg, #4f8cff 0%, #6bb7ff 100%);
+    }
+
+    .leaderboard-legend-swatch.proprietary {
+      background: #1f1f1f;
+    }
+
+    .leaderboard-chart {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 6px;
+      align-items: end;
+      padding: 24px 12px 2px;
+      overflow-x: auto;
+    }
+
+    .leaderboard-bar-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      width: 52px;
+      flex: 0 0 52px;
+    }
+
+    .leaderboard-bar-label {
+      font-size: 10px;
+      text-align: center;
+      color: #222;
+      width: 100%;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.2;
+      height: 48px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .leaderboard-bar-track {
+      width: 24px;
+      height: 180px;
+      background: transparent;
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+    }
+
+    .leaderboard-bar-fill {
+      width: 100%;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .leaderboard-bar-fill.proprietary {
+      background: #1f1f1f;
+    }
+
+    .leaderboard-bar-fill.open-source {
+      background: linear-gradient(90deg, #4f8cff 0%, #6bb7ff 100%);
+    }
+
+    .leaderboard-bar-score {
+      font-size: 11px;
+      font-weight: 600;
+      color: #1f1f1f;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -16px;
+      white-space: nowrap;
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, #4f8cff 0%, #6bb7ff 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin: 40px 0 0 0;
+    }
+
+    .section-header h1 {
+      color: white;
+      margin: 0;
+    }
+
+    .figure-placeholder {
+      background: #f5f5f5;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin: 20px auto;
+    }
+
+    .figure-placeholder code {
+      background: #e8e8e8;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .box {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    .category-header {
+      background: #f0f0f0;
+      font-weight: 700;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">
+              <!-- [PLACEHOLDER: logo image] -->
+              <span class="mmcondchain">MM-CondChain</span>
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle" style="margin-bottom: 20px;">
+              A Programmatically Verified Benchmark for <br> Visually Grounded Deep Compositional Reasoning
+            </h2>
+
+            <div class="is-size-5 publication-authors">
+              <!-- [PLACEHOLDER: Author Names] -->
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=Wp5CuPIAAAAJ&hl=en" target="_blank">Haozhan Shen</a><sup>1,2</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=2VhjOykAAAAJ&hl=zh-CN&oi=ao" target="_blank">Shilin Yan</a><sup>1†</sup>,</span>
+              <span class="author-block">Hongwei Xue<sup>1‡</sup>,</span>
+              <span class="author-block">Shuaiqi Lu<sup>1</sup>,</span>
+              <span class="author-block">Xiaojun Tang<sup>1</sup>,</span><br>
+              <span class="author-block">Guannan Zhang<sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.tianchez.com/" target="_blank">Tiancheng Zhao</a><sup>3‡</sup>,</span>
+              <span class="author-block">Jianwei Yin<sup>2</sup></span>
+            </div>
+
+            <div class="is-size-6 publication-authors" style="margin-top: 5px;">
+              <span><sup>†</sup>Project Leader</span>
+              <span style="margin-left: 15px;"><sup>‡</sup>Corresponding Author</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <!-- [PLACEHOLDER: Affiliations] -->
+              <span class="author-block"><sup>1</sup>Accio Team, Alibaba Group</span>
+              <span class="author-block"><sup>2</sup>Zhejiang University</span>
+              <span class="author-block"><sup>3</sup>ZJU-BJ</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper Link -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- arXiv Link -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- GitHub Link -->
+                <span class="link-block">
+                  <a href="https://github.com/Accio-Lab/MM-CondChain" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>GitHub</span>
+                  </a>
+                </span>
+                <!-- Dataset Link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/Accio-Lab/MM-CondChain" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon" style="font-size:18px;">&#129303;</span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+                <!-- Leaderboard Link -->
+                <span class="link-block">
+                  <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon" style="font-size:18px;">&#127942;</span>
+                    <span>Leaderboard</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          
+          <!-- [FIGURE_OVERVIEW] - figures/overview.pdf -->
+          <figure>
+            <img src="static/images/overview.png" alt="MM-CondChain Overview" style="width: 100%; max-width: 100%;">
+            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Figure 1: MM-CondChain overview showing comparison with prior benchmarks, example multi-layer reasoning chain, and model performance summary.</figcaption>
+          </figure>
+          
+          <div class="content has-text-justified">
+            <p>
+              We introduce <b>MM-CondChain</b>, a benchmark for <i>visually grounded deep compositional reasoning</i> in Multimodal Large Language Models (MLLMs).
+            </p>
+            <p>
+              Each benchmark instance is organized as a <b>multi-layer reasoning chain</b>, where every layer contains a non-trivial compositional condition grounded in visual evidence and built from multiple objects, attributes, or relations. To answer correctly, an MLLM must perceive the image in detail, reason over multiple visual elements at each step, and follow the resulting execution path to the final outcome.
+            </p>
+            <p>
+              To scalably construct such workflow-style data, we propose a <b>VPIR-based agentic synthesis pipeline</b> that decouples logical construction from language rendering. A Verifiable Programmatic Intermediate Representation (VPIR) ensures each layer's condition is mechanically verifiable. A Composer then assembles verified layers into complete instructions, automatically producing paired hard negatives where True/False paths differ by exactly one flipped predicate.
+            </p>
+            <p>
+              Using this pipeline, we construct benchmarks across <b>three visual domains</b>: natural images, data charts, and GUI trajectories. Experiments on a range of MLLMs show that even the strongest model attains only <b>53.33 Path F1</b>, with sharp drops on hard negatives and as depth or predicate complexity grows, confirming that deep compositional reasoning remains a fundamental challenge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leaderboard Section -->
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full has-text-centered content">
+
+          <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+          <p class="mt-3">
+            Overall performance on MM-CondChain. Results show that visually grounded deep compositional reasoning remains highly challenging for current MLLMs.
+          </p>
+
+          <!-- Filters -->
+          <div class="leaderboard-filters">
+            <div class="filter-status">
+              <span class="icon"><i class="fas fa-filter"></i></span>
+              <span>Filtered by</span>
+            </div>
+            <div class="filter-item">
+              <label for="model-type-filter">Model Type</label>
+              <div class="select">
+                <select id="model-type-filter" onchange="applyFilters()">
+                  <option value="all">All</option>
+                  <option value="open-source">Open-Source</option>
+                  <option value="proprietary">Proprietary</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bar Chart -->
+          <div class="leaderboard-chart-wrap">
+            <div class="leaderboard-chart-title">MM-CondChain Leaderboard</div>
+            <div class="leaderboard-legend">
+              <span class="leaderboard-legend-item">
+                <span class="leaderboard-legend-swatch open-source"></span>
+                <span>Open-Source</span>
+              </span>
+              <span class="leaderboard-legend-item">
+                <span class="leaderboard-legend-swatch proprietary"></span>
+                <span>Proprietary</span>
+              </span>
+            </div>
+            <div id="leaderboard-bar-chart" class="leaderboard-chart"></div>
+          </div>
+
+          <!-- Results Table -->
+          <table class="js-sort-table" id="results">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Nat. True</th>
+                <th>Nat. False</th>
+                <th>Nat. F1</th>
+                <th>Chart True</th>
+                <th>Chart False</th>
+                <th>Chart F1</th>
+                <th>GUI True</th>
+                <th>GUI False</th>
+                <th>GUI F1</th>
+                <th>Avg F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Proprietary Models -->
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Gemini-3-Pro<br><span class="model-org">Google</span></td>
+                <td>Proprietary</td>
+                <td>73.87</td><td>44.97</td><td class="f1-col">55.91</td>
+                <td>70.00</td><td>62.50</td><td class="f1-col">66.04</td>
+                <td>32.63</td><td>45.62</td><td class="f1-col">38.05</td>
+                <td class="avg-col">53.33</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">GPT-5-0807<br><span class="model-org">OpenAI</span></td>
+                <td>Proprietary</td>
+                <td>80.65</td><td>33.67</td><td class="f1-col">47.51</td>
+                <td>63.50</td><td>67.50</td><td class="f1-col">65.44</td>
+                <td>30.77</td><td>49.87</td><td class="f1-col">38.06</td>
+                <td class="avg-col">50.34</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Gemini-3-Flash<br><span class="model-org">Google</span></td>
+                <td>Proprietary</td>
+                <td>54.77</td><td>41.46</td><td class="f1-col">47.19</td>
+                <td>60.50</td><td>63.50</td><td class="f1-col">61.96</td>
+                <td>36.87</td><td>34.75</td><td class="f1-col">35.78</td>
+                <td class="avg-col">48.31</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Qwen3-VL-Plus<br><span class="model-org">Alibaba</span></td>
+                <td>Proprietary</td>
+                <td>67.59</td><td>32.16</td><td class="f1-col">43.58</td>
+                <td>56.00</td><td>54.50</td><td class="f1-col">55.24</td>
+                <td>34.75</td><td>38.20</td><td class="f1-col">36.39</td>
+                <td class="avg-col">45.07</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Gemini-2.5-Pro<br><span class="model-org">Google</span></td>
+                <td>Proprietary</td>
+                <td>38.94</td><td>55.28</td><td class="f1-col">45.70</td>
+                <td>55.50</td><td>64.50</td><td class="f1-col">59.66</td>
+                <td>10.34</td><td>54.38</td><td class="f1-col">17.38</td>
+                <td class="avg-col">40.91</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Qwen3-VL-Flash<br><span class="model-org">Alibaba</span></td>
+                <td>Proprietary</td>
+                <td>61.56</td><td>29.65</td><td class="f1-col">40.02</td>
+                <td>59.50</td><td>47.50</td><td class="f1-col">52.83</td>
+                <td>58.62</td><td>10.61</td><td class="f1-col">17.97</td>
+                <td class="avg-col">36.94</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">Gemini-2.5-Flash<br><span class="model-org">Google</span></td>
+                <td>Proprietary</td>
+                <td>29.40</td><td>48.24</td><td class="f1-col">36.53</td>
+                <td>35.50</td><td>47.00</td><td class="f1-col">40.45</td>
+                <td>6.90</td><td>44.83</td><td class="f1-col">11.95</td>
+                <td class="avg-col">29.64</td>
+              </tr>
+              <tr data-type="proprietary">
+                <td></td>
+                <td class="model-name">GPT-4o-1120<br><span class="model-org">OpenAI</span></td>
+                <td>Proprietary</td>
+                <td>83.92</td><td>12.81</td><td class="f1-col">22.23</td>
+                <td>17.00</td><td>18.00</td><td class="f1-col">17.49</td>
+                <td>63.40</td><td>12.20</td><td class="f1-col">20.46</td>
+                <td class="avg-col">20.06</td>
+              </tr>
+              
+              <!-- Open-Source Models -->
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-235B-A22B-Thinking<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>65.49</td><td>39.55</td><td class="f1-col">49.31</td>
+                <td>61.50</td><td>58.50</td><td class="f1-col">59.96</td>
+                <td>28.91</td><td>33.95</td><td class="f1-col">31.23</td>
+                <td class="avg-col">46.83</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-397B-A17B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>52.01</td><td>31.16</td><td class="f1-col">38.97</td>
+                <td>67.00</td><td>52.00</td><td class="f1-col">58.55</td>
+                <td>40.05</td><td>40.32</td><td class="f1-col">40.19</td>
+                <td class="avg-col">45.90</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-235B-A22B-Instruct<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>62.12</td><td>43.94</td><td class="f1-col">51.47</td>
+                <td>55.00</td><td>61.00</td><td class="f1-col">57.84</td>
+                <td>62.60</td><td>17.24</td><td class="f1-col">27.04</td>
+                <td class="avg-col">45.45</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Kimi-K2.5<br><span class="model-org">Moonshot AI</span></td>
+                <td>Open-Source</td>
+                <td>75.57</td><td>41.06</td><td class="f1-col">53.21</td>
+                <td>46.00</td><td>52.00</td><td class="f1-col">48.82</td>
+                <td>50.93</td><td>25.20</td><td class="f1-col">33.72</td>
+                <td class="avg-col">45.25</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-30B-A3B-Thinking<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>30.90</td><td>31.16</td><td class="f1-col">31.03</td>
+                <td>58.00</td><td>56.50</td><td class="f1-col">57.24</td>
+                <td>40.53</td><td>27.73</td><td class="f1-col">32.93</td>
+                <td class="avg-col">40.40</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-122B-A10B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>95.48</td><td>20.85</td><td class="f1-col">34.23</td>
+                <td>84.50</td><td>37.50</td><td class="f1-col">51.95</td>
+                <td>65.78</td><td>23.08</td><td class="f1-col">34.17</td>
+                <td class="avg-col">40.12</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-8B-Thinking<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>60.71</td><td>30.48</td><td class="f1-col">40.58</td>
+                <td>49.50</td><td>37.00</td><td class="f1-col">42.35</td>
+                <td>37.14</td><td>27.85</td><td class="f1-col">31.83</td>
+                <td class="avg-col">38.25</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">GLM-4.6V<br><span class="model-org">Zhipu AI</span></td>
+                <td>Open-Source</td>
+                <td>73.37</td><td>26.13</td><td class="f1-col">38.54</td>
+                <td>66.00</td><td>34.50</td><td class="f1-col">45.31</td>
+                <td>30.50</td><td>24.40</td><td class="f1-col">27.11</td>
+                <td class="avg-col">36.99</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-8B-Instruct<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>47.98</td><td>30.81</td><td class="f1-col">37.52</td>
+                <td>39.78</td><td>39.78</td><td class="f1-col">39.78</td>
+                <td>58.67</td><td>12.53</td><td class="f1-col">20.65</td>
+                <td class="avg-col">32.65</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-9B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>91.69</td><td>13.10</td><td class="f1-col">22.92</td>
+                <td>86.50</td><td>28.50</td><td class="f1-col">42.87</td>
+                <td>71.62</td><td>11.67</td><td class="f1-col">20.07</td>
+                <td class="avg-col">28.62</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">InternVL3-38B<br><span class="model-org">Shanghai AI Lab</span></td>
+                <td>Open-Source</td>
+                <td>73.62</td><td>20.60</td><td class="f1-col">32.20</td>
+                <td>31.00</td><td>31.50</td><td class="f1-col">31.25</td>
+                <td>57.03</td><td>12.47</td><td class="f1-col">20.46</td>
+                <td class="avg-col">27.97</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3-VL-30B-A3B-Instruct<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>27.64</td><td>27.14</td><td class="f1-col">27.38</td>
+                <td>44.00</td><td>35.50</td><td class="f1-col">39.30</td>
+                <td>73.67</td><td>7.98</td><td class="f1-col">14.40</td>
+                <td class="avg-col">27.03</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-4B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>88.92</td><td>15.37</td><td class="f1-col">26.20</td>
+                <td>86.50</td><td>20.00</td><td class="f1-col">32.49</td>
+                <td>65.78</td><td>7.69</td><td class="f1-col">13.77</td>
+                <td class="avg-col">24.15</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-35B-A3B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>93.43</td><td>11.62</td><td class="f1-col">20.66</td>
+                <td>88.50</td><td>17.00</td><td class="f1-col">28.52</td>
+                <td>74.27</td><td>14.32</td><td class="f1-col">24.02</td>
+                <td class="avg-col">24.40</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">InternVL3-14B<br><span class="model-org">Shanghai AI Lab</span></td>
+                <td>Open-Source</td>
+                <td>76.38</td><td>13.57</td><td class="f1-col">23.04</td>
+                <td>43.00</td><td>21.00</td><td class="f1-col">28.22</td>
+                <td>84.62</td><td>2.39</td><td class="f1-col">4.64</td>
+                <td class="avg-col">18.63</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">InternVL3.5-8B<br><span class="model-org">Shanghai AI Lab</span></td>
+                <td>Open-Source</td>
+                <td>82.41</td><td>10.30</td><td class="f1-col">18.31</td>
+                <td>76.00</td><td>19.50</td><td class="f1-col">31.04</td>
+                <td>82.23</td><td>1.33</td><td class="f1-col">2.61</td>
+                <td class="avg-col">17.32</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">InternVL3-8B<br><span class="model-org">Shanghai AI Lab</span></td>
+                <td>Open-Source</td>
+                <td>65.33</td><td>8.29</td><td class="f1-col">14.72</td>
+                <td>47.50</td><td>8.50</td><td class="f1-col">14.42</td>
+                <td>63.66</td><td>5.31</td><td class="f1-col">9.79</td>
+                <td class="avg-col">12.98</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">GLM-4.6V-Flash<br><span class="model-org">Zhipu AI</span></td>
+                <td>Open-Source</td>
+                <td>83.92</td><td>9.55</td><td class="f1-col">17.14</td>
+                <td>81.91</td><td>5.53</td><td class="f1-col">10.36</td>
+                <td>87.53</td><td>0.53</td><td class="f1-col">1.05</td>
+                <td class="avg-col">9.52</td>
+              </tr>
+              <tr data-type="open-source">
+                <td></td>
+                <td class="model-name">Qwen3.5-0.8B<br><span class="model-org">Alibaba</span></td>
+                <td>Open-Source</td>
+                <td>33.17</td><td>2.26</td><td class="f1-col">4.23</td>
+                <td>31.50</td><td>3.00</td><td class="f1-col">5.48</td>
+                <td>33.95</td><td>1.86</td><td class="f1-col">3.52</td>
+                <td class="avg-col">4.41</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="mt-3" style="font-size: 14px; color: #666;">
+            <!-- [PLACEHOLDER: contact email] -->
+            If you want to add your model to our leaderboard, please contact <a href="mailto:your-email@example.com">your-email@example.com</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section Header -->
+  <div class="section-header">
+    <h1 class="title is-1">MM-CondChain</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <section class="section">
+    <div class="container">
+      
+      <!-- VPIR Pipeline -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">VPIR-based Benchmark Construction Pipeline</h2>
+          <div class="content has-text-justified">
+            <p>
+              We propose a VPIR-based agentic benchmark construction pipeline that decouples logical construction from language rendering. The pipeline iteratively builds multi-layer reasoning chains where each layer is first expressed as an executable predicate and mechanically verified against structured visual facts, and only then rendered into natural language.
+            </p>
+          </div>
+          
+          <!-- [FIGURE_PIPELINE] - figures/pipeline.pdf -->
+          <figure>
+            <img src="static/images/pipeline.png" alt="MM-CondChain Pipeline" style="width: 100%; max-width: 100%;">
+            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Overview of the MM-CondChain agentic synthesis pipeline. Given a multimodal input, the Planner iteratively extends a conditional chain with VPIR predicates verified via code execution.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Data Statistics -->
+      <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Fact and VPIR Attribute Statistics</h2>
+          <div class="content has-text-justified">
+            <p>
+              We observe clear domain-specific patterns across the three visual domains. Natural instances mainly rely on object attributes and spatial relations, Chart instances concentrate on numerical and structural statistics, and GUI instances emphasize action, state, and trajectory-level metadata.
+            </p>
+          </div>
+          
+          <!-- [FIGURE_ATTR_STATS] - attribute distribution 2x3 grid -->
+          <figure>
+            <img src="static/images/VPIR1.png" alt="Attribute Statistics" style="width: 100%; max-width: 100%;">
+            <figcaption style="margin-top:10px; font-size:12px; color: #666;">(Left column) Top attributes in extracted facts; (Right column) Top variables used in VPIR predicates for Natural, Chart, and GUI domains.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Logic Pattern Composition -->
+      <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Logic Pattern Composition</h2>
+          <div class="content has-text-justified">
+            <p>
+              VPIR expressions in MM-CondChain exhibit substantial structural diversity. The benchmark is not dominated by one or two simple templates: the top-20 templates cover only 50.07% of all expressions, and 128 unique templates are needed to reach 80% coverage.
+            </p>
+          </div>
+          
+          <!-- [FIGURE_LOGIC_PATTERNS] - figures/logic_patterns.pdf -->
+          <figure>
+            <img src="static/images/VPIR2.png" alt="Logic Patterns" style="width: 100%; max-width: 100%;">
+            <figcaption style="margin-top:10px; font-size:12px; color: #666;">Left: distribution of VPIR logic families. Middle: top-20 dominant templates. Right: example instantiation showing predicate mapping and natural language rendering.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experiment Results Section Header -->
+  <div class="section-header">
+    <h1 class="title is-1">Experiment Results</h1>
+  </div>
+
+  <!-- Experiment Results Section -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Ablation Studies -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Design Ablations</h2>
+          <div class="content has-text-justified">
+            <p>
+              We investigate how chain depth and predicate complexity affect model performance. From depth 2 to depth 6, Path F1 drops by approximately 29-33% in relative terms across all tested models. Similarly, increasing predicate complexity leads to substantial performance drops (27-36% relative degradation).
+            </p>
+          </div>
+          
+          <div class="box">
+            <figure>
+              <img src="static/images/Ablation.png" alt="Ablation Study" style="width: 100%; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+              <figcaption style="margin-top:10px; font-size:12px; color: #666;">Left: Effect of chain depth (D=2,4,6) on Path F1. Right: Effect of predicate complexity (Simple vs Complex) on Path F1.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Citation Section Header -->
+  <div class="section-header">
+    <h1 class="title is-1" id="citation">Citation</h1>
+  </div>
+
+  <!-- Citation Section -->
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <pre><code><!-- [PLACEHOLDER: BibTeX citation] -->
+@article{author2025mmcondchain,
+  title={MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning},
+  author={[Author Names]},
+  journal={arXiv preprint arXiv:xxxx.xxxxx},
+  year={2025}
+}
+      </code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align: center;">
+          <p>
+            This website template is adapted from <a href="https://mathvista.github.io/">MathVista</a>, 
+            licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Leaderboard -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      sortTableByAvgF1();
+      updateRowNumbers();
+      renderLeaderboardChart();
+    });
+
+    function applyFilters() {
+      const filterValue = document.getElementById("model-type-filter").value;
+      const rows = document.querySelectorAll("#results tbody tr");
+      
+      rows.forEach(row => {
+        const type = row.getAttribute("data-type");
+        if (filterValue === "all" || type === filterValue) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+      
+      updateRowNumbers();
+      renderLeaderboardChart();
+    }
+
+    function updateRowNumbers() {
+      const rows = document.querySelectorAll("#results tbody tr");
+      let visibleIndex = 1;
+      
+      rows.forEach(row => {
+        const indexCell = row.querySelector("td");
+        if (row.style.display === "none") {
+          indexCell.innerText = "";
+        } else {
+          indexCell.innerText = visibleIndex;
+          visibleIndex++;
+        }
+      });
+    }
+
+    function sortTableByAvgF1() {
+      const table = document.getElementById("results");
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      
+      rows.sort((a, b) => {
+        const scoreA = parseFloat(a.children[12].innerText) || 0;
+        const scoreB = parseFloat(b.children[12].innerText) || 0;
+        return scoreB - scoreA;
+      });
+      
+      rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function renderLeaderboardChart() {
+      const chartContainer = document.getElementById("leaderboard-bar-chart");
+      const rows = Array.from(document.querySelectorAll("#results tbody tr"))
+        .filter(row => row.style.display !== "none")
+        .map(row => {
+          const modelCell = row.children[1];
+          const modelName = modelCell.innerText.split("\n")[0].trim();
+          const score = parseFloat(row.children[12].innerText) || 0;
+          const type = row.getAttribute("data-type");
+          return { model: modelName, score: score, type: type };
+        })
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 20);
+
+      if (!rows.length) {
+        chartContainer.innerHTML = '<div style="text-align:center;color:#777;padding:20px;">No models match current filters.</div>';
+        return;
+      }
+
+      const maxScore = Math.max(...rows.map(item => item.score), 1);
+      chartContainer.innerHTML = rows.map(item => {
+        const height = (item.score / maxScore) * 100;
+        const fillClass = item.type === "proprietary" ? "proprietary" : "open-source";
+        return `
+          <div class="leaderboard-bar-row">
+            <div class="leaderboard-bar-track">
+              <div class="leaderboard-bar-fill ${fillClass}" style="height: ${height.toFixed(2)}%;">
+                <div class="leaderboard-bar-score">${item.score.toFixed(1)}</div>
+              </div>
+            </div>
+            <div class="leaderboard-bar-label" title="${item.model}">${item.model}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // Table sorting functionality
+    document.querySelectorAll(".js-sort-table th").forEach((header, index) => {
+      if (index === 0 || index === 1 || index === 2) return; // Skip #, Model, Type columns
+      
+      header.addEventListener("click", function() {
+        const table = this.closest("table");
+        const tbody = table.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const isAsc = this.classList.contains("sort-asc");
+        
+        // Remove sort classes from all headers
+        table.querySelectorAll("th").forEach(th => {
+          th.classList.remove("sort-asc", "sort-desc");
+        });
+        
+        // Sort rows
+        rows.sort((a, b) => {
+          const aVal = parseFloat(a.children[index].innerText) || 0;
+          const bVal = parseFloat(b.children[index].innerText) || 0;
+          return isAsc ? aVal - bVal : bVal - aVal;
+        });
+        
+        // Update sort indicator
+        this.classList.add(isAsc ? "sort-desc" : "sort-asc");
+        
+        // Re-append rows
+        rows.forEach(row => tbody.appendChild(row));
+        updateRowNumbers();
+      });
+    });
+  </script>
+
+</body>
+
+</html>
