@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models">
+  <meta name="description" content="We propose Hierarchical Decoupled Policy Optimization (HDPO), a framework that maintains two orthogonal optimization channels—an accuracy channel and an efficiency channel—to cultivate meta-cognitive tool use in agentic multimodal models. Our model, Metis, reduces tool invocations by orders of magnitude while simultaneously elevating reasoning accuracy.">
+  <meta name="keywords" content="Metis, HDPO, Hierarchical Decoupled Policy Optimization, Multimodal Large Language Models, Agentic AI, Tool Use, Reinforcement Learning, Meta-Cognitive, Visual Reasoning, AI Research, Deep Learning, Computer Vision, Natural Language Processing">
+  <meta name="author" content="Shilin Yan, Jintao Tong, Hongwei Xue, Xiaojun Tang, Yangyang Wang, Kunyu Shi, Guannan Zhang, Ruixuan Li, Yixiong Zou">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Metis - Accio Lab Research">
+  <meta property="og:title" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models">
+  <meta property="og:description" content="Metis: A strategic multimodal reasoning agent trained with HDPO that reduces tool invocations by orders of magnitude while achieving state-of-the-art reasoning accuracy across diverse benchmarks.">
+  <meta property="og:url" content="https://Accio-Lab.github.io/Metis">
+  <meta property="og:image" content="https://Accio-Lab.github.io/Metis/static/images/method.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models - Research Preview">
+  <meta property="article:published_time" content="2026-04-10T00:00:00.000Z">
+  <meta property="article:author" content="Shilin Yan, Jintao Tong, Hongwei Xue, Xiaojun Tang, Yangyang Wang, Kunyu Shi, Guannan Zhang, Ruixuan Li, Yixiong Zou">
+  <meta property="article:section" content="AI Research">
+  <meta property="article:tag" content="Multimodal Learning">
+  <meta property="article:tag" content="Large Language Models">
+  <meta property="article:tag" content="Tool Use">
+  <meta property="article:tag" content="Reinforcement Learning">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@AccioLab">
+  <meta name="twitter:creator" content="@AccioLab">
+  <meta name="twitter:title" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models">
+  <meta name="twitter:description" content="Metis: A strategic multimodal reasoning agent trained with HDPO that reduces tool invocations by orders of magnitude while achieving state-of-the-art reasoning accuracy across diverse benchmarks.">
+  <meta name="twitter:image" content="https://Accio-Lab.github.io/Metis/static/images/method.png">
+  <meta name="twitter:image:alt" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models">
+  <meta name="citation_author" content="Shilin Yan">
+  <meta name="citation_author" content="Jintao Tong">
+  <meta name="citation_author" content="Hongwei Xue">
+  <meta name="citation_author" content="Xiaojun Tang">
+  <meta name="citation_author" content="Yangyang Wang">
+  <meta name="citation_author" content="Kunyu Shi">
+  <meta name="citation_author" content="Guannan Zhang">
+  <meta name="citation_author" content="Ruixuan Li">
+  <meta name="citation_author" content="Yixiong Zou">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="arXiv preprint">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="msapplication-TileColor" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>Metis - Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models</title>
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models",
+    "description": "We propose Hierarchical Decoupled Policy Optimization (HDPO), a framework that maintains two orthogonal optimization channels to cultivate meta-cognitive tool use in agentic multimodal models. Our model, Metis, reduces tool invocations by orders of magnitude while simultaneously elevating reasoning accuracy.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Shilin Yan",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Jintao Tong",
+        "affiliation": [
+          {
+            "@type": "Organization",
+            "name": "Accio Team, Alibaba Group"
+          },
+          {
+            "@type": "Organization",
+            "name": "Huazhong University of Science and Technology"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Hongwei Xue",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Xiaojun Tang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yangyang Wang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Kunyu Shi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Guannan Zhang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Accio Team, Alibaba Group"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Ruixuan Li",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Huazhong University of Science and Technology"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yixiong Zou",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Huazhong University of Science and Technology"
+        }
+      }
+    ],
+    "datePublished": "2026-04-10",
+    "publisher": {
+      "@type": "Organization",
+      "name": "arXiv"
+    },
+    "url": "https://Accio-Lab.github.io/Metis",
+    "image": "https://Accio-Lab.github.io/Metis/static/images/method.png",
+    "keywords": ["Multimodal Large Language Models", "Tool Use", "Reinforcement Learning", "Meta-Cognitive", "Agentic AI", "HDPO", "Visual Reasoning", "Metis"],
+    "abstract": "The advent of agentic multimodal models has empowered systems to actively interact with external environments. However, current agents suffer from a profound meta-cognitive deficit: they struggle to arbitrate between leveraging internal knowledge and querying external utilities. Consequently, they frequently fall prey to blind tool invocation, resorting to reflexive tool execution even when queries are resolvable from the raw visual context. This pathological behavior precipitates severe latency bottlenecks and injects extraneous noise that derails sound reasoning. To transcend this bottleneck, we propose Hierarchical Decoupled Policy Optimization (HDPO), a framework that reframes tool efficiency from a competing scalar objective to a strictly conditional one. By eschewing reward scalarization, HDPO maintains two orthogonal optimization channels: an accuracy channel that maximizes task correctness, and an efficiency channel that enforces execution economy exclusively within accurate trajectories via conditional advantage estimation. Extensive evaluations demonstrate that our resulting model, Metis, reduces tool invocations by orders of magnitude (e.g., from 98% to 2%) while simultaneously elevating reasoning accuracy.",
+    "citation": "@article{yan2026metis, title={Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models}, author={Yan, Shilin and Tong, Jintao and Xue, Hongwei and Tang, Xiaojun and Wang, Yangyang and Shi, Kunyu and Zhang, Guannan and Li, Ruixuan and Zou, Yixiong}, year={2026}, url={https://Accio-Lab.github.io/Metis}}",
+    "isAccessibleForFree": true,
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://Accio-Lab.github.io/Metis"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Multimodal Machine Learning"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Tool-Augmented Reasoning"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Large Language Models"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Reinforcement Learning"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Accio Lab, Alibaba Group",
+    "url": "https://Accio-Lab.github.io",
+    "sameAs": [
+      "https://twitter.com/AccioLab",
+      "https://github.com/Accio-Lab"
+    ],
+    "description": "Accio Lab focuses on cutting-edge research in multimodal AI, large language models, and vision-language understanding."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://accio-lab.github.io/MM-CondChain" target="_blank" class="work-item">
+          <div class="work-info">
+            <h5>MM-CondChain: A Programmatically Verified Benchmark for Visually Grounded Deep Compositional Reasoning</h5>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://accio-lab.github.io/SwimBird" target="_blank" class="work-item">
+          <div class="work-info">
+            <h5>SwimBird: Eliciting Switchable Reasoning Mode in Hybrid Autoregressive MLLMs</h5>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://accio-lab.github.io/YOFO" target="_blank" class="work-item">
+          <div class="work-info">
+            <h5>You Only Forward Once: An Efficient Compositional Judging Paradigm</h5>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <!-- Animated Background with Particles -->
+    <div class="hero-background">
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      <div class="grid-background"></div>
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+      <div class="spotlight" id="spotlight"></div>
+    </div>
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=2VhjOykAAAAJ&hl=en" target="_blank">Shilin Yan</a><sup>1*†‡</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=T-0oVM4AAAAJ&hl=en" target="_blank">Jintao Tong</a><sup>1,2*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=k5CJa5YAAAAJ&hl=zh-CN" target="_blank">Hongwei Xue</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#" target="_blank">Xiaojun Tang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#" target="_blank">Yangyang Wang</a><sup>1</sup>,</span><br>
+              <span class="author-block">
+                <a href="#" target="_blank">Kunyu Shi</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="#" target="_blank">Guannan Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=scAIu2MAAAAJ&hl=en&oi=ao" target="_blank">Ruixuan Li</a><sup>2‡</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=VXxF0mcAAAAJ&hl=en&oi=ao" target="_blank">Yixiong Zou</a><sup>2‡</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Accio Team, Alibaba Group<br><sup>2</sup>Huazhong University of Science and Technology</span>
+            </div>
+            
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="eql-cntrb"><small><sup>*</sup>Equal Contribution</small></span>
+              <span class="proj-lead"><small><sup>†</sup>Project Leader</small></span>
+              <span class="cor_author"><small><sup>‡</sup>Corresponding Author</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <!-- arXiv Link -->
+                <span class="link-block">
+                  <a href="https://Accio-Lab.github.io/Metis" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- GitHub Link -->
+                <span class="link-block">
+                  <a href="https://github.com/Accio-Lab/Metis" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- ColdStart Model -->
+              <span class="link-block">
+                <a href="https://huggingface.co/Accio-Lab/Metis-8B-ColdStart" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <span>🤗</span>
+                </span>
+                <span>ColdStart Model</span>
+              </a>
+            </span>
+
+            <!-- ColdStart Data -->
+            <span class="link-block">
+              <a href="https://huggingface.co/datasets/Accio-Lab/Metis-ColdStart" target="_blank"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <span>🤗</span>
+              </span>
+              <span>ColdStart Data</span>
+            </a>
+          </span>
+
+          <!-- RL Model -->
+          <span class="link-block">
+            <a href="https://huggingface.co/Accio-Lab/Metis-8B-RL" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <span>🤗</span>
+            </span>
+            <span>RL Model</span>
+          </a>
+        </span>
+
+        <!-- RL Data -->
+        <span class="link-block">
+          <a href="https://huggingface.co/datasets/Accio-Lab/Metis-RL" target="_blank"
+          class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <span>🤗</span>
+          </span>
+          <span>RL Data</span>
+        </a>
+      </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-arrow">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          <i class="fas fa-book-open" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+          Abstract
+        </h2>
+        <div class="content has-text-justified">
+          <p>
+            The advent of agentic multimodal models has empowered systems to actively interact with external environments. However, current agents suffer from a profound meta-cognitive deficit: they struggle to arbitrate between leveraging internal knowledge and querying external utilities. Consequently, they frequently fall prey to <strong>blind tool invocation</strong>, resorting to reflexive tool execution even when queries are resolvable from the raw visual context. This pathological behavior precipitates severe latency bottlenecks and injects extraneous noise that derails sound reasoning. Existing reinforcement learning protocols attempt to mitigate this via a scalarized reward that penalizes tool usage. Yet, this <strong>coupled formulation</strong> creates an irreconcilable optimization dilemma: an aggressive penalty suppresses essential tool use, whereas a mild penalty is entirely subsumed by the variance of the accuracy reward during advantage normalization, rendering it impotent against tool overuse. To transcend this bottleneck, we propose <strong>Hierarchical Decoupled Policy Optimization (HDPO)</strong>, a framework that reframes tool efficiency from a competing scalar objective to a strictly conditional one. By eschewing reward scalarization, HDPO maintains two orthogonal optimization channels: an <strong>accuracy channel</strong> that maximizes task correctness, and an <strong>efficiency channel</strong> that enforces execution economy exclusively within accurate trajectories via conditional advantage estimation. This decoupled architecture naturally induces a cognitive curriculum&mdash;compelling the agent to first master task resolution before refining its self-reliance. Extensive evaluations demonstrate that our resulting model, <strong>Metis</strong>, reduces tool invocations by orders of magnitude (e.g., from 98% to 2%) while simultaneously elevating reasoning accuracy. By shattering the illusion that heavy tool reliance equates to better performance, Metis pioneers a shift from merely executing tools to cultivating the meta-cognitive wisdom of abstention.
+          </p>
+        </div>
+        <div class="item method-diagram">
+          <div class="image-wrapper" onclick="openLightbox(this.querySelector('img'))">
+            <img src="static/images/method.png" 
+                alt="Metis Framework Overview: A strategic multimodal reasoning agent that selectively invokes code execution, text search, and image search tools during multi-turn reasoning" 
+                style="width: 100%; margin: 0 auto; display: block;" 
+                class="clickable-image"/>
+            <div class="image-overlay">
+              <div class="overlay-text">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small showcase-section">
+  <div class="hero-body">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">
+        <i class="fas fa-images" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+        Key Insights & Results
+      </h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-star"></i>
+          <span>Core Insight</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/analysis.png" alt="Comparison of tool-use efficiency and task performance across models" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Tool-Use Efficiency vs. Task Performance</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Existing methods rely heavily on tool calls. Metis uses tools selectively while achieving the best overall performance.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-lightbulb"></i>
+          <span>Method</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/intro.png" alt="Comparison between coupled-reward optimization and HDPO" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Coupled Reward vs. HDPO</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Existing methods entangle accuracy and efficiency into a single reward signal, while HDPO decouples them into separate branches.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-brain"></i>
+          <span>Case Study 1</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/main_case1.png" alt="Direct reasoning without tool invocation example" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Direct Reasoning without Tool Invocation</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Metis abstains from tool invocation and answers directly when the query is resolvable from visual context and parametric knowledge alone.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="item carousel-item-enhanced">
+        <div class="carousel-badge">
+          <i class="fas fa-code"></i>
+          <span>Case Study 2</span>
+        </div>
+        <div class="carousel-image-container">
+          <img src="static/images/main_case2.png" alt="Targeted code execution for fine-grained visual analysis" onload="this.style.opacity=1" onclick="openLightbox(this)" class="clickable-image"/>
+        </div>
+        <div class="carousel-caption">
+          <h2 class="subtitle has-text-centered">
+            <strong>Targeted Code Execution for Fine-Grained Analysis</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.9;">Metis strategically invokes code execution to crop and enlarge relevant regions when fine-grained visual analysis is needed.</span>
+          </h2>
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<!-- Performance Results -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">
+        <i class="fas fa-chart-line" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+        Performance Results
+      </h2>
+      
+      <div class="performance-grid">
+        <div class="performance-card">
+          <div class="performance-badge">
+            <i class="fas fa-eye"></i>
+            <span>Perception & Document</span>
+          </div>
+          <div style="overflow-x: auto; margin: 1.5rem 0;">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size: 0.85rem;">
+              <thead>
+                <tr>
+                  <th>Model</th><th>V*Bench</th><th>HR4K</th><th>HR8K</th><th>TreeBench</th><th>MME-RW</th><th>SEED2+</th><th>CharXiv(DQ)</th><th>CharXiv(RQ)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="9" style="text-align:center; font-style:italic; font-weight:bold;">Open-Source Models</td></tr>
+                <tr><td>LLaVA-OneVision</td><td>75.4</td><td>63.0</td><td>59.8</td><td>37.3</td><td>57.4</td><td>65.4</td><td>-</td><td>-</td></tr>
+                <tr><td>InternVL3-8B</td><td>81.2</td><td>70.0</td><td>69.3</td><td>38.8</td><td>-</td><td>69.7</td><td>73.6</td><td>37.6</td></tr>
+                <tr><td>Qwen2.5-VL-7B</td><td>75.3</td><td>65.5</td><td>62.1</td><td>37.0</td><td>56.8</td><td>70.4</td><td>72.7</td><td>40.2</td></tr>
+                <tr><td>Qwen2.5-VL-32B</td><td>80.6</td><td>69.3</td><td>63.6</td><td>42.5</td><td>59.1</td><td>72.4</td><td>83.2</td><td>48.0</td></tr>
+                <tr><td>Qwen3-VL-8B</td><td>86.4</td><td>78.9</td><td>74.6</td><td>40.7</td><td>61.9</td><td>71.0</td><td>83.0</td><td>46.3</td></tr>
+                <tr><td colspan="9" style="text-align:center; font-style:italic; font-weight:bold;">Agentic Multimodal Models</td></tr>
+                <tr><td>Pixel-Reasoner</td><td>84.3</td><td>72.6</td><td>66.1</td><td>39.0</td><td>64.4</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>DeepEyes</td><td>83.3</td><td>73.2</td><td>69.5</td><td>37.5</td><td>64.1</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>Thyme</td><td>82.2</td><td>77.0</td><td>72.0</td><td>-</td><td>64.8</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>DeepEyesV2</td><td>81.8</td><td>77.9</td><td>73.8</td><td>42.5</td><td>64.9</td><td>70.5</td><td>78.6</td><td>48.9</td></tr>
+                <tr><td>Mini-o3</td><td>88.2</td><td>77.5</td><td>73.3</td><td>-</td><td>65.5</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>SenseNova-MARS-8B</td><td><strong>92.2</strong></td><td>83.1</td><td>78.4</td><td>-</td><td>67.9</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>Skywork-R1V4-30B</td><td>88.0</td><td>82.8</td><td>79.8</td><td>-</td><td><strong>71.4</strong></td><td>-</td><td>-</td><td>-</td></tr>
+                <tr style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));">
+                  <td>Metis (Ours)</td><td>91.1</td><td><strong>83.5</strong></td><td><strong>82.0</strong></td><td><strong>45.2</strong></td><td>70.3</td><td><strong>72.5</strong></td><td><strong>83.4</strong></td><td><strong>54.1</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="subtitle has-text-centered performance-subtitle">
+            Perception & Document Understanding Benchmarks
+          </h3>
+        </div>
+
+        <div class="performance-card">
+          <div class="performance-badge">
+            <i class="fas fa-brain"></i>
+            <span>Math & Reasoning</span>
+          </div>
+          <div style="overflow-x: auto; margin: 1.5rem 0;">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size: 0.85rem;">
+              <thead>
+                <tr>
+                  <th>Model</th><th>MathVista</th><th>MathVerse</th><th>WeMath</th><th>DynaMath</th><th>LogicVista</th><th>Avg.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="7" style="text-align:center; font-style:italic; font-weight:bold;">Open-Source Models</td></tr>
+                <tr><td>LLaVA-OneVision</td><td>58.6</td><td>19.3</td><td>20.9</td><td>-</td><td>33.3</td><td>-</td></tr>
+                <tr><td>Qwen2.5-VL-7B</td><td>68.3</td><td>45.6</td><td>34.6</td><td>53.3</td><td>45.9</td><td>49.5</td></tr>
+                <tr><td>InternVL3-8B</td><td>71.6</td><td>39.8</td><td>37.1</td><td>-</td><td>44.1</td><td>-</td></tr>
+                <tr><td>Qwen3-VL-8B</td><td>76.3</td><td>61.3</td><td>38.8</td><td>65.5</td><td>54.9</td><td>59.4</td></tr>
+                <tr><td colspan="7" style="text-align:center; font-style:italic; font-weight:bold;">Text-only Reasoning Models</td></tr>
+                <tr><td>MM-Eureka-7B</td><td>72.6</td><td>50.3</td><td>21.8</td><td>-</td><td>46.3</td><td>-</td></tr>
+                <tr><td>ThinkLite-VL-7B</td><td>75.1</td><td>52.1</td><td>41.8</td><td>-</td><td>42.7</td><td>-</td></tr>
+                <tr><td>VL-Rethinker-7B</td><td>74.9</td><td>54.2</td><td>36.3</td><td>-</td><td>42.7</td><td>-</td></tr>
+                <tr><td>VLAA-Thinker-7B</td><td>71.7</td><td>-</td><td>35.7</td><td>-</td><td>45.9</td><td>-</td></tr>
+                <tr><td colspan="7" style="text-align:center; font-style:italic; font-weight:bold;">Agentic Multimodal Models</td></tr>
+                <tr><td>DeepEyes</td><td>70.1</td><td>47.3</td><td>38.9</td><td>55.0</td><td>47.7</td><td>51.8</td></tr>
+                <tr><td>Thyme</td><td>70.0</td><td>-</td><td>39.3</td><td>-</td><td>49.0</td><td>-</td></tr>
+                <tr><td>DeepEyesV2</td><td>71.9</td><td>52.7</td><td>38.1</td><td>57.2</td><td>48.7</td><td>53.7</td></tr>
+                <tr style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));">
+                  <td>Metis (Ours)</td><td><strong>78.0</strong></td><td><strong>65.9</strong></td><td><strong>65.2</strong></td><td><strong>69.2</strong></td><td><strong>56.2</strong></td><td><strong>66.9</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="subtitle has-text-centered performance-subtitle">
+            Mathematical & Logical Reasoning Benchmarks
+          </h3>
+        </div>
+      </div>
+
+      <!-- Ablation Study -->
+      <div style="margin-top: 3rem;">
+        <div class="performance-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="performance-badge">
+            <i class="fas fa-flask"></i>
+            <span>Ablation</span>
+          </div>
+          <div style="overflow-x: auto; margin: 1.5rem 0;">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size: 0.85rem;">
+              <thead>
+                <tr>
+                  <th>Method</th><th>V*Bench</th><th>HR4K</th><th>HR8K</th><th>CharXiv(RQ)</th><th>MathVista</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Standard GRPO (w<sub>tool</sub>=0)</td><td>88.7</td><td>81.0</td><td>79.2</td><td>51.0</td><td>76.9</td></tr>
+                <tr><td>HDPO (w<sub>tool</sub>=0.10)</td><td>88.0</td><td><strong>83.5</strong></td><td>81.0</td><td>52.7</td><td>77.4</td></tr>
+                <tr style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));">
+                  <td>HDPO (w<sub>tool</sub>=0.15) &#10004;</td><td><strong>91.1</strong></td><td><strong>83.5</strong></td><td><strong>82.0</strong></td><td><strong>54.1</strong></td><td><strong>78.0</strong></td>
+                </tr>
+                <tr><td>HDPO (w<sub>tool</sub>=0.20)</td><td>87.4</td><td>82.5</td><td>80.5</td><td>51.5</td><td>77.2</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="subtitle has-text-centered performance-subtitle">
+            Ablation: Effect of Tool-Efficiency Weight w<sub>tool</sub>
+          </h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--End Performance Results -->
+
+
+<!-- Contact & Opportunities Section -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          <i class="fas fa-envelope" style="margin-right: 0.5rem; font-size: 0.9em; opacity: 0.7;"></i>
+          Contact & Opportunities
+        </h2>
+        
+        <!-- Main Contact Box -->
+        <div class="contact-box">
+          <div class="contact-content">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); text-align: center; margin-bottom: 1.5rem;">
+              If you have any questions about this project, please feel free to contact:
+            </p>
+            <div class="email-container">
+              <a href="mailto:tattoo.ysl@gmail.com" class="email-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>tattoo.ysl@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recruitment Box -->
+        <!-- <div class="recruitment-box" style="margin-top: 2rem;">
+          <div class="recruitment-header">
+            <i class="fas fa-users"></i>
+            <h3>We're Hiring!</h3>
+          </div>
+          <div class="recruitment-content">
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+              <strong style="color: var(--text-primary);">Accio Lab</strong> is actively seeking <strong style="background: linear-gradient(135deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">self-motivated researchers</strong> and <strong style="background: linear-gradient(135deg, #4f46e5, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">research interns</strong> to join our team!
+            </p>
+            
+            <div class="opportunities-grid">
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>Research Areas</h4>
+                  <p>Multimodal Large Language Models, Large Language Models, Agentic AI, Agent</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What We Look For</h4>
+                  <p>Passion for AI research, strong coding skills, and independent thinking</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What We Offer</h4>
+                  <p>Cutting-edge research, mentorship, and collaboration opportunities</p>
+                </div>
+              </div>
+              
+              <div class="opportunity-item">
+                <div class="opportunity-icon">
+                  <i class="fas fa-gift"></i>
+                </div>
+                <div class="opportunity-text">
+                  <h4>What You'll Get</h4>
+                  <p>Cutting-edge technology, mature Agent products, and flexible work environment</p>
+                </div>
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+              <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Interested? Send your CV and research interests to:
+              </p>
+              <a href="mailto:tattoo.ysl@gmail.com?subject=Research%20Position%20Application%20-%20Metis" class="apply-button">
+                <i class="fas fa-paper-plane"></i>
+                <span>Apply Now</span>
+              </a>
+            </div>
+          </div>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+</section>
+<!--End Contact & Opportunities Section -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">
+          <i class="fas fa-quote-right" style="margin-right: 0.5rem; font-size: 0.8em; opacity: 0.7;"></i>
+          BibTeX
+        </h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{yan2026metis,
+  title={Act Wisely: Cultivating Meta-Cognitive Tool Use in Agentic Multimodal Models},
+  author={Yan, Shilin and Tong, Jintao and Xue, Hongwei and Tang, Xiaojun and Wang, Yangyang and Shi, Kunyu and Zhang, Guannan and Li, Ruixuan and Zou, Yixiong},
+  journal={arXiv preprint},
+  year={2026}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <div style="margin-bottom: 1.5rem;">
+        <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Metis Research Project
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+          Accio Team, Alibaba Group
+        </p>
+      </div>
+      
+      <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <a href="https://Accio-Lab.github.io/Metis" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <i class="ai ai-arxiv"></i>
+          <span>arXiv</span>
+        </a>
+        <a href="https://github.com/Accio-Lab/Metis" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://huggingface.co/Accio-Lab/Metis-8B-ColdStart" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>ColdStart Model</span>
+        </a>
+        <a href="https://huggingface.co/Accio-Lab/Metis-8B-RL" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>RL Model</span>
+        </a>
+        <a href="https://huggingface.co/datasets/Accio-Lab/Metis-ColdStart" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>ColdStart Data</span>
+        </a>
+        <a href="https://huggingface.co/datasets/Accio-Lab/Metis-RL" target="_blank" class="footer-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <span>🤗</span>
+          <span>RL Data</span>
+        </a>
+      </div>
+      
+      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+          &copy; 2026 Metis Team. Built with &hearts; for advancing multimodal AI research.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </main>
+  </body>
+  </html>
