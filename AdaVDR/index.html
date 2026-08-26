@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AdaVDR: Adaptive Tool Use and Reflection for Video Deep Research">
+  <title>AdaVDR — Adaptive Video Deep Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <aside class="more-works" aria-label="More works from Accio Lab">
+    <button class="more-works__toggle" id="more-works-toggle" type="button" aria-expanded="false"
+      aria-controls="more-works-panel">
+      <span aria-hidden="true">✦</span> More Works <i aria-hidden="true">⌄</i>
+    </button>
+    <div class="more-works__panel" id="more-works-panel" hidden>
+      <div class="more-works__head"><span>More Works from Accio Lab</span><button id="more-works-close" type="button"
+          aria-label="Close more works">×</button></div>
+      <nav class="more-works__list" aria-label="Related projects">
+        <a href="https://accio-lab.github.io/SwimBird" target="_blank"
+          rel="noopener"><span><b>SwimBird</b><small>Switchable reasoning in hybrid autoregressive
+              MLLMs</small></span><i>↗</i></a>
+        <a href="https://accio-lab.github.io/YOFO" target="_blank" rel="noopener"><span><b>YOFO</b><small>Efficient
+              compositional judging</small></span><i>↗</i></a>
+        <a href="https://accio-lab.github.io/MM-CondChain" target="_blank"
+          rel="noopener"><span><b>MM-CondChain</b><small>Visually grounded deep compositional
+              reasoning</small></span><i>↗</i></a>
+        <a href="https://accio-lab.github.io/Metis" target="_blank"
+          rel="noopener"><span><b>Metis</b><small>Meta-cognitive tool use in agentic multimodal
+              models</small></span><i>↗</i></a>
+      </nav>
+    </div>
+  </aside>
+
+  <header class="hero">
+    <div class="container hero__inner hero-paper">
+      <p class="hero-paper__label">Accio Lab Research</p>
+      <h1 class="hero-paper__title">AdaVDR: Adaptive Tool Use and Reflection for Video Deep Research</h1>
+
+      <div class="hero-paper__authors">
+        <span><a href="https://github.com/xtong-zhang" target="_blank">Xintong Zhang</a><sup>1,2,*</sup></span>,
+        <span><a href="https://scholar.google.com/citations?user=3hzR8qQAAAAJ&amp;hl=zh-CN" target="_blank">Xiaomeng Fan</a><sup>1,2,*</sup></span>,
+        <span><a href="https://scholar.google.com/citations?user=2VhjOykAAAAJ&amp;hl=zh-CN" target="_blank">Shilin Yan</a><sup>1</sup></span>,
+        <span><a href="./">Ekko He</a><sup>1</sup></span>,
+        <span><a href="https://scholar.google.com/citations?user=PbA_HO0AAAAJ&amp;hl=zh-CN" target="_blank">Zicheng Liu</a><sup>1</sup></span>,
+        <span><a href="./">Guannan Zhang</a><sup>1</sup></span>,<br>
+        <span><a href="https://cs.bit.edu.cn/szdw/jsml/bssds/cf032ae4027040938653c343ba88d2a7.htm" target="_blank">Yunde Jia</a><sup>3</sup></span>,
+        <span><a href="https://scholar.google.com/citations?user=MUF2MeAAAAAJ&amp;hl=en" target="_blank">Yuwei Wu</a><sup>2,†</sup></span>,
+        <span><a href="https://zhigao2017.github.io/" target="_blank">Zhi Gao</a><sup>2,†</sup></span>,
+        <span><a href="https://hellwayxue.github.io/" target="_blank">Hongwei Xue</a><sup>1,†</sup></span>
+      </div>
+
+      <div class="hero-paper__affiliations">
+        <p><sup>1</sup>Accio Team, Alibaba Group</p>
+        <p><sup>2</sup>Beijing Key Laboratory of Intelligent Information Technology, School of Computer Science &amp;
+          Technology, Beijing Institute of Technology</p>
+        <p><sup>3</sup>Guangdong Laboratory of Machine Perception and Intelligent Computing, Shenzhen MSU-BIT University
+        </p>
+      </div>
+
+      <p class="hero-paper__notes"><sup>*</sup>Equal contribution &nbsp; · &nbsp; <sup>†</sup>Corresponding authors</p>
+
+      <nav class="actions" aria-label="Project resources">
+        <a class="button" href="https://arxiv.org/abs/2604.08545" target="_blank" rel="noopener">arXiv
+          <span>↗</span></a>
+        <a class="button" href="https://github.com/Accio-Lab/AdaVDR" target="_blank" rel="noopener">Code
+          <span>↗</span></a>
+        <a class="button button--muted" href="./" title="Coming soon">🤗 Data</a>
+        <a class="button button--muted" href="./" title="Coming soon">🤗 Model</a>
+      </nav>
+
+      <a class="hero-paper__scroll" href="#abstract" aria-label="Scroll to abstract">⌄</a>
+    </div>
+  </header>
+
+  <section class="strip" aria-label="Paper highlights">
+    <div class="container metrics">
+      <div><strong>51.0<span>%</span></strong>
+        <p>accuracy on VideoDR</p>
+      </div>
+      <div><strong>+21.0<span>pp</span></strong>
+        <p>over the 8B base agent</p>
+      </div>
+      <div><strong>250</strong>
+        <p>manually verified VDR-EE questions</p>
+      </div>
+      <div><strong>7</strong>
+        <p>diverse semantic domains</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="abstract">
+      <div class="container prose">
+        <div class="abstract-copy">
+          <p class="kicker">In brief</p>
+          <h2>Abstract</h2>
+          <p>Video deep research answers complex questions by jointly understanding video content and retrieving
+            external knowledge from the open Web. Yet, different questions demand substantially different reasoning
+            trajectories, while uncertain grounding and retrieval results can trigger redundant tool calls and compound
+            errors.</p>
+          <p>We introduce <strong>AdaVDR</strong>, an adaptive video deep research agent with <em>adaptive tool
+              invocation</em> and <em>adaptive reflection</em>. The agent chooses tools according to the question, its
+            video understanding ability, internal knowledge, and accumulated evidence. When evidence is unreliable, it
+            selectively backtracks to repair the responsible grounding or retrieval step.</p>
+          <p>We further develop a data construction and training pipeline with model-conditioned tool necessity
+            filtering, supervised fine-tuning, and reinforcement learning with a redundancy-aware reward.</p>
+        </div>
+        <figure class="paper-figure paper-figure--hero">
+          <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
+          <figcaption>Figure 1. AdaVDR adaptively invokes tools and reflection for video deep research.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="method">
+      <div class="container">
+        <div class="section-intro">
+          <p class="kicker">Method</p>
+          <h2>Adapt to the evidence, not a fixed workflow</h2>
+          <p>AdaVDR constructs a variable-length trajectory for every question and only invokes another tool when the
+            current evidence is insufficient.</p>
+        </div>
+        <div class="cards cards--three">
+          <article class="card"><span class="card__number">01</span>
+            <h3>Adaptive Tool Invocation</h3>
+            <p>Select temporal, timestamp, spatial, image, or web tools on demand. Skip a step whenever the answer is
+              already supported.</p>
+          </article>
+          <article class="card"><span class="card__number">02</span>
+            <h3>Adaptive Reflection</h3>
+            <p>Detect irrelevant or inconsistent evidence, identify the faulty step, and resume reasoning from a revised
+              decision.</p>
+          </article>
+          <article class="card"><span class="card__number">03</span>
+            <h3>Redundancy-aware Learning</h3>
+            <p>Combine verified SFT trajectories with an RL reward that preserves correctness while discouraging
+              needless calls.</p>
+          </article>
+        </div>
+        <div class="tool-flow" aria-label="AdaVDR tool flow">
+          <div><span>Video</span><small>raw temporal evidence</small></div><b>→</b>
+          <div><span>Ground</span><small>temporal · timestamp · spatial</small></div><b>→</b>
+          <div><span>Retrieve</span><small>image · web · page visit</small></div><b>→</b>
+          <div><span>Answer</span><small>evidence synthesis</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <div class="container">
+        <div class="section-intro data-intro">
+          <p class="kicker">Data Engine</p>
+          <h2>From videos to verified trajectories</h2>
+          <p>Starting from diverse videos and their ASR, our pipeline discovers retrieval-relevant entities and events
+            and follows two task-specific evidence-acquisition paths.</p>
+        </div>
+        <div class="data-tracks">
+          <article><span>Entity-centric</span>
+            <h3>Recognize who or what appears</h3>
+            <p>Locate the target with temporal, timestamp, and spatial grounding; identify it through image search; then
+              retrieve the external attributes needed to answer the question.</p>
+          </article>
+          <article><span>Event-centric</span>
+            <h3>Reason over temporal events</h3>
+            <p>Discover retrieval-relevant temporal events encoded in the video, localize their time spans, select
+              representative visual evidence, recognize the event or scenario, and retrieve related external knowledge.
+            </p>
+          </article>
+        </div>
+        <p class="data-pipeline-note">Only QA pairs requiring <strong>both video evidence and external
+            knowledge</strong> are retained. Their evidence paths are converted into executable trajectories, checked
+          and retried when necessary, then simplified by model-conditioned tool necessity filtering.</p>
+        <figure class="paper-figure"><img src="assets/data_collection.png" alt="AdaVDR data construction pipeline">
+          <figcaption>Figure 2. QA and trajectory generation, refinement, and model-conditioned tool filtering.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="benchmark">
+      <div class="container">
+        <div class="section-intro">
+          <p class="kicker">VDR-EE Benchmark</p>
+          <h2>Video evidence meets external knowledge</h2>
+          <p>VDR-EE contains 250 manually verified questions. Every question refers to an identifiable entity or event
+            in the video, requires both video evidence and external knowledge, is unambiguous, and has a reference
+            answer supported by retrieved evidence.</p>
+        </div>
+        <div class="benchmark-dimensions">
+          <article><span>Dimension 01</span>
+            <h3>Semantic domain</h3>
+            <p>Questions span seven domains: culture, entertainment, industry, news, scene understanding, science, and
+              sports.</p>
+          </article>
+          <article><span>Dimension 02</span>
+            <h3>Video-centric categories</h3>
+            <p>Questions are grouped as entity-centric or event-centric, then analyzed by entity multiplicity,
+              grounded-event duration, and full-video duration.</p>
+          </article>
+        </div>
+        <figure class="paper-figure paper-figure--wide"><img src="assets/VDR_EE_domainsstats.png"
+            alt="VDR-EE distribution and benchmark statistics">
+          <figcaption>VDR-EE spans seven semantic domains, entity multiplicities, event durations, and full-video
+            durations.</figcaption>
+        </figure>
+        <figure class="paper-figure paper-figure--wide figure-gap"><img src="assets/VDR_EE_cases.png"
+            alt="VDR-EE question examples">
+          <figcaption>Representative short-, medium-, and long-event questions and single- and multi-entity questions.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="results">
+      <div class="container">
+        <div class="section-intro">
+          <p class="kicker">Main Results</p>
+          <h2>Strong gains from adaptive reasoning</h2>
+          <p>Both AdaVDR variants consistently improve their corresponding agentic base models on VDR-EE and VideoDR.
+          </p>
+        </div>
+        <div class="result-grid">
+          <article class="result-card result-card--primary">
+            <p>VideoDR</p><strong>51.0%</strong><span>+21.0 pp over base</span>
+          </article>
+          <article class="result-card">
+            <p>VDR-EE · 8B</p><strong>38.4%</strong><span>+10.0 pp over base</span>
+          </article>
+          <article class="result-card">
+            <p>VDR-EE · 9B</p><strong>47.6%</strong><span>+7.6 pp over base</span>
+          </article>
+          <article class="result-card">
+            <p>VideoDR · 9B</p><strong>56.0%</strong><span>+19.0 pp over base</span>
+          </article>
+        </div>
+        <div class="insights">
+          <article><b>01</b>
+            <div>
+              <h3>Agentic interaction matters.</h3>
+              <p>Across evaluated baselines, enabling tool interaction improves accuracy by 16.0–30.4 percentage points
+                on VDR-EE.</p>
+            </div>
+          </article>
+          <article><b>02</b>
+            <div>
+              <h3>Gains span every domain.</h3>
+              <p>AdaVDR outperforms its agentic base model across all seven VDR-EE domains.</p>
+            </div>
+          </article>
+          <article><b>03</b>
+            <div>
+              <h3>Tool use follows question structure.</h3>
+              <p>Event questions use less spatial grounding, while multi-entity questions require longer,
+                grounding-intensive trajectories.</p>
+            </div>
+          </article>
+        </div>
+        <div class="benchmark-result">
+          <div class="benchmark-result__head">
+            <div><span>Benchmark 01</span>
+              <h3>VDR-EE</h3>
+            </div>
+            <p>Accuracy (%) by entity type and target-event duration under the agentic setting.</p>
+          </div>
+          <div class="table-scroll">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Model</th>
+                  <th colspan="3">Entity</th>
+                  <th colspan="4">Event</th>
+                  <th rowspan="2">Avg.</th>
+                </tr>
+                <tr>
+                  <th>Single</th>
+                  <th>Multi</th>
+                  <th>Overall</th>
+                  <th>Short</th>
+                  <th>Medium</th>
+                  <th>Long</th>
+                  <th>Overall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="result-table__setting">
+                  <th colspan="9">Direct</th>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="9">Proprietary models</th>
+                </tr>
+                <tr>
+                  <td>Gemini-3.1-Pro</td>
+                  <td>56.58</td>
+                  <td>28.57</td>
+                  <td>42.48</td>
+                  <td>54.29</td>
+                  <td>55.88</td>
+                  <td>50.00</td>
+                  <td>53.61</td>
+                  <td>46.80</td>
+                </tr>
+                <tr>
+                  <td>Gemini-3-Flash</td>
+                  <td>42.11</td>
+                  <td>22.08</td>
+                  <td>32.03</td>
+                  <td>51.43</td>
+                  <td>61.76</td>
+                  <td>46.43</td>
+                  <td>53.61</td>
+                  <td>40.40</td>
+                </tr>
+                <tr>
+                  <td>GPT-5.4</td>
+                  <td>35.53</td>
+                  <td>23.38</td>
+                  <td>29.41</td>
+                  <td>28.57</td>
+                  <td>41.18</td>
+                  <td>39.29</td>
+                  <td>36.08</td>
+                  <td>32.00</td>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="9">Open-source models</th>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-8B-Instruct</td>
+                  <td>21.05</td>
+                  <td>5.19</td>
+                  <td>13.07</td>
+                  <td>8.57</td>
+                  <td>14.71</td>
+                  <td>10.71</td>
+                  <td>11.34</td>
+                  <td>12.40</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-32B-Instruct</td>
+                  <td>30.26</td>
+                  <td>9.09</td>
+                  <td>19.61</td>
+                  <td>8.57</td>
+                  <td>14.71</td>
+                  <td>14.29</td>
+                  <td>12.37</td>
+                  <td>16.80</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-9B</td>
+                  <td>23.68</td>
+                  <td>11.69</td>
+                  <td>17.65</td>
+                  <td>5.71</td>
+                  <td>2.94</td>
+                  <td>7.14</td>
+                  <td>5.15</td>
+                  <td>12.80</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-35B-A3B</td>
+                  <td>32.89</td>
+                  <td>9.09</td>
+                  <td>20.92</td>
+                  <td>11.43</td>
+                  <td>5.88</td>
+                  <td>7.14</td>
+                  <td>8.25</td>
+                  <td>16.00</td>
+                </tr>
+                <tr class="result-table__setting">
+                  <th colspan="9">Agentic</th>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="9">Proprietary models</th>
+                </tr>
+                <tr>
+                  <td>Gemini-3.1-Pro</td>
+                  <td>73.68</td>
+                  <td>50.65</td>
+                  <td>62.09</td>
+                  <td>71.43</td>
+                  <td>64.71</td>
+                  <td>67.86</td>
+                  <td>68.04</td>
+                  <td>64.40</td>
+                </tr>
+                <tr>
+                  <td>Gemini-3-Flash</td>
+                  <td>64.47</td>
+                  <td>40.26</td>
+                  <td>52.29</td>
+                  <td>68.57</td>
+                  <td>82.35</td>
+                  <td>60.71</td>
+                  <td>71.13</td>
+                  <td>59.60</td>
+                </tr>
+                <tr>
+                  <td>GPT-5.4</td>
+                  <td>59.21</td>
+                  <td>40.26</td>
+                  <td>49.67</td>
+                  <td>54.29</td>
+                  <td>61.76</td>
+                  <td>57.14</td>
+                  <td>57.73</td>
+                  <td>52.80</td>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="9">Open-source models</th>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-8B-Instruct</td>
+                  <td>42.11</td>
+                  <td>22.08</td>
+                  <td>32.03</td>
+                  <td>22.86</td>
+                  <td>26.47</td>
+                  <td>17.86</td>
+                  <td>22.68</td>
+                  <td>28.40</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-32B-Instruct</td>
+                  <td>60.53</td>
+                  <td>32.47</td>
+                  <td>46.41</td>
+                  <td>22.86</td>
+                  <td>32.35</td>
+                  <td>17.86</td>
+                  <td>24.74</td>
+                  <td>38.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-9B</td>
+                  <td>56.58</td>
+                  <td>28.57</td>
+                  <td>42.48</td>
+                  <td>34.29</td>
+                  <td>32.35</td>
+                  <td>42.86</td>
+                  <td>36.08</td>
+                  <td>40.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-35B-A3B</td>
+                  <td>56.58</td>
+                  <td>38.96</td>
+                  <td>47.71</td>
+                  <td>42.86</td>
+                  <td>52.94</td>
+                  <td>35.71</td>
+                  <td>44.33</td>
+                  <td>46.40</td>
+                </tr>
+                <tr class="result-table__ours">
+                  <td>AdaVDR-8B</td>
+                  <td>53.95</td>
+                  <td>28.57</td>
+                  <td>41.18</td>
+                  <td>31.43</td>
+                  <td>32.35</td>
+                  <td>39.29</td>
+                  <td>34.02</td>
+                  <td>38.40</td>
+                </tr>
+                <tr class="result-table__delta">
+                  <td>Δ vs. Qwen3-VL-8B</td>
+                  <td>+11.84</td>
+                  <td>+6.49</td>
+                  <td>+9.15</td>
+                  <td>+8.57</td>
+                  <td>+5.88</td>
+                  <td>+21.43</td>
+                  <td>+11.34</td>
+                  <td>+10.00</td>
+                </tr>
+                <tr class="result-table__ours">
+                  <td>AdaVDR-9B</td>
+                  <td>57.89</td>
+                  <td>32.47</td>
+                  <td>45.10</td>
+                  <td>48.57</td>
+                  <td>58.82</td>
+                  <td>46.43</td>
+                  <td>51.55</td>
+                  <td>47.60</td>
+                </tr>
+                <tr class="result-table__delta">
+                  <td>Δ vs. Qwen3.5-9B</td>
+                  <td>+1.32</td>
+                  <td>+3.90</td>
+                  <td>+2.61</td>
+                  <td>+14.29</td>
+                  <td>+26.47</td>
+                  <td>+3.57</td>
+                  <td>+15.46</td>
+                  <td>+7.60</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="benchmark-result">
+          <div class="benchmark-result__head">
+            <div><span>Benchmark 02</span>
+              <h3>VideoDR</h3>
+            </div>
+            <p>Accuracy (%) across six knowledge domains under the agentic setting.</p>
+          </div>
+          <div class="table-scroll">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>History</th>
+                  <th>Geography</th>
+                  <th>Culture</th>
+                  <th>Economy</th>
+                  <th>Technology</th>
+                  <th>Daily Life</th>
+                  <th>Avg.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="result-table__setting">
+                  <th colspan="8">Workflow</th>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="8">Proprietary models</th>
+                </tr>
+                <tr>
+                  <td>Gemini-3-Pro-Preview</td>
+                  <td>72.73</td>
+                  <td>70.00</td>
+                  <td>80.00</td>
+                  <td>62.50</td>
+                  <td>64.29</td>
+                  <td>69.70</td>
+                  <td>69.00</td>
+                </tr>
+                <tr>
+                  <td>GPT-4o</td>
+                  <td>63.64</td>
+                  <td>40.00</td>
+                  <td>33.33</td>
+                  <td>43.75</td>
+                  <td>42.86</td>
+                  <td>39.39</td>
+                  <td>42.00</td>
+                </tr>
+                <tr>
+                  <td>GPT-5.2</td>
+                  <td>72.73</td>
+                  <td>70.00</td>
+                  <td>80.00</td>
+                  <td>56.25</td>
+                  <td>64.29</td>
+                  <td>72.73</td>
+                  <td>69.00</td>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="8">Open-source models</th>
+                </tr>
+                <tr>
+                  <td>Qwen3-Omni-30B-A3B</td>
+                  <td>36.36</td>
+                  <td>30.00</td>
+                  <td>26.67</td>
+                  <td>43.75</td>
+                  <td>50.00</td>
+                  <td>36.36</td>
+                  <td>37.00</td>
+                </tr>
+                <tr>
+                  <td>InternVL3.5-14B</td>
+                  <td>9.09</td>
+                  <td>50.00</td>
+                  <td>20.00</td>
+                  <td>25.00</td>
+                  <td>21.43</td>
+                  <td>30.30</td>
+                  <td>27.00</td>
+                </tr>
+                <tr>
+                  <td>MiniCPM-V 4.5</td>
+                  <td>27.27</td>
+                  <td>10.00</td>
+                  <td>46.67</td>
+                  <td>25.00</td>
+                  <td>14.29</td>
+                  <td>24.24</td>
+                  <td>25.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-8B-Instruct</td>
+                  <td>36.36</td>
+                  <td>30.00</td>
+                  <td>33.33</td>
+                  <td>31.25</td>
+                  <td>33.33</td>
+                  <td>18.18</td>
+                  <td>28.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-32B-Instruct</td>
+                  <td>45.45</td>
+                  <td>40.00</td>
+                  <td>46.67</td>
+                  <td>50.00</td>
+                  <td>26.67</td>
+                  <td>24.24</td>
+                  <td>36.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-9B</td>
+                  <td>54.55</td>
+                  <td>20.00</td>
+                  <td>26.67</td>
+                  <td>50.00</td>
+                  <td>33.33</td>
+                  <td>30.30</td>
+                  <td>35.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-35B-A3B</td>
+                  <td>63.64</td>
+                  <td>20.00</td>
+                  <td>26.67</td>
+                  <td>56.25</td>
+                  <td>40.00</td>
+                  <td>33.33</td>
+                  <td>39.00</td>
+                </tr>
+                <tr class="result-table__setting">
+                  <th colspan="8">Agentic</th>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="8">Proprietary models</th>
+                </tr>
+                <tr>
+                  <td>Gemini-3-Pro-Preview</td>
+                  <td>81.82</td>
+                  <td>50.00</td>
+                  <td>86.67</td>
+                  <td>68.75</td>
+                  <td>85.71</td>
+                  <td>78.79</td>
+                  <td>76.00</td>
+                </tr>
+                <tr>
+                  <td>GPT-4o</td>
+                  <td>63.64</td>
+                  <td>20.00</td>
+                  <td>53.33</td>
+                  <td>50.00</td>
+                  <td>35.71</td>
+                  <td>39.39</td>
+                  <td>43.00</td>
+                </tr>
+                <tr>
+                  <td>GPT-5.2</td>
+                  <td>90.91</td>
+                  <td>70.00</td>
+                  <td>73.33</td>
+                  <td>56.25</td>
+                  <td>71.43</td>
+                  <td>66.67</td>
+                  <td>69.00</td>
+                </tr>
+                <tr class="result-table__group">
+                  <th colspan="8">Open-source models</th>
+                </tr>
+                <tr>
+                  <td>Qwen3-Omni-30B-A3B</td>
+                  <td>54.55</td>
+                  <td>40.00</td>
+                  <td>26.67</td>
+                  <td>43.75</td>
+                  <td>35.71</td>
+                  <td>33.33</td>
+                  <td>37.00</td>
+                </tr>
+                <tr>
+                  <td>InternVL3.5-14B</td>
+                  <td>36.36</td>
+                  <td>40.00</td>
+                  <td>26.67</td>
+                  <td>31.25</td>
+                  <td>28.57</td>
+                  <td>24.24</td>
+                  <td>30.00</td>
+                </tr>
+                <tr>
+                  <td>MiniCPM-V 4.5</td>
+                  <td>9.09</td>
+                  <td>10.00</td>
+                  <td>26.67</td>
+                  <td>12.50</td>
+                  <td>14.29</td>
+                  <td>18.18</td>
+                  <td>16.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-8B-Instruct</td>
+                  <td>36.36</td>
+                  <td>40.00</td>
+                  <td>33.33</td>
+                  <td>31.25</td>
+                  <td>33.33</td>
+                  <td>21.21</td>
+                  <td>30.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-32B-Instruct</td>
+                  <td>63.64</td>
+                  <td>40.00</td>
+                  <td>46.67</td>
+                  <td>37.50</td>
+                  <td>40.00</td>
+                  <td>24.24</td>
+                  <td>38.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-9B</td>
+                  <td>54.55</td>
+                  <td>20.00</td>
+                  <td>40.00</td>
+                  <td>43.75</td>
+                  <td>33.33</td>
+                  <td>33.33</td>
+                  <td>37.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-35B-A3B</td>
+                  <td>63.64</td>
+                  <td>20.00</td>
+                  <td>33.33</td>
+                  <td>62.50</td>
+                  <td>40.00</td>
+                  <td>36.36</td>
+                  <td>42.00</td>
+                </tr>
+                <tr>
+                  <td>Qwen3.5-397B-A13B</td>
+                  <td>54.55</td>
+                  <td>70.00</td>
+                  <td>46.67</td>
+                  <td>81.25</td>
+                  <td>53.33</td>
+                  <td>48.48</td>
+                  <td>57.00</td>
+                </tr>
+                <tr class="result-table__ours">
+                  <td>AdaVDR-8B</td>
+                  <td>54.55</td>
+                  <td>60.00</td>
+                  <td>40.00</td>
+                  <td>50.00</td>
+                  <td>60.00</td>
+                  <td>48.48</td>
+                  <td>51.00</td>
+                </tr>
+                <tr class="result-table__delta">
+                  <td>Δ vs. Qwen3-VL-8B</td>
+                  <td>+18.19</td>
+                  <td>+20.00</td>
+                  <td>+6.67</td>
+                  <td>+18.75</td>
+                  <td>+26.67</td>
+                  <td>+27.27</td>
+                  <td>+21.00</td>
+                </tr>
+                <tr class="result-table__ours">
+                  <td>AdaVDR-9B</td>
+                  <td>63.64</td>
+                  <td>60.00</td>
+                  <td>53.33</td>
+                  <td>62.50</td>
+                  <td>60.00</td>
+                  <td>48.48</td>
+                  <td>56.00</td>
+                </tr>
+                <tr class="result-table__delta">
+                  <td>Δ vs. Qwen3.5-9B</td>
+                  <td>+9.09</td>
+                  <td>+40.00</td>
+                  <td>+13.33</td>
+                  <td>+18.75</td>
+                  <td>+26.67</td>
+                  <td>+15.15</td>
+                  <td>+19.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="section-intro">
+          <p class="kicker">Qualitative Analysis</p>
+          <h2>Skip when confident. Reflect when needed.</h2>
+          <p>Entity questions can omit unnecessary grounding; event questions can recover from mismatched retrieval by
+            selecting stronger visual evidence.</p>
+        </div>
+        <figure class="paper-figure paper-figure--wide"><img src="assets/cases.png"
+            alt="AdaVDR qualitative reasoning cases">
+          <figcaption>Adaptive trajectories for entity- and event-oriented questions.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="bibtex">
+      <div class="container">
+        <div class="bibtex-head">
+          <div>
+            <p class="kicker">Citation</p>
+            <h2>BibTeX</h2>
+          </div><button id="copy-bib" type="button">Copy citation</button>
+        </div>
+        <pre><code id="bibtex-code">@article{zhang2026adavdr,
+  title   = {AdaVDR: Adaptive Tool Use and Reflection for Video Deep Research},
+  author  = {Zhang, Xintong and Fan, Xiaomeng and Yan, Shilin and He, Xingqi and Liu, Zicheng and Zhang, Guannan and Jia, Yunde and Wu, Yuwei and Gao, Zhi and Xue, Hongwei},
+  journal = {arXiv preprint arXiv:2604.08545},
+  year    = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container"><strong>AdaVDR</strong><span>Adaptive tool use for video deep research.</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
