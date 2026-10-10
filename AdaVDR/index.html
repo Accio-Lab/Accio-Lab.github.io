@@ -224,6 +224,13 @@
         <figure class="paper-figure paper-figure--wide"><img src="assets/nasa_grpo.png" alt="NASA-GRPO training: evidence segments, necessity weighting, tool-type normalization, and token-level credit assignment"><figcaption>NASA-GRPO provides local feedback for useful evidence acquisition while reducing credit for tool calls the policy can bypass.</figcaption></figure>
       </div>
     </section>
+    <section class="section" id="training-curves">
+      <div class="container">
+        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
+        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
+      </div>
+    </section>
+
     <section class="section section--alt" id="results">
       <div class="container">
         <div class="section-intro"><p class="kicker">Main Results</p><h2>From base model to adaptive video research</h2><p>AdaVDR-9B improves over its agentic Qwen3.5-9B base model on both benchmarks. Gains are absolute percentage-point differences.</p></div>
@@ -234,12 +241,6 @@
           <article class="result-card"><p>VDR-EE · SFT</p><strong>48.00%</strong><span>+8.00 pp over base</span></article>
         </div>
         <figure class="paper-figure paper-figure--wide scroll-figure"><a href="assets/main_results.png" target="_blank" rel="noopener"><img src="assets/main_results.png" alt="Main results: AdaVDR-9B reaches 66.00 percent on VideoDR and 55.20 percent on VDR-EE; SFT reaches 52.00 and 48.00 percent"></a><figcaption>Main benchmark results from the updated paper, including the SFT model and improvements over Qwen3.5-9B. Open the image to inspect all entries.</figcaption></figure>
-      </div>
-    </section>
-    <section class="section" id="training-curves">
-      <div class="container">
-        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
-        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
       </div>
     </section>
 
