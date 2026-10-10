@@ -124,13 +124,6 @@
       </div>
     </section>
 
-    <section class="section" id="training-curves">
-      <div class="container">
-        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
-        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
-      </div>
-    </section>
-
     <section class="section section--alt" id="method">
       <div class="container">
         <div class="section-intro">
@@ -248,6 +241,13 @@
         <figure class="paper-figure paper-figure--wide"><img src="assets/nasa_grpo.png" alt="NASA-GRPO training: evidence segments, necessity weighting, tool-type normalization, and token-level credit assignment"><figcaption>NASA-GRPO provides local feedback for useful evidence acquisition while reducing credit for tool calls the policy can bypass.</figcaption></figure>
       </div>
     </section>
+    <section class="section" id="training-curves">
+      <div class="container">
+        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
+        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
+      </div>
+    </section>
+
     <section class="section section--alt" id="results">
       <div class="container">
         <div class="section-intro"><p class="kicker">Main Results</p><h2>From base model to adaptive video research</h2><p>AdaVDR-9B improves over its agentic Qwen3.5-9B base model on both benchmarks. Gains are absolute percentage-point differences.</p></div>
