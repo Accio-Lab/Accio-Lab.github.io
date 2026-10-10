@@ -111,10 +111,14 @@
             <li><strong>RL Training — NASA-GRPO.</strong> Our algorithm combines segment-guided evidence rewards, model-conditioned necessity weighting, and tool-type reward normalization to reward useful, necessary evidence acquisition. Beyond SFT, it improves VideoDR accuracy from <strong>52.00% to 66.00% (+14.00 percentage points)</strong> and VDR-EE accuracy from <strong>48.00% to 55.20% (+7.20 percentage points)</strong>.</li>
           </ul>
         </div>
-        <figure class="paper-figure paper-figure--hero">
-          <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
-          <figcaption>Figure 1. AdaVDR adaptively invokes tools and reflection for video deep research.</figcaption>
-        </figure>
+
+      </div>
+    </section>
+
+    <section class="section" id="training-curves">
+      <div class="container">
+        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
+        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
       </div>
     </section>
 
@@ -142,6 +146,10 @@
             <p>Our RL algorithm rewards necessary evidence acquisition with segment-guided credit and tool-type normalization. Beyond SFT, it adds 14.00 percentage points on VideoDR and 7.20 on VDR-EE.</p>
           </article>
         </div>
+        <figure class="paper-figure paper-figure--hero">
+          <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
+          <figcaption>Figure 1. AdaVDR adaptively invokes tools and reflection for video deep research.</figcaption>
+        </figure>
         <div class="tool-flow" aria-label="AdaVDR tool flow">
           <div><span>Video</span><small>raw temporal evidence</small></div><b>→</b>
           <div><span>Ground</span><small>temporal · timestamp · spatial</small></div><b>→</b>
@@ -235,13 +243,6 @@
         <figure class="paper-figure paper-figure--wide"><img src="assets/nasa_grpo.png" alt="NASA-GRPO training: evidence segments, necessity weighting, tool-type normalization, and token-level credit assignment"><figcaption>NASA-GRPO provides local feedback for useful evidence acquisition while reducing credit for tool calls the policy can bypass.</figcaption></figure>
       </div>
     </section>
-    <section class="section" id="training-curves">
-      <div class="container">
-        <div class="section-intro"><p class="kicker">Training Curves</p><h2>Compare the learning trajectories</h2><p>GRPO shows limited sustained improvement in later steps. The variant without necessity weighting improves early, while NASA-GRPO maintains a higher smoothed reward toward the end of the displayed training window. Held-out accuracy provides complementary evidence of policy improvement.</p></div>
-        <figure class="paper-figure paper-figure--wide scroll-figure"><img src="assets/training_curves.png" alt="Three training curves: GRPO, without necessity weight, and NASA-GRPO"><figcaption>Pale and dark lines show raw and smoothed rollout rewards. The curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption></figure>
-      </div>
-    </section>
-
     <section class="section section--alt" id="results">
       <div class="container">
         <div class="section-intro"><p class="kicker">Main Results</p><h2>From base model to adaptive video research</h2><p>AdaVDR-9B improves over its agentic Qwen3.5-9B base model on both benchmarks. Gains are absolute percentage-point differences.</p></div>
