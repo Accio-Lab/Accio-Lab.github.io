@@ -105,13 +105,11 @@
             external knowledge from the open Web. Yet, different questions demand substantially different reasoning
             trajectories, while uncertain grounding and retrieval results can trigger redundant tool calls and compound
             errors.</p>
-          <p>We introduce <strong>AdaVDR</strong>, an adaptive video deep research agent with <em>adaptive tool
-              invocation</em> and <em>adaptive reflection</em>. The agent chooses tools according to the question, its
-            video understanding ability, internal knowledge, and accumulated evidence. When evidence is unreliable, it
-            selectively backtracks to repair the responsible grounding or retrieval step.</p>
-          <p>Our data construction pipeline produces adaptive trajectories with model-conditioned tool necessity filtering, and supervised fine-tuning initializes adaptive tool use and reflection.</p>
-          <p><strong>NASA-GRPO is our reinforcement learning algorithm for further strengthening adaptive tool use.</strong> It combines segment-guided evidence rewards, model-conditioned necessity weighting, and tool-type reward normalization to credit useful evidence acquisition while reducing credit for tool calls the current policy can bypass.</p>
-          <p><strong>NASA-GRPO delivers substantial improvements beyond SFT:</strong> VideoDR accuracy increases from <strong>52.00% to 66.00% (+14.00 percentage points)</strong>, and VDR-EE accuracy increases from <strong>48.00% to 55.20% (+7.20 percentage points)</strong>. The final model gains 29.00 and 15.20 percentage points over the agentic Qwen3.5-9B base, respectively.</p>
+          <p>We introduce <strong>AdaVDR</strong>, an agent that adaptively selects tools and revises unreliable intermediate results. We develop these capabilities through two complementary components:</p>
+          <ul>
+            <li><strong>Data Construction.</strong> We construct task-specific evidence-acquisition trajectories and apply model-conditioned tool necessity filtering to remove calls the base model can bypass. SFT on 2.9K verified trajectories initializes adaptive tool use and reflection.</li>
+            <li><strong>RL Training — NASA-GRPO.</strong> Our algorithm combines segment-guided evidence rewards, model-conditioned necessity weighting, and tool-type reward normalization to reward useful, necessary evidence acquisition. Beyond SFT, it improves VideoDR accuracy from <strong>52.00% to 66.00% (+14.00 percentage points)</strong> and VDR-EE accuracy from <strong>48.00% to 55.20% (+7.20 percentage points)</strong>.</li>
+          </ul>
         </div>
         <figure class="paper-figure paper-figure--hero">
           <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
