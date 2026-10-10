@@ -220,7 +220,19 @@
     <section class="section" id="training">
       <div class="container">
         <div class="section-intro"><p class="kicker">Training</p><h2>Learn to acquire the evidence that matters</h2>
-          <p>SFT on 2.9K verified trajectories initializes adaptive tool use and reflection. NASA-GRPO then combines segment-guided evidence credit, model-conditioned necessity weighting, and tool-type normalization. Necessity is evaluated with the current policy snapshot, refreshed at each RL iteration.</p></div>
+        </div>
+        <ul class="training-stages">
+          <li><strong>Supervised Fine-Tuning (SFT).</strong> We fine-tune Qwen3.5-9B on 2.9K verified trajectories tailored to task requirements and the base model’s capabilities. These trajectories initialize adaptive tool use and reflection, teaching the agent to acquire relevant evidence and revise unreliable intermediate results.</li>
+          <li><strong>Reinforcement Learning (RL): NASA-GRPO.</strong> We further refine the SFT policy with outcome feedback and necessity-aware process credit:
+            <ul>
+              <li><strong>Outcome reward.</strong> Evaluates final-answer correctness and penalizes invalid rollouts or those that reach the turn limit, providing a rollout-level success signal.</li>
+              <li><strong>Segment-guided evidence reward.</strong> Rewards reasoning segments that recover correct target entities or external facts needed to answer the question. A clue receives credit only when it has not already been obtained in earlier segments.</li>
+              <li><strong>Model-conditioned necessity weighting.</strong> Tests whether the current policy can recover the same target information while bypassing a tool. Bypassable calls receive less credit; the policy snapshot is held fixed during reward evaluation and refreshed at each RL iteration.</li>
+              <li><strong>Tool-type reward normalization.</strong> Normalizes process rewards within each tool type so that tools with higher positive-reward rates do not dominate learning. The process signal is also scaled to match the average magnitude of the outcome advantage.</li>
+              <li><strong>Tool-level credit assignment.</strong> Combines the outcome advantage applied to all generated tokens with local process credit applied only to tokens of the credited tool action. This links successful evidence acquisition to the specific tool calls responsible for it.</li>
+            </ul>
+          </li>
+        </ul>
         <figure class="paper-figure paper-figure--wide"><img src="assets/nasa_grpo.png" alt="NASA-GRPO training: evidence segments, necessity weighting, tool-type normalization, and token-level credit assignment"><figcaption>NASA-GRPO provides local feedback for useful evidence acquisition while reducing credit for tool calls the policy can bypass.</figcaption></figure>
       </div>
     </section>
