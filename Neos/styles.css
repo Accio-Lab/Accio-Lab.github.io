@@ -50,7 +50,6 @@ sup { font-size: .64em; line-height: 0; position: relative; vertical-align: supe
 }
 .skip-link:focus { transform: translateY(0); }
 
-/* An understated masthead, like the running header of a research paper. */
 .site-header {
   min-height: 88px;
   display: flex;
@@ -64,7 +63,6 @@ sup { font-size: .64em; line-height: 0; position: relative; vertical-align: supe
 .brand span { font-family: var(--serif); font-size: 26px; font-weight: 600; letter-spacing: -.7px; color: var(--neos-blue); }
 .accio-logo { display: block; width: 126px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
 
-/* Soft, near-white color washes; typography remains the main visual element. */
 .hero {
   position: relative;
   isolation: isolate;
@@ -133,7 +131,6 @@ h1 { margin: 0; font-family: var(--serif); font-weight: 400; }
 .read-abstract:hover { color: var(--ink); }
 .read-abstract:hover svg { transform: translateY(3px); }
 
-/* Editorial two-column abstract; no cards or extra, unrequested sections. */
 .abstract-section { display: grid; grid-template-columns: 190px minmax(0, 1fr); column-gap: 38px; border-top: 1px solid var(--line); padding: 55px 0 69px; }
 .section-index { font-size: 9px; letter-spacing: 1.7px; }
 .section-index span { margin-inline: 8px; color: #c7b6c7; }
@@ -195,7 +192,6 @@ h2 { margin: 13px 0 0; font-family: var(--serif); font-weight: 400; font-size: 3
   .read-abstract svg { transition: none; }
 }
 
-/* Paper figures and recorded, turn-by-turn visual evidence. */
 .section-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 27px; font-size: 11px; color: var(--muted); }
 .section-nav a { text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 3px; }
 .section-nav a:hover { color: var(--violet); border-color: #d1bedb; }

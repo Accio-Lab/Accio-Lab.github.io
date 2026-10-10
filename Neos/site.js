@@ -9,7 +9,6 @@
     return element;
   };
 
-  // Figure selectors are independent of the replay controls.
   $$('[data-figure-group]').forEach(group => {
     const buttons = $$('[data-figure-target]', group);
     buttons.forEach(button => button.addEventListener('click', () => {

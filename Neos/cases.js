@@ -1,4 +1,3 @@
-/* Recorded cases. Summaries are editorial; there is no live model call. */
 window.NEOS_CASES = [
   {
     "id": "recorder",
@@ -215,7 +214,7 @@ window.NEOS_CASES = [
         "turn": 10,
         "tool": "Answer",
         "summary": "Answer from the accumulated recording-history and visual evidence.",
-        "observation": "The recorded answer is 6: five central knobs plus one separate right-side knob.",
+        "observation": "The answer is 6: five central knobs plus one separate right-side knob.",
         "args": null,
         "images": [],
         "warning": false,
@@ -226,8 +225,6 @@ window.NEOS_CASES = [
     "provenance": {
       "kind": "recorded_benchmark_evaluation",
       "sample_id": "id_25",
-      "question_display_edit": "Removed fixed benchmark instruction prefix only",
-      "text": "Editorial summaries; original action order and recorded images. Animation timing is illustrative.",
       "image_credits": [
         {
           "image": "img_1",
@@ -476,8 +473,6 @@ window.NEOS_CASES = [
     "provenance": {
       "kind": "recorded_benchmark_evaluation",
       "sample_id": "item_038",
-      "question_display_edit": "None",
-      "text": "Editorial summaries; original action order and recorded images. Animation timing is illustrative.",
       "image_credits": [
         {
           "image": "img_1",
