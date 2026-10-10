@@ -109,8 +109,9 @@
               invocation</em> and <em>adaptive reflection</em>. The agent chooses tools according to the question, its
             video understanding ability, internal knowledge, and accumulated evidence. When evidence is unreliable, it
             selectively backtracks to repair the responsible grounding or retrieval step.</p>
-          <p>We further develop a data construction and training pipeline with model-conditioned tool necessity
-            filtering, supervised fine-tuning, and NASA-GRPO, which combines segment-guided evidence credit, model-conditioned necessity weighting, and tool-type reward normalization.</p>
+          <p>Our data construction pipeline produces adaptive trajectories with model-conditioned tool necessity filtering, and supervised fine-tuning initializes adaptive tool use and reflection.</p>
+          <p><strong>NASA-GRPO is our reinforcement learning algorithm for further strengthening adaptive tool use.</strong> It combines segment-guided evidence rewards, model-conditioned necessity weighting, and tool-type reward normalization to credit useful evidence acquisition while reducing credit for tool calls the current policy can bypass.</p>
+          <p><strong>NASA-GRPO delivers substantial improvements beyond SFT:</strong> VideoDR accuracy increases from <strong>52.00% to 66.00% (+14.00 percentage points)</strong>, and VDR-EE accuracy increases from <strong>48.00% to 55.20% (+7.20 percentage points)</strong>. The final model gains 29.00 and 15.20 percentage points over the agentic Qwen3.5-9B base, respectively.</p>
         </div>
         <figure class="paper-figure paper-figure--hero">
           <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
@@ -139,8 +140,8 @@
               decision.</p>
           </article>
           <article class="card"><span class="card__number">03</span>
-            <h3>Necessity-aware Learning</h3>
-            <p>Initialize adaptive tool use with SFT, then use NASA-GRPO to reward useful evidence acquisition and reduce credit for bypassable tool calls.</p>
+            <h3>NASA-GRPO</h3>
+            <p>Our RL algorithm rewards necessary evidence acquisition with segment-guided credit and tool-type normalization. Beyond SFT, it adds 14.00 percentage points on VideoDR and 7.20 on VDR-EE.</p>
           </article>
         </div>
         <div class="tool-flow" aria-label="AdaVDR tool flow">
