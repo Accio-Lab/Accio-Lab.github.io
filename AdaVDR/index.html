@@ -111,7 +111,16 @@
             <li><strong>RL Training — NASA-GRPO.</strong> Our algorithm combines segment-guided evidence rewards, model-conditioned necessity weighting, and tool-type reward normalization to reward useful, necessary evidence acquisition. Beyond SFT, it improves VideoDR accuracy from <strong>52.00% to 66.00% (+14.00 percentage points)</strong> and VDR-EE accuracy from <strong>48.00% to 55.20% (+7.20 percentage points)</strong>.</li>
           </ul>
         </div>
-
+        <div class="abstract-figures">
+        <figure class="paper-figure paper-figure--hero">
+          <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
+          <figcaption>Figure 1. AdaVDR adaptively invokes tools and reflection for video deep research.</figcaption>
+        </figure>
+        <figure class="paper-figure paper-figure--wide figure-gap">
+          <img src="assets/training_curves.png" alt="Training curves comparing GRPO, the variant without necessity weighting, and NASA-GRPO">
+          <figcaption>Training curves for GRPO, the variant without necessity weighting, and NASA-GRPO. Pale and dark lines indicate raw and smoothed rollout rewards; the curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption>
+        </figure>
+        </div>
       </div>
     </section>
 
@@ -146,14 +155,6 @@
             <p>Our RL algorithm rewards necessary evidence acquisition with segment-guided credit and tool-type normalization. Beyond SFT, it adds 14.00 percentage points on VideoDR and 7.20 on VDR-EE.</p>
           </article>
         </div>
-        <figure class="paper-figure paper-figure--hero">
-          <img src="assets/overview.png" alt="AdaVDR overview showing adaptive tool invocation and reflection">
-          <figcaption>Figure 1. AdaVDR adaptively invokes tools and reflection for video deep research.</figcaption>
-        </figure>
-        <figure class="paper-figure paper-figure--wide scroll-figure figure-gap">
-          <img src="assets/training_curves.png" alt="Training curves comparing GRPO, the variant without necessity weighting, and NASA-GRPO">
-          <figcaption>Training curves for GRPO, the variant without necessity weighting, and NASA-GRPO. Pale and dark lines indicate raw and smoothed rollout rewards; the curve without necessity weighting is approximately digitized from a training-dashboard screenshot.</figcaption>
-        </figure>
         <div class="tool-flow" aria-label="AdaVDR tool flow">
           <div><span>Video</span><small>raw temporal evidence</small></div><b>→</b>
           <div><span>Ground</span><small>temporal · timestamp · spatial</small></div><b>→</b>
