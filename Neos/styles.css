@@ -168,7 +168,6 @@ h2 { margin: 13px 0 0; font-family: var(--serif); font-weight: 400; font-size: 3
   h1 { margin-top: 0; }
   .project-name { font-size: 70px; letter-spacing: -3px; }
   .paper-title { font-size: clamp(28px, 7.7vw, 38px); letter-spacing: -.85px; line-height: 1.22; margin-top: 17px; }
-  .title-break { display: none; }
   .authors { margin-top: 26px; font-size: 13px; line-height: 2; }
   .author-row { gap: 0 14px; }
   .affiliations { font-size: 11px; margin-top: 14px; line-height: 1.9; }
