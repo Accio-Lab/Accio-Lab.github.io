@@ -14,7 +14,7 @@
     <title>Neos · Learning to Interleave Search and Visual Reasoning</title>
     <link rel="canonical" href="https://accio-lab.github.io/Neos/">
     <link rel="icon" type="image/png" href="assets/neos-logo.png">
-    <link rel="stylesheet" href="styles.css?v=20261010-org-links">
+    <link rel="stylesheet" href="styles.css?v=20261014-upgrade">
     <script src="cases.js?v=20261010-org-links" defer></script>
     <script src="preload.js?v=20261010" defer></script>
     <script src="site.js?v=20261010-org-links" defer></script>
@@ -34,8 +34,8 @@
       <section class="hero page-width" aria-labelledby="paper-title">
         <h1 id="paper-title">
           <span class="project-name">Neos<span class="sr-only">: </span></span>
-          <span class="paper-title">Learning to Interleave <span class="search-word">Search</span><br class="title-break">
-            and <span class="vision-word">Visual Reasoning</span></span>
+          <span class="paper-title">Learning to Interleave<br class="title-break">
+            <span class="search-word">Search</span> and <span class="vision-word">Visual Reasoning</span></span>
         </h1>
 
         <div class="authors" aria-label="Authors">
@@ -71,10 +71,10 @@
         </p>
 
         <div class="resources" role="group" aria-label="Project resources">
-          <button class="resource-button resource-paper" type="button" disabled aria-label="arXiv paper">
+          <a class="resource-button resource-paper" href="https://arxiv.org/abs/2610.17043" target="_blank" rel="noopener noreferrer" aria-label="arXiv paper">
             <img class="resource-logo" src="assets/brand/arxiv.svg" alt="" width="20" height="20">
             arXiv
-          </button>
+          </a>
           <a class="resource-button resource-github" href="https://github.com/Accio-Lab/Neos" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
             <img class="resource-logo" src="assets/brand/github.svg" alt="" width="20" height="20">
             GitHub
@@ -93,59 +93,16 @@
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10m-4-4 4 4 4-4"/></svg>
         </a>
         <nav class="section-nav" aria-label="Page sections">
-          <a href="#method">Method</a>
           <a href="#results">Results</a>
+          <a href="#method">Method</a>
           <a href="#demo">Watch a search ↗</a>
         </nav>
-      </section>
-
-      <section class="abstract-section page-width" id="abstract" aria-labelledby="abstract-title">
-        <div class="section-heading">
-          <p class="eyebrow section-index">01 <span aria-hidden="true">/</span> Overview</p>
-          <h2 id="abstract-title">Abstract</h2>
-          <span class="section-rule" aria-hidden="true"></span>
-        </div>
-
-        <div class="abstract-copy">
-          <p>Recent multimodal deep search agents have advanced tool use and visual content retrieval, yet they still struggle to convert intermediate visual evidence into actionable guidance for subsequent search, limiting their effectiveness in long-horizon settings. To address this gap, we present <strong>Neos</strong>, a multimodal deep search framework that learns both <em>how to acquire evidence</em> and <em>how to use it to guide subsequent decisions</em>.</p>
-
-          <p>To make this coupling learnable, Neos constructs training tasks with intermediate visual dependencies while filtering out textual shortcuts, and introduces a lightweight, trainable Multimodal Evidence Interface (MEI) that transforms retrieved content into goal-conditioned observations. At its core, an <em>agent–environment co-evolution</em> procedure treats MEI as a co-adaptive component of this loop. Specifically, reference-guided credit assignment uses verified successful trajectories to localize critical policy errors while preserving credit for useful decisions in failed searches, whereas rollout feedback selects informative local evidence-processing interactions for MEI supervised fine-tuning (SFT).</p>
-
-          <p>By alternating policy reinforcement learning (RL) with MEI SFT, Neos allows the policy's evolving evidence requests to shape MEI training and the adapted MEI to reshape subsequent observations, closing the loop between evidence acquisition and evidence-conditioned action. Across ten benchmarks, <strong>Neos-9B and Neos-35B</strong> demonstrate leading performance among specialized multimodal deep-search agents.</p>
-        </div>
-      </section>
-      <section class="research-section page-width" id="method" aria-labelledby="method-title" data-figure-group>
-        <div class="section-intro">
-          <div>
-            <p class="eyebrow section-index">02 <span aria-hidden="true">/</span> Method</p>
-            <h2 id="method-title">An evolving evidence–decision loop.</h2>
-          </div>
-          <p class="section-description">The policy learns to acquire evidence. The Multimodal Evidence Interface learns to make that evidence useful for the next decision.</p>
-        </div>
-        <div class="figure-tabs" role="group" aria-label="Method figure selection">
-          <button type="button" class="tab-button" data-figure-target="figure-training" aria-pressed="true" aria-controls="figure-training">Agent–environment co-evolution</button>
-          <button type="button" class="tab-button" data-figure-target="figure-data" aria-pressed="false" aria-controls="figure-data">Data construction</button>
-        </div>
-        <figure class="paper-figure" id="figure-training" data-figure-panel>
-          <button class="figure-open" type="button" data-full-image="assets/figures/training.webp?v=20261009-paper-update" data-caption="Agent–environment co-evolution" aria-label="Enlarge the agent–environment co-evolution figure">
-            <img src="assets/figures/training.webp?v=20261009-paper-update" width="2400" height="1228" alt="Neos training overview: reference-guided policy reinforcement learning alternates with supervised fine-tuning of the Multimodal Evidence Interface." loading="lazy" decoding="async">
-            <span class="zoom-hint" aria-hidden="true">↗ Enlarge</span>
-          </button>
-          <figcaption><strong>Agent–environment co-evolution.</strong> Policy RL alternates with MEI SFT on outcome- and process-filtered online interactions. Reference-guided credit supports policy optimization and identifies useful local interactions for MEI updates.</figcaption>
-        </figure>
-        <figure class="paper-figure" id="figure-data" data-figure-panel hidden>
-          <button class="figure-open" type="button" data-full-image="assets/figures/data-pipeline.webp?v=20261009-paper-update" data-caption="Data synthesis pipeline" aria-label="Enlarge the data construction figure">
-            <img src="assets/figures/data-pipeline.webp?v=20261009-paper-update" width="2400" height="1449" alt="Data construction with visual checkpoints, blind visual grounding, question rewriting, shortcut screening, and verified search trajectories." loading="lazy" decoding="async">
-            <span class="zoom-hint" aria-hidden="true">↗ Enlarge</span>
-          </button>
-          <figcaption><strong>Data synthesis pipeline.</strong> Reasoning structures with visual checkpoints undergo blind visual grounding, question rewriting, and shortcut screening. Verified successful searches provide policy demonstrations, success references, and local MEI training interactions.</figcaption>
-        </figure>
       </section>
 
       <section class="research-section page-width" id="results" aria-labelledby="results-title" data-figure-group>
         <div class="section-intro">
           <div>
-            <p class="eyebrow section-index">03 <span aria-hidden="true">/</span> Results</p>
+            <p class="eyebrow section-index">01 <span aria-hidden="true">/</span> Results</p>
             <h2 id="results-title">Across ten benchmarks.</h2>
           </div>
           <p class="section-description">Neos-9B and Neos-35B demonstrate leading performance among specialized multimodal deep-search agents.</p>
@@ -175,6 +132,49 @@
             <span class="zoom-hint" aria-hidden="true">↗ Enlarge</span>
           </button>
           <figcaption><strong>Effect of the MEI update interval on BrowseComp-VL with the 9B model.</strong> <em>K</em> is the number of policy-training batches between MEI updates.</figcaption>
+        </figure>
+      </section>
+
+      <section class="abstract-section page-width" id="abstract" aria-labelledby="abstract-title">
+        <div class="section-heading">
+          <p class="eyebrow section-index">02 <span aria-hidden="true">/</span> Overview</p>
+          <h2 id="abstract-title">Abstract</h2>
+          <span class="section-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="abstract-copy">
+          <p>Recent multimodal deep search agents have advanced tool use and visual content retrieval, yet they still struggle to convert intermediate visual evidence into actionable guidance for subsequent search, limiting their effectiveness in long-horizon settings. To address this gap, we present <strong>Neos</strong>, a multimodal deep search framework that learns both <em>how to acquire evidence</em> and <em>how to use it to guide subsequent decisions</em>.</p>
+
+          <p>To make this coupling learnable, Neos constructs training tasks with intermediate visual dependencies while filtering out textual shortcuts, and introduces a lightweight, trainable Multimodal Evidence Interface (MEI) that transforms retrieved content into goal-conditioned observations. At its core, an <em>agent–environment co-evolution</em> procedure treats MEI as a co-adaptive component of this loop. Specifically, reference-guided credit assignment uses verified successful trajectories to localize critical policy errors while preserving credit for useful decisions in failed searches, whereas rollout feedback selects informative local evidence-processing interactions for MEI supervised fine-tuning (SFT).</p>
+
+          <p>By alternating policy reinforcement learning (RL) with MEI SFT, Neos allows the policy's evolving evidence requests to shape MEI training and the adapted MEI to reshape subsequent observations, closing the loop between evidence acquisition and evidence-conditioned action. Across ten benchmarks, <strong>Neos-9B and Neos-35B</strong> demonstrate leading performance among specialized multimodal deep-search agents.</p>
+        </div>
+      </section>
+      <section class="research-section page-width" id="method" aria-labelledby="method-title" data-figure-group>
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow section-index">03 <span aria-hidden="true">/</span> Method</p>
+            <h2 id="method-title">An evolving evidence–decision loop.</h2>
+          </div>
+          <p class="section-description">The policy learns to acquire evidence. The Multimodal Evidence Interface learns to make that evidence useful for the next decision.</p>
+        </div>
+        <div class="figure-tabs" role="group" aria-label="Method figure selection">
+          <button type="button" class="tab-button" data-figure-target="figure-training" aria-pressed="true" aria-controls="figure-training">Agent–environment co-evolution</button>
+          <button type="button" class="tab-button" data-figure-target="figure-data" aria-pressed="false" aria-controls="figure-data">Data construction</button>
+        </div>
+        <figure class="paper-figure" id="figure-training" data-figure-panel>
+          <button class="figure-open" type="button" data-full-image="assets/figures/training.webp?v=20261009-paper-update" data-caption="Agent–environment co-evolution" aria-label="Enlarge the agent–environment co-evolution figure">
+            <img src="assets/figures/training.webp?v=20261009-paper-update" width="2400" height="1228" alt="Neos training overview: reference-guided policy reinforcement learning alternates with supervised fine-tuning of the Multimodal Evidence Interface." loading="lazy" decoding="async">
+            <span class="zoom-hint" aria-hidden="true">↗ Enlarge</span>
+          </button>
+          <figcaption><strong>Agent–environment co-evolution.</strong> Policy RL alternates with MEI SFT on outcome- and process-filtered online interactions. Reference-guided credit supports policy optimization and identifies useful local interactions for MEI updates.</figcaption>
+        </figure>
+        <figure class="paper-figure" id="figure-data" data-figure-panel hidden>
+          <button class="figure-open" type="button" data-full-image="assets/figures/data-pipeline.webp?v=20261009-paper-update" data-caption="Data synthesis pipeline" aria-label="Enlarge the data construction figure">
+            <img src="assets/figures/data-pipeline.webp?v=20261009-paper-update" width="2400" height="1449" alt="Data construction with visual checkpoints, blind visual grounding, question rewriting, shortcut screening, and verified search trajectories." loading="lazy" decoding="async">
+            <span class="zoom-hint" aria-hidden="true">↗ Enlarge</span>
+          </button>
+          <figcaption><strong>Data synthesis pipeline.</strong> Reasoning structures with visual checkpoints undergo blind visual grounding, question rewriting, and shortcut screening. Verified successful searches provide policy demonstrations, success references, and local MEI training interactions.</figcaption>
         </figure>
       </section>
 
