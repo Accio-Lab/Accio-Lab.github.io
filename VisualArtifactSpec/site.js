@@ -107,3 +107,20 @@ viewer.addEventListener('click', event => {
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) viewer.close();
   }
 });
+
+const copyCitation = document.querySelector('#copy-citation');
+copyCitation.addEventListener('click', async () => {
+  const code = document.querySelector('#citation-bibtex');
+  const status = document.querySelector('#citation-status');
+  try {
+    await navigator.clipboard.writeText(code.textContent);
+    status.textContent = 'Copied!';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents(code);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = 'Select and copy the citation below.';
+  }
+});
