@@ -1,0 +1,44 @@
+{
+  "package": "@lobehub/icons-static-svg",
+  "version": "1.102.0",
+  "repository": "https://github.com/lobehub/lobe-icons",
+  "license_url": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/LICENSE",
+  "icons": {
+    "openai": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/openai.svg",
+      "sha256": "a595df6b423920c67a7f8f73c063e4bfb72d415948097b6cac063a2366bb5186",
+      "viewBox": "0 0 24 24",
+      "bytes": 1687
+    },
+    "anthropic": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/anthropic.svg",
+      "sha256": "e833fdfa7e7187a86a05b870925067556a506dcd4239089aed73e1e58c9366a3",
+      "viewBox": "0 0 24 24",
+      "bytes": 368
+    },
+    "kimi": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/kimi-color.svg",
+      "sha256": "0bdb95375d7c6e90a1850e91cd36770da2bc98fa33ec2d783f4a8fed027da85f",
+      "viewBox": "0 0 24 24",
+      "bytes": 781
+    },
+    "deepseek": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/deepseek-color.svg",
+      "sha256": "deba5f98a5c1796e20fcac3149bcd7eb8a32f0bdd04d048819400b1f28bd1439",
+      "viewBox": "0 0 24 24",
+      "bytes": 2164
+    },
+    "qwen": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/qwen-color.svg",
+      "sha256": "a158a0e3ed5b541e4f91384ece02c3acf0a0d81b7b11a46d77bafb248b09e32c",
+      "viewBox": "0 0 24 24",
+      "bytes": 1016
+    },
+    "google": {
+      "url": "https://unpkg.com/@lobehub/icons-static-svg@1.102.0/icons/google-color.svg",
+      "sha256": "4e6aa8892ef15a6b431f40f2c9045979bf7e2357524e7bbb89b353cf4f32a5ac",
+      "viewBox": "0 0 24 24",
+      "bytes": 920
+    }
+  }
+}

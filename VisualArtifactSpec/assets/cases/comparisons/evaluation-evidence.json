@@ -1,0 +1,2469 @@
+{
+  "snapshot": "2026-11-15T16:37:19.297394+00:00",
+  "protocol": "unified-211-signed-50-50-group-all-pass-nonlinear-v3",
+  "cases": [
+    {
+      "task_id": "presentations-001",
+      "model": "GPT-6.1 Sol",
+      "total": 73.2,
+      "base": 50.0,
+      "adjustment": 23.2,
+      "dimensions": {
+        "Content": 25.0,
+        "Organization": 25.0,
+        "Visuals": 22.9,
+        "Delivery": 17.5
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 10,
+          "total": 10
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": 1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 0,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 2,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "O2",
+          "answer": "2",
+          "reason": "Each slide keeps claims with the premises that establish their scope: formulas beside the branch diagram, matched conditions below the ImageNet chart, and generalization evidence beside the CIFAR results. On the densest protocol slide, the 10-crop table and separate single-model/ensemble cards retain their own conditions; slide 7 attaches the best-of-five exception directly to the chart. All eight slides have coherent local groups with no detached qualification requiring another slide, satisfying full local organization refinement. Evidence: evaluation/screenshots/rendered-3.png, evaluation/screenshots/rendered-5.png, evaluation/screenshots/rendered-6.png, evaluation/screenshots/rendered-7.png, evaluation/screenshots/contact-sheet.png."
+        },
+        {
+          "id": "V3",
+          "answer": "1",
+          "reason": "Large equations, short semantic lines, and clearly separated result/condition typography improve reading beyond basic legibility; all text is complete in both formats. However, slide 2 allocates its reproduced curves a size at which the fine tick numerals are markedly smaller and less comfortable to inspect than the native chart labels. The curve identities and trend remain readable, so this is not a substantive negative defect, but a larger allocation for the figure would materially improve detailed projection reading and prevents +2. Evidence: evaluation/screenshots/rendered-2.png, evaluation/screenshots/author-02.png, evaluation/screenshots/rendered-3.png, evaluation/screenshots/rendered-7.png, evaluation/evidence/verification.json."
+        },
+        {
+          "id": "V8",
+          "answer": "2",
+          "reason": "Stable top-of-slide entry points lead to evidence blocks and then adjacent or bottom condition bands, while direct chart labels reduce legend lookup. This gives the deck a steady reading rhythm despite changes from method diagrams to results. On the densest slides 6–7, protocol cards and the nearby best-of-five note can be found without repeated searching; simpler slides remain concise. Full-slide review found no material unproductive backtracking, supporting fully refined static-projection scanning. Evidence: evaluation/screenshots/rendered-1.png, evaluation/screenshots/rendered-2.png, evaluation/screenshots/rendered-3.png, evaluation/screenshots/rendered-4.png, evaluation/screenshots/rendered-5.png, evaluation/screenshots/rendered-6.png, evaluation/screenshots/rendered-7.png, evaluation/screenshots/rendered-8.png."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/resnet_research_group.pptx",
+          "sha256": "b8d35a53481a1872f0c7a8ab36b16c3d21ac366788f7b0c3f08eaf3c2b2487d8"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-01.png",
+          "sha256": "6e1e6e6c65caf6e29c83b117b9542c5ab1ec8cad256f693462572d133a75876b"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-02.png",
+          "sha256": "d6161e97a8eac979f4c65da7f02226d466aaea6b8d0b0c044cfe980d3010c4bc"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-03.png",
+          "sha256": "586cf984f35f5c92c74e94ac1c23b9cfcdf50aab49d673dd4a74924268f2b1e3"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-04.png",
+          "sha256": "77c2dc4dbf2c6a4d10fa7f743185665631891429ac8140d5aae5ce88b15f15d5"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-05.png",
+          "sha256": "85e5490afa6e186bab0f3fcb31af8de1bc033e7fc72df9b6ff32ad780f0bd55c"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-06.png",
+          "sha256": "3f9ba609bb59c6fc1ef80c4834298b06aa2bae2e397297bbbe0aef9466628fe1"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-07.png",
+          "sha256": "6a3d53080b2280496ceb9352d8592adf5260b6a758a3e77d896889a83bd6c47a"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/sol/page-08.png",
+          "sha256": "f9173b3216110268feeb164b9c9b1308998a65a366111ffe055844aa9eee0981"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "presentations-001",
+      "model": "DeepSeek V4.1 Flash",
+      "total": 63.65,
+      "base": 50.0,
+      "adjustment": 13.649999999999999,
+      "dimensions": {
+        "Content": 14.2,
+        "Organization": 13.333333333333334,
+        "Visuals": 14.2,
+        "Delivery": 10.0
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 10,
+          "total": 10
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 1,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 1,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": -1,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 1,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 1,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": -1,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "O2",
+          "answer": "-1",
+          "reason": "Slide 8’s middle card groups the controlled ImageNet-34 comparison, an absolute CIFAR-110 result, ResNet-152 validation, and an ensemble test result under “Evidence at equal budget,” then adds “same depth · same parameters · same FLOPs.” The qualifier is not locally attached specifically to the controlled comparison, so readers must recover its scope from slide 4. This is one substantive local grouping ambiguity, despite coherent evidence groups elsewhere (evaluation/screenshots/pptx-08.png)."
+        },
+        {
+          "id": "V3",
+          "answer": "-1",
+          "reason": "Necessary detail is too small for comfortable projected reading in places. Slide 6 reduces three plots to about 887×245 pixels within a 1920×1080 slide, leaving depth legends and ticks tiny; slide 5 compresses its long evaluation-protocol/source footer into a small single line. The native extraction corroborates many 8–10 pt text runs. Content remains visible and is not broadly clipped, so this is a local/persistent reading defect rather than wholesale illegibility (evaluation/screenshots/pptx-06.png; evaluation/screenshots/source-footer.png)."
+        },
+        {
+          "id": "V8",
+          "answer": "2",
+          "reason": "The consistent title-first entry, evidence columns and adjacent condition captions create a steady route through all eight slides. On the dense slide 5, the table leads directly to its 10-crop caption while the diagram, explanatory bullets and ensemble box form a separate readable route; slide 6 keeps chart conditions and the counterexample directly below the chart. These routes allow overview and closer scrutiny without repeated legend hunting, beyond ordinary followable sequencing (evaluation/screenshots/pptx-05.png; evaluation/screenshots/pptx-06.png)."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/ResNet_slides.pptx",
+          "sha256": "79dbcb0d6457df4ecfc282271fdc649fc33f09a010999bb5d2847c41121fd120"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-01.png",
+          "sha256": "ca9fa8e43566b446c3a21d9032553dd36cedf87e6dd69072f3702687fdcd7500"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-02.png",
+          "sha256": "8db56ef7d445eca830b66daee780ed4a539d1588da4485c857653efbc26e725a"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-03.png",
+          "sha256": "4ddd4184a093285471bd594d3491a9fe9df4f5c84184615bd9808fe904088aee"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-04.png",
+          "sha256": "5a590a5afd2deb97614c31ba4644d44bd748734690e070d4c23f0634e51cd6d1"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-05.png",
+          "sha256": "e43d954f68fdb7047d7fcde5aceb1622a3fd0f39e5adc2ec223385f54b1651a5"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-06.png",
+          "sha256": "dd4e10cdec784a8249324bcb3a06bf2359911ed99fa7b621114e56f28d7a305c"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-07.png",
+          "sha256": "c63a691527fe658130758c282e7d65dea3fe3e6ca71c6bd2aa5170ae8b8a9f47"
+        },
+        {
+          "file": "assets/cases/comparisons/presentations-001/deepseek/page-08.png",
+          "sha256": "a13dce758c4b5b0b6671ea366c2269145227afd50786346cb5e79b9d93f689f0"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "static-graphics-099",
+      "model": "GPT-6.1 Sol",
+      "total": 71.65,
+      "base": 50.0,
+      "adjustment": 21.65,
+      "dimensions": {
+        "Content": 25.0,
+        "Organization": 25.0,
+        "Visuals": 19.2,
+        "Delivery": 20.5
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 22,
+          "total": 22
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF22": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF23": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF24": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF25": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF26": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF27": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF28": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF29": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF30": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF31": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF32": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF33": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF34": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF35": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF36": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF37": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF38": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF39": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF40": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF41": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF42": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF43": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF44": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF45": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF46": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF47": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF48": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF49": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF50": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF51": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF52": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF53": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF54": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF55": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF56": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF57": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF58": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF59": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF60": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF61": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF62": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF63": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF64": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF65": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF66": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF67": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 1,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 1,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 2,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "V3",
+          "answer": "-1",
+          "reason": "At the inspected 390px phone width, native source credits are about 6.9px and Card 03’s explanatory captions about 8.3px; Card 04’s intensity-name and combined-alert text is about 8.7–9px. These supporting labels are too small for comfortable unzoomed reading. Main headings, central explanations and checklist rows remain readable, so the defect is localized supporting-text readability (-1), not severe or sustained loss of the main lesson. This finding uses authored text, not the historical raster’s fixed original lettering. Evidence: evaluation/screenshots/phone-card-01-390.png, evaluation/screenshots/phone-card-02-390.png, evaluation/screenshots/phone-card-03-390.png, evaluation/screenshots/phone-card-04-390.png, evaluation/screenshots/phone-card-05-390.png, evaluation/logs/render-verification.json, evaluation/evidence/inspection-notes.txt."
+        },
+        {
+          "id": "V8",
+          "answer": "1",
+          "reason": "The loose concept card, grouped chart horizons, separated legend bands and repeated checklist rows establish a purposeful scanning rhythm beyond ordinary readable order. A complete phone-scale pass nevertheless shows a remaining limitation on Card 03: the map is encountered before its key, and its spatial callout order is 3/2/4/1/5 while the captions read 1/2/3/4/5. The reader must repeatedly move between numbered objects and two caption rows. Matching remains clear and the lesson is finishable, but that extra eye travel keeps the static reading path below full refinement. Evidence: evaluation/screenshots/phone-card-01-390.png, evaluation/screenshots/phone-card-02-390.png, evaluation/screenshots/phone-card-03-390.png, evaluation/screenshots/phone-card-04-390.png, evaluation/screenshots/phone-card-05-390.png, evaluation/screenshots/thumbnail-sequence.png, evaluation/evidence/inspection-notes.txt."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sol/page-01.png",
+          "sha256": "3ae7c9608f009a0473f2bf79ce581197726994120c31683365b704973b62a814"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sol/page-02.png",
+          "sha256": "b593370c07925459510a7fb7f8085a4fdd927cfe8c4ef552454c3ea10709834a"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sol/page-03.png",
+          "sha256": "fd091ea963c22486a019822efeb009a671acf785c7f8f0e9a69e553abea0e9ec"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sol/page-04.png",
+          "sha256": "986042d236d47b673ba48226878cb069fc0c8b5ea4601b917547755a034d1479"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sol/page-05.png",
+          "sha256": "2819b1c89808ddad89af4efb3d8daeab71bd3cf0a7198452bd7b5f085fd2796e"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "static-graphics-099",
+      "model": "Claude Sonnet 5",
+      "total": 44.45,
+      "base": 50.0,
+      "adjustment": -5.55,
+      "dimensions": {
+        "Content": -2.8,
+        "Organization": -2.0,
+        "Visuals": -8.5,
+        "Delivery": -3.0
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 22,
+          "total": 22
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF22": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF23": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF24": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF25": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF26": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF27": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF28": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF29": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF30": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF31": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF32": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF33": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF34": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF35": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF36": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF37": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF38": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF39": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF40": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF41": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF42": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF43": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF44": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF45": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF46": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF47": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF48": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF49": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF50": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF51": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF52": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF53": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF54": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF55": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF56": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF57": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF58": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF59": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF60": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF61": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF62": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF63": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF64": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF65": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF66": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF67": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": -1,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 1,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": -1,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": -1,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -2,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 0,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 0,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": -1,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "V3",
+          "answer": "-2",
+          "reason": "At 390-pixel card width, necessary body and legend text repeatedly falls to roughly 5–8 screen pixels: card 2’s 13.5–18 px source/value labels, card 4’s 13.5–14.5 px intensity/category labels, card 3’s keys and card 5’s 16.5 px checklist explanations are difficult to read without enlargement. The retained phone views show this across multiple cards; headings survive, so the impairment is widespread reading difficulty rather than total loss of the carousel. Evidence: evaluation/screenshots/phone-contact.png, evaluation/evidence/native-inspection.txt, evaluation/screenshots/card-04-phone.png, evaluation/screenshots/card-05-phone.png."
+        },
+        {
+          "id": "V8",
+          "answer": "-1",
+          "reason": "The opening titles and checklist rows provide clear scan starts. Card 3 creates a local bottleneck: after the overview the eye must move between two multi-object crops, the six-item key beneath them, and back to the overview’s legend to resolve the wind colors. That repeated backtracking interrupts the otherwise straightforward top-to-bottom sequence. The finding concerns scan routing, separately from the small type itself. Evidence: evaluation/screenshots/card-03-delivered.png, evaluation/screenshots/phone-contact.png."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sonnet/page-01.png",
+          "sha256": "fa38c205b461fdc7f13585dfd7d3947ef57c438f4821164964e81f79831d28ce"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sonnet/page-02.png",
+          "sha256": "4dda91282c1f5c1e1d8c2185ed2e65c2c51e9e47132d447fad4522c64c7c3f14"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sonnet/page-03.png",
+          "sha256": "65a1f84e48c10b10b3143f4f90ce0925f53d958a00688c78c11466aefab80540"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sonnet/page-04.png",
+          "sha256": "405b6e9b10e8bd8aeceda747888c1c60dead0eef4925d6155a8f9c2e09938357"
+        },
+        {
+          "file": "assets/cases/comparisons/static-graphics-099/sonnet/page-05.png",
+          "sha256": "63a34fdc2d3cddad6a580228f6c268206b7ab29ce5e757fa6d83d43d33e1cdb0"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "animations-videos-121",
+      "model": "GPT-6 Astra",
+      "total": 72.3,
+      "base": 50.0,
+      "adjustment": 22.3,
+      "dimensions": {
+        "Content": 25.0,
+        "Organization": 15.0,
+        "Visuals": 22.6,
+        "Delivery": 25.0
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 15,
+          "total": 15
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF22": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF23": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF24": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF25": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF26": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF27": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF28": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF29": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF30": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF31": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF32": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF33": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF34": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF35": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF36": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF37": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF38": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF39": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF40": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF41": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF42": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF43": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF44": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF45": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF46": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF47": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF48": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF49": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF50": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF51": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF52": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF53": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF54": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF55": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF56": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF57": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF58": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF59": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF60": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF61": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF62": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF63": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 1,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 1,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 1,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 1,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 2,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "V3",
+          "answer": "2",
+          "reason": "The text system separates large mode/frequency statements, compact explanatory sentences and smaller persistent references; the stable monospaced u display reduces repeated parsing as values change. At native 1280×720, the long comparison labels, π/λ/subscripts, ¼ replay cue and final sine identity remain complete and clear. The hardest typography—the final formula and its fixed-end qualification, plus the small access credit—was inspected at native size, as were all four author PNGs via their exact decoded equivalents. No clipping, problematic line break or substantive legibility weakness was found, and persistent labels support reading within the timed stages. The coordinated system establishes +2, without an exceptional typographic meaning contribution. Evidence: evaluation/evidence/author_frame_04s.png, evaluation/evidence/author_frame_05s.png, evaluation/evidence/author_frame_06s.png, evaluation/evidence/author_frame_08s.png, evaluation/screenshots/video_630_21.000s.png, evaluation/screenshots/video_720_24.000s.png, evaluation/screenshots/video_810_27.000s.png, evaluation/screenshots/video_899_29.967s.png."
+        },
+        {
+          "id": "V4",
+          "answer": "2",
+          "reason": "Shape and line treatment reinforce the legend: square nodes, diamond antinode positions, circular material points, solid string and dashed references convey distinct roles without relying only on hue. The paused downward arrow and the oppositely directed constituent arrows are paired with their correct objects. This reduces decoding effort beyond a merely labelled curve. The strongest potential ambiguity was explicitly tested at straight profiles and at final cancellation: squares still denote only permanent nodes, envelopes stay auxiliary, and the sum remains distinguishable from its travelling constituents. All stages and scale relationships are consistently decoded with no substantive weakness. This is full refinement; the evidence does not establish a separate exceptional mechanism. Evidence: evaluation/evidence/author_frame_04s.png, evaluation/evidence/author_frame_05s.png, evaluation/screenshots/video_720_24.000s.png, evaluation/screenshots/video_810_27.000s.png, evaluation/screenshots/final_sheet.jpg, evaluation/evidence/geometry_details.png."
+        },
+        {
+          "id": "V8",
+          "answer": "1",
+          "reason": "The continuous shared clock and visibly different 1:2:3 rates are sustained through every running frame, and the two clearly labelled holds separate counting from the earlier zero-crossing replay. That division makes the difficult straight-but-moving state easier to inspect than a single undifferentiated pause. The remaining temporal limitation is the 26-second handoff: all three rows acquire new constituent/sum roles and the new formula appears as those curves immediately start moving. The viewer has to orient while the only four-second final demonstration is already advancing. Timing is correct and followable, but this handoff has not reached the effortless, fully refined rhythm of +2. Evidence: evaluation/evidence/pixel-audit.json, evaluation/evidence/decoded_marker_motion.png, evaluation/screenshots/transitions_sheet.jpg, evaluation/screenshots/video_720_24.000s.png, evaluation/screenshots/final_sheet.jpg, evaluation/evidence/browser-playback.json."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/animations-videos-121/astra/animation.mp4",
+          "sha256": "41be2422cebe37a60cd4295f398e50197d6af7f081710a370cb82997d4886cd1"
+        },
+        {
+          "file": "assets/cases/comparisons/animations-videos-121/astra/frame_06s.png",
+          "sha256": "78e6c35fede6028214a04a4d853e5764ea8e2add059ae2fc2ad9248766876e6f"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "animations-videos-121",
+      "model": "Kimi K3",
+      "total": 44.85,
+      "base": 50.0,
+      "adjustment": -5.15,
+      "dimensions": {
+        "Content": -9.0,
+        "Organization": 0.0,
+        "Visuals": -8.4,
+        "Delivery": 13.0
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 15,
+          "total": 15
+        },
+        "FN": {
+          "passed": 0,
+          "total": 0
+        }
+      },
+      "ratings": {
+        "IF01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF13": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF14": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF15": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF16": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF17": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF18": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF19": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF20": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF21": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF22": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF23": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF24": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF25": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF26": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF27": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF28": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF29": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF30": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF31": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF32": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF33": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF34": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF35": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF36": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF37": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF38": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF39": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF40": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF41": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF42": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF43": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF44": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF45": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF46": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF47": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF48": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF49": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF50": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF51": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF52": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF53": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF54": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF55": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF56": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF57": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF58": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF59": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF60": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF61": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF62": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "IF63": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "C1": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": -2,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 0,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 0,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 0,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": -2,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": -2,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": -2,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 1,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 0,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "V3",
+          "answer": "-1",
+          "reason": "At native 1280×720, labels, subscripts and the rightmost table entries are individually readable and not cropped. However, the six-second comparison presents the table, thumbnail captions, four explanatory lines and scope qualification at once; secondary material cannot comfortably be read within that hold without pausing. This localized reading-load defect meets −1, rather than the widespread unreadable-text boundary of −2. Evidence: evaluation/evidence/frames/f600_20.000s.png, evaluation/evidence/pause_table_detail.png, evaluation/evidence/contact_pause.jpg, evaluation/evidence/viewing_observations.txt."
+        },
+        {
+          "id": "V4",
+          "answer": "-2",
+          "reason": "The legend identifies orange dots as string material and green arrows as their velocity, but n=2 and n=3 repeatedly float off the solid string. Around 5s the n=3 arrow points upward while the orange dot visibly moves downward. Thus two central encodings disagree with their represented objects/states throughout the main demonstration. The clear line styles and correct paused arrow are counterevidence to −3, but do not remove the persistent −2 decoding failure. Evidence: evaluation/evidence/frames/f135_04.500s.png, evaluation/evidence/author_frame_05s.png, evaluation/evidence/frames/f155_05.167s.png, evaluation/evidence/author_frame_06s.png, evaluation/evidence/contact_modes_early.jpg, evaluation/evidence/frames/f600_20.000s.png."
+        },
+        {
+          "id": "V8",
+          "answer": "-2",
+          "reason": "The curves evolve continuously at the correct 1:2:3 rates, and the 20–26s teaching pause is clearly labeled. However, both higher-mode material markers run at the fundamental rate: four cycles each over 4–20s instead of eight and twelve. The retained 4.5/5/5.167/6s states expose their phase mismatch and contrary arrow/motion relationship. These are persistent speed errors in two tracked elements, meeting −2 rather than an isolated −1 transition problem; the working curve clock and pause prevent −3. Evidence: evaluation/evidence/motion_summary.json, evaluation/evidence/frames/f135_04.500s.png, evaluation/evidence/author_frame_05s.png, evaluation/evidence/frames/f155_05.167s.png, evaluation/evidence/author_frame_06s.png, evaluation/evidence/contact_modes_late.jpg, evaluation/evidence/frames/f600_20.000s.png, evaluation/evidence/contact_ending.jpg."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/animations-videos-121/kimi/animation.mp4",
+          "sha256": "6bcabd2397fbbe22f5e4ddadfd0dea35dd0fa82b89f64a482f64165011c246e6"
+        },
+        {
+          "file": "assets/cases/comparisons/animations-videos-121/kimi/frame_06s.png",
+          "sha256": "8689d921e15953918abf014ae042fc6304f81fbd166e22b430c86a4759403046"
+        }
+      ],
+      "preview_adapter": false
+    },
+    {
+      "task_id": "web-interfaces-042",
+      "model": "GPT-6.1 Sol",
+      "total": 69.1,
+      "base": 50.0,
+      "adjustment": 19.1,
+      "dimensions": {
+        "Content": 25.0,
+        "Organization": 19.0,
+        "Visuals": 15.9,
+        "Delivery": 20.5
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 8,
+          "total": 8
+        },
+        "FN": {
+          "passed": 5,
+          "total": 5
+        }
+      },
+      "ratings": {
+        "CP01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "FN01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "C1": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 2,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 1,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": 2,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 2,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 2,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": 1,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 2,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "FN10",
+          "answer": "Yes",
+          "reason": "A fresh notebook is explicitly empty and can save its first point. Blocking the example fetch gives a load-error message; restoring it and reloading restores examples. Blocking actual stored-notebook reads displays storage-unavailable feedback rather than an unqualified empty state; restoring reads recovers original E1 and saved E3 points. See evaluation/evidence/failures.json."
+        },
+        {
+          "id": "V3",
+          "answer": "-1",
+          "reason": "The main angles and parameter values are readable, but the desktop’s causal explanation and several essential comparison labels are treated as faint fine print beside much larger values and ample unused space. “No refraction angle. The reflected angle equals incidence.” is especially effortful at actual scale (9px, low-emphasis color), so important explanation reads like auxiliary metadata. The burden is localized, not pervasive illegibility: -1. See evaluation/screenshots/E3.png, evaluation/screenshots/comparison-S3-S4-detail.png and evaluation/evidence/additional.json."
+        },
+        {
+          "id": "V4",
+          "answer": "2",
+          "reason": "Gold incident, mint refracted and peach reflected rays work with directional arrowheads, a dashed normal, distinct medium fields and explicit result wording. TIR removes transmission and changes both legend and no-value label, while the critical state retains a tangent ray. These redundant cues make the hardest distinction decode directly without repeated legend lookup. E1/E2, critical 90°, E3 and mobile variants were inspected; semantic rules remain concise and reliable. See evaluation/screenshots/critical-0.png and evaluation/screenshots/E3.png."
+        },
+        {
+          "id": "V8",
+          "answer": "2",
+          "reason": "During continuous 30°→60° dragging, the stable diagram field and fixed result locations let the eye follow the transition from transmission to reflection; changing legend/status supplies a clear landing point. The notebook then uses regular rows and consistently structured comparison details for slower inspection. This supports sustained scanning beyond simple absence of animation bugs. Tested pointer movement through 41.8°/42°, keyboard updates and four-record scanning; no material interruption remained. See evaluation/evidence/additional.json and evaluation/screenshots/drag-before-boundary.png."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/index.html",
+          "sha256": "276ea8859d7b21964904d56d70349818796a09b677041a75e2f7b3a3224d11de"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/styles.css",
+          "sha256": "077e6eb91191b0cca56cf636e95505e3f0d73994ef966ac723228eceadfad0a4"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/app.js",
+          "sha256": "d1d83380b44cab8b70516b2ef50fd3190a32d62d9cbf5255b11a9fc77668d623"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/lib/physics.mjs",
+          "sha256": "e14200afe795adb7342841e2c88e9facca6047909b540c0e2054f67272d1ad26"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/lib/export.mjs",
+          "sha256": "a03cbf7bdad45a5b877b152dbb33577afe403d6d7db03f05f3d83c6d9c078a9f"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/sol/data/experiments.json",
+          "sha256": "003a950d71eec321dc350fd8d554e16fc2538e73c52f5fcd088a759e85b8261c"
+        }
+      ],
+      "preview_adapter": true
+    },
+    {
+      "task_id": "web-interfaces-042",
+      "model": "Kimi K3",
+      "total": 43.753846153846155,
+      "base": 46.15384615384615,
+      "adjustment": -2.4,
+      "dimensions": {
+        "Content": 0.0,
+        "Organization": -2.6666666666666665,
+        "Visuals": -4.2,
+        "Delivery": 1.0
+      },
+      "acceptance_groups": {
+        "CP": {
+          "passed": 8,
+          "total": 8
+        },
+        "FN": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "ratings": {
+        "CP01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP03": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP08": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP10": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP11": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "CP12": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Compliance"
+        },
+        "FN01": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN02": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN04": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN05": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN06": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN07": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN09": {
+          "raw": 1,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "FN10": {
+          "raw": 0,
+          "dimension": "Task Fulfillment / Functionality"
+        },
+        "C1": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "C2": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "C3": {
+          "raw": 0,
+          "dimension": "Content"
+        },
+        "O1": {
+          "raw": 0,
+          "dimension": "Organization"
+        },
+        "O2": {
+          "raw": 0,
+          "dimension": "Organization"
+        },
+        "O3": {
+          "raw": -1,
+          "dimension": "Organization"
+        },
+        "V1": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V2": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V3": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V4": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V5": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V6": {
+          "raw": -1,
+          "dimension": "Visuals"
+        },
+        "V7": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V8": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "V9": {
+          "raw": 0,
+          "dimension": "Visuals"
+        },
+        "D1": {
+          "raw": 1,
+          "dimension": "Delivery"
+        },
+        "D2": {
+          "raw": -1,
+          "dimension": "Delivery"
+        },
+        "D3": {
+          "raw": 0,
+          "dimension": "Delivery"
+        }
+      },
+      "judgments": [
+        {
+          "id": "FN10",
+          "answer": "No",
+          "reason": "Blocking the actual data/experiments.js load silently leaves Suggested experiments empty while its invitation to load E1/E2 remains. No alert identifies a material-read failure; all alert texts are empty. Restoring the resource and reloading restores three suggestions and saving E1 works. Memory-only history has no separate read boundary, but that does not excuse the observed initial material-read failure. See evaluation/evidence/read-recovery.json and evaluation/screenshots/read-failure.png."
+        },
+        {
+          "id": "V3",
+          "answer": "-1",
+          "reason": "Most text and numerical values are readable, but the narrow current-result table gives the long nonwrapping label column most of the width. “— (no refracted ray)” and “Total internal reflection” each break into three short lines in the remaining value column, making the key result noticeably awkward to read. This localized typographic imbalance is below tier 0. See evaluation/screenshots/mobile-899-results.png."
+        },
+        {
+          "id": "V8",
+          "answer": "0",
+          "reason": "The recorded 30°→60° drag keeps the interface and normal fixed while rays/angles and TIR status update; numeric changes settle into the same display. Repeated table rows support stable scanning. No substantive flashing, delay or jumping was observed on these paths, but smooth updates alone do not prove a positive-tier rhythm benefit. See evaluation/evidence/controls-drag.mp4 and evaluation/evidence/controls-verified.json."
+        }
+      ],
+      "files": [
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/kimi/index.html",
+          "sha256": "97e7e3b0379c5e9a183b4038957785c6b827f497edfb01fdddd1f8738dc3ac24"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/kimi/styles.css",
+          "sha256": "24c6bdcac6541f54e516f083f16838229061eafabd1e2452cdc9bf65a527306c"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/kimi/app.js",
+          "sha256": "9febf7851c12b3eeac1ccd62924c6feaa79a2f755292afb15431ed2a49b9b93c"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/kimi/physics.js",
+          "sha256": "e8b1cb63966edda61454ccf333bc37c4fad065f38e944c6b7635850cf07bd338"
+        },
+        {
+          "file": "assets/cases/comparisons/web-interfaces-042/kimi/data/experiments.js",
+          "sha256": "df2af9cf11f1774266cb48dbca20dce32ab726585f7a5c6ff077b5acf3d4bf64"
+        }
+      ],
+      "preview_adapter": false
+    }
+  ]
+}

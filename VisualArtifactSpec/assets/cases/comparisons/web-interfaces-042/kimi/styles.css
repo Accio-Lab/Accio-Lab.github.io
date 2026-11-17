@@ -1,0 +1,343 @@
+:root {
+  --bg: #f4f6f8;
+  --panel-bg: #ffffff;
+  --text: #1c2733;
+  --muted: #55636f;
+  --accent: #0b5fff;
+  --accent-dark: #0846c0;
+  --danger: #b3261e;
+  --border: #c9d2da;
+  --focus-ring: #ff8f00;
+  --ray-incident: #e65100;
+  --ray-refracted: #00796b;
+  --ray-reflected: #c62828;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.site-header {
+  padding: 1rem 1.25rem 0.25rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.tagline {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.4fr);
+  gap: 1rem;
+  padding: 0.75rem 1.25rem 2rem;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.saved {
+  grid-column: 1 / -1;
+}
+
+/* --- Controls --- */
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.control-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.control-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.control-row input[type="range"] {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.control-row input[type="number"] {
+  width: 6.5rem;
+  padding: 0.3rem 0.4rem;
+  font: inherit;
+}
+
+.hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.field-error {
+  margin: 0.35rem 0 0;
+  color: var(--danger);
+  font-weight: 600;
+}
+
+button {
+  font: inherit;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--accent-dark);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--accent-dark);
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eef3ff;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: var(--accent-dark);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+input[type="range"]:focus-visible {
+  outline: 3px solid var(--focus-ring);
+}
+
+/* --- Diagram --- */
+.diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fdfdfd;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+/* --- Result table --- */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+  text-align: left;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.result-table th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* --- Suggested experiments --- */
+.experiment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.experiment-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+}
+
+.experiment-card .exp-id {
+  font-weight: 700;
+}
+
+.experiment-card .exp-question {
+  margin: 0.25rem 0 0.5rem;
+}
+
+/* --- Saved table --- */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.saved-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.saved-table th,
+.saved-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.export-row {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* --- Compare panel --- */
+.compare-panel {
+  margin-top: 1rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.compare-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.compare-card h4 {
+  margin: 0 0 0.5rem;
+}
+
+.compare-card svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fdfdfd;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.compare-card dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.15rem 0.6rem;
+  margin: 0.5rem 0 0;
+}
+
+.compare-card dt {
+  font-weight: 600;
+}
+
+.compare-card dd {
+  margin: 0;
+}
+
+/* --- Utilities --- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Narrow screens: single column, nothing essential hidden --- */
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 0.75rem 1.5rem;
+  }
+
+  .site-header {
+    padding: 0.75rem 0.75rem 0;
+  }
+
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .control-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-row input[type="number"] {
+    width: 100%;
+  }
+}
+
+/* --- Print: teachers need the experiment table on paper --- */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .controls,
+  .suggested,
+  .export-row,
+  .diagram {
+    display: none;
+  }
+
+  .layout {
+    display: block;
+    padding: 0;
+  }
+
+  .panel {
+    border: none;
+    padding: 0.5rem 0;
+  }
+
+  .saved-table th,
+  .saved-table td {
+    border: 1px solid #000;
+  }
+}

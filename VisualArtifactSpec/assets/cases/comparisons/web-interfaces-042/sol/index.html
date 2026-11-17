@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c3d">
+  <meta name="description" content="Explore Snell’s law, compare saved experiments, and print or export your refraction notebook. Works locally offline.">
+  <title>Refraction lab · Optics lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23173c3d'/%3E%3Cpath d='M9 8L20 20L28 33M5 20H35' fill='none' stroke='%23d7ef8b' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v15M12 5C8 2 3 3 3 3v15s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2Z"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 17H3V9h18v8h-3M6 14h12v7H6Z"/><path d="M17 11h1"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M3 5h7v14H3zM14 5h7v14h-7zM12 2v20"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3h14v18H6zM3 7h6M3 12h6M3 17h6M12 8h5M12 12h5M12 16h3"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#workspace">Skip to the lab</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#workspace" aria-label="Optics lab workspace">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="logo-normal" d="M5 20h30M20 5v30"/><path class="logo-ray" d="M10 6 20 20l8 14"/><circle cx="20" cy="20" r="2.3"/></svg></span>
+        <span>optics<span class="brand-light">lab</span><span class="brand-dot">.</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-active" href="#workspace">Workspace</a>
+        <a href="#notebook">Experiment notebook <span id="nav-count" class="nav-count">0</span></a>
+      </nav>
+      <button class="button guide-button" id="open-guide"><svg class="icon"><use href="#i-book"/></svg><span>Lab guide</span></button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div id="storage-notice" class="notice warning" role="alert" hidden>
+      <svg class="icon"><use href="#i-info"/></svg>
+      <div><p id="storage-message"></p><button id="recovery-button" class="text-button" hidden>Download stored data</button></div>
+    </div>
+    <section class="page-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span class="tiny-cross" aria-hidden="true">＋</span> LIGHT &amp; OPTICS <span class="eyebrow-divider">/</span> INTERACTIVE LAB</p>
+        <h1 id="page-title">Refraction lab<span class="title-dot">.</span></h1>
+        <p class="intro-copy">Change the medium. Follow the light. Discover the relationship.</p>
+      </div>
+      <div class="law-card">
+        <span class="eyebrow">SNELL’S LAW</span>
+        <div class="equation">n₁ sin θ₁ <span>=</span> n₂ sin θ₂</div>
+        <p>All angles are measured from the normal.</p>
+      </div>
+    </section>
+
+    <section id="workspace" class="workbench" aria-label="Refraction workspace" tabindex="-1">
+      <div class="diagram-card card">
+        <div class="card-heading diagram-heading">
+          <h2><span class="section-number">01</span> Ray diagram <span class="live-badge"><span></span> LIVE</span></h2>
+          <label class="angles-toggle"><input id="show-angles" type="checkbox" checked><span>Show angles</span></label>
+        </div>
+        <div class="diagram-stage">
+          <svg id="ray-diagram" viewBox="0 0 820 360" role="img" aria-labelledby="ray-title ray-description">
+            <title id="ray-title">Live ideal refraction diagram</title>
+            <desc id="ray-description">The incident and refracted rays meet at a planar interface.</desc>
+          </svg>
+          <div class="ray-legend" aria-label="Diagram legend">
+            <span><i class="legend-line incident"></i>Incident ray</span>
+            <span id="transmitted-legend"><i class="legend-line refracted"></i>Refracted ray</span>
+            <span id="reflected-legend" hidden><i class="legend-line reflected"></i>Reflected ray</span>
+            <span><i class="legend-line normal"></i>Normal</span>
+          </div>
+        </div>
+        <div class="model-readout">
+          <table aria-label="Current ideal-model numerical results">
+            <caption class="sr-only">Ideal-model results; these are calculated, not measured.</caption>
+            <thead><tr><th scope="col">Incidence <span>θ₁</span></th><th scope="col" id="refraction-heading">Refraction <span>θ₂</span></th><th scope="col" id="third-heading">Medium transition</th></tr></thead>
+            <tbody><tr><td id="incidence-result">30.00<span>°</span></td><td id="refraction-result">19.47<span>°</span></td><td id="critical-result" class="text-result">Lower → higher</td></tr></tbody>
+          </table>
+          <div class="readout-caption"><span class="model-tag">IDEAL MODEL</span><span>Planar interface · no intensity or polarization</span></div>
+        </div>
+      </div>
+
+      <aside class="parameters-card card" aria-labelledby="parameters-title">
+        <div class="card-heading"><h2 id="parameters-title"><span class="section-number">02</span> Parameters</h2><button id="reset" class="icon-button" aria-label="Reset parameters to the first example" title="Reset parameters"><svg class="icon"><use href="#i-reset"/></svg></button></div>
+        <div class="parameter-body">
+          <div class="parameter-group">
+            <div class="field-heading"><label for="n1-number">Medium 1 <span class="symbol">n₁</span><small>Incident side</small></label><input id="n1-number" class="number-input" type="number" min="1" max="2.5" step="any" value="1.00" aria-describedby="n1-hint n1-error" inputmode="decimal"></div>
+            <input id="n1-range" class="parameter-slider" type="range" min="1" max="2.5" step="0.01" value="1" aria-label="Medium 1 refractive index slider" aria-describedby="n1-hint">
+            <div class="range-scale" id="n1-hint"><span>1.00</span><span>Refractive index</span><span>2.50</span></div>
+            <p id="n1-error" class="field-error" hidden></p>
+          </div>
+          <div class="swap-row"><span></span><button id="swap-media" class="swap-button"><svg class="icon"><use href="#i-swap"/></svg>Swap media</button><span></span></div>
+          <div class="parameter-group">
+            <div class="field-heading"><label for="n2-number">Medium 2 <span class="symbol">n₂</span><small>Transmission side</small></label><input id="n2-number" class="number-input" type="number" min="1" max="2.5" step="any" value="1.50" aria-describedby="n2-hint n2-error" inputmode="decimal"></div>
+            <input id="n2-range" class="parameter-slider" type="range" min="1" max="2.5" step="0.01" value="1.5" aria-label="Medium 2 refractive index slider" aria-describedby="n2-hint">
+            <div class="range-scale" id="n2-hint"><span>1.00</span><span>Refractive index</span><span>2.50</span></div>
+            <p id="n2-error" class="field-error" hidden></p>
+          </div>
+          <div class="parameter-group angle-group">
+            <div class="field-heading"><label for="angle-number">Angle of incidence <span class="symbol">θ₁</span></label><span class="degree-input"><input id="angle-number" class="number-input" type="number" min="0" max="89.9" step="any" value="30" aria-describedby="angle-hint angle-error" inputmode="decimal"><span aria-hidden="true">°</span></span></div>
+            <input id="angle-range" class="parameter-slider" type="range" min="0" max="89.9" step="0.1" value="30" aria-label="Angle of incidence slider" aria-describedby="angle-hint">
+            <div class="range-scale" id="angle-hint"><span>0°</span><span>From the normal</span><span>89.9°</span></div>
+            <p id="angle-error" class="field-error" hidden></p>
+            <button id="use-critical" class="text-button critical-button" hidden>Set incidence to the critical angle <svg class="icon"><use href="#i-arrow"/></svg></button>
+          </div>
+          <div id="behavior-note" class="behavior-note"><span class="behavior-dot"></span><div><strong id="behavior-title">Bends toward the normal</strong><p id="behavior-description">The second medium has a higher refractive index.</p></div></div>
+          <button id="save-point" class="button primary save-button"><svg class="icon"><use href="#i-plus"/></svg>Save experiment<span class="key-hint" aria-hidden="true">↵</span></button>
+          <p class="save-caption">Keep a snapshot in your experiment notebook.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="explore-strip" aria-labelledby="explore-title">
+      <div class="explore-intro"><svg class="icon"><use href="#i-book"/></svg><div><h2 id="explore-title">Start with a question</h2><p>Apply an example, then make it your own.</p></div></div>
+      <div id="example-buttons" class="example-buttons" aria-label="Guided experiment examples"><span class="examples-loading">Loading local examples…</span></div>
+    </section>
+    <p id="example-question" class="example-question" hidden></p>
+
+    <details class="notes-card card" id="draft-notes">
+      <summary><span><svg class="icon"><use href="#i-note"/></svg><strong>Prediction &amp; observations</strong><span class="optional-label">Optional · saved with your next point</span></span><svg class="icon details-chevron"><use href="#i-chevron"/></svg></summary>
+      <div class="notes-body">
+        <div class="notes-field"><label for="prediction">Your prediction</label><textarea id="prediction" rows="3" placeholder="Before adjusting the angle, what do you think will happen?"></textarea><p>Write your prediction first, then observe the model.</p></div>
+        <div class="notes-field"><label for="observed-angle">Measured refraction angle <span class="muted">(°)</span></label><input id="observed-angle" type="number" min="0" max="90" step="any" inputmode="decimal" placeholder="Leave blank if not measured" aria-describedby="observed-hint observed-error"><p id="observed-hint">An optional measurement from a separate physical experiment. Blank means not recorded.</p><p id="observed-error" class="field-error" hidden></p></div>
+        <div class="notes-field"><label for="observation">Observation notes</label><textarea id="observation" rows="3" placeholder="Describe what you noticed or measured."></textarea><p>Calculated results and your measurements stay separate.</p></div>
+      </div>
+    </details>
+
+    <section id="notebook" class="notebook-section" aria-labelledby="notebook-title" tabindex="-1">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR EXPERIMENTS</p><h2 id="notebook-title">Experiment notebook <span id="notebook-count" class="count-badge">0</span></h2><p>Save a few angles. Swap the media. Compare what changes.</p></div>
+        <div class="notebook-actions"><button id="print-table" class="button" title="Print all saved experiments" disabled><svg class="icon"><use href="#i-print"/></svg>Print table</button><button id="export-csv" class="button export-button" title="Export all saved experiments as CSV" disabled><svg class="icon"><use href="#i-download"/></svg>Export CSV</button></div>
+      </div>
+      <div id="notebook-empty" class="notebook-empty card"><div class="empty-icon"><svg class="icon"><use href="#i-note"/></svg><span>＋</span></div><div><h3>A place for your discoveries</h3><p>Save your first experiment above. Every point keeps its own parameters and results.</p><span class="empty-tip">Try at least three angles, then swap the media.</span></div></div>
+      <div id="notebook-data" class="notebook-data card" hidden>
+        <div class="notebook-toolbar"><span id="selection-help">Select 2–3 points to compare side by side.</span><button id="compare-points" class="button compare-button" disabled><svg class="icon"><use href="#i-compare"/></svg><span id="compare-label">Compare points</span></button></div>
+        <div class="table-wrap"><table class="experiment-table" aria-label="Saved experiment conditions and ideal-model results"><caption class="sr-only">Every row is an independent snapshot. Model angles are calculated; measurements are entered by you.</caption><thead><tr><th scope="col"><span class="sr-only">Select</span></th><th scope="col">Point</th><th scope="col">Media <span>n₁ → n₂</span></th><th scope="col">Incidence <span>θ₁</span></th><th scope="col">Model refraction <span>θ₂</span></th><th scope="col">Critical angle <span>θc</span></th><th scope="col">Measured <span>θ₂</span></th><th scope="col">Result</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody id="experiment-rows"></tbody></table></div>
+        <div class="table-footer"><span><span class="small-dot"></span><span id="persistence-label">Saved on this device</span></span><span>— = not defined · Not recorded = no measurement entered</span></div>
+      </div>
+      <div id="comparison" class="comparison-section" hidden>
+        <div class="comparison-heading"><div><p class="eyebrow">LOOK CLOSER</p><h3>Side-by-side comparison</h3></div><button id="close-comparison" class="button"><svg class="icon"><use href="#i-close"/></svg>Close comparison</button></div>
+        <div id="comparison-cards" class="comparison-cards"></div>
+      </div>
+    </section>
+
+    <div class="learning-note"><svg class="icon"><use href="#i-info"/></svg><p><strong>A model for understanding.</strong> This lab demonstrates an ideal planar interface. Surface roughness, absorption, and scattering are not simulated; model values are not experimental measurements.</p></div>
+    <footer class="site-footer"><span>opticslab. <span class="footer-divider">/</span> Make the invisible understandable.</span><span><span class="offline-dot"></span>Works offline · no account needed</span></footer>
+  </main>
+
+  <div id="action-feedback" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden><svg class="icon"><use href="#i-check"/></svg><span id="feedback-message"></span><button id="undo-delete" class="toast-undo" hidden>Undo</button><button id="dismiss-feedback" class="icon-button" aria-label="Dismiss notification"><svg class="icon"><use href="#i-close"/></svg></button></div>
+
+  <dialog id="guide-dialog" class="guide-dialog" aria-labelledby="guide-title">
+    <div class="dialog-heading"><span class="eyebrow">LIGHT &amp; OPTICS</span><button id="close-guide" class="icon-button" aria-label="Close lab guide"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <h2 id="guide-title">Follow the light.</h2><p class="dialog-intro">Use this workspace to explore Snell’s law and keep evidence of what you discover.</p>
+    <ol class="guide-steps"><li><span>01</span><div><h3>Make a prediction</h3><p>Open Prediction &amp; observations and write what you expect before changing the angle.</p></div></li><li><span>02</span><div><h3>Change one condition</h3><p>Use a slider or type a number. Indices range from 1 to 2.5; incidence ranges from 0° to 89.9°, measured from the normal.</p></div></li><li><span>03</span><div><h3>Save and compare</h3><p>Try at least three angles, then swap the media and measure again. Any number of points may be saved. Select two or three for comparison.</p></div></li></ol>
+    <div class="guide-model"><h3>The ideal model</h3><p class="equation">s = n₁ sin θ₁ / n₂</p><p>If s &gt; 1 + 10⁻¹⁰, total internal reflection occurs and no refraction angle is defined. Otherwise, θ₂ = asin(min(1, s)). At the critical point, θ₂ = 90°.</p><p>A critical angle, θc = asin(n₂ / n₁), exists only when n₁ &gt; n₂. During total internal reflection, the reflected angle equals the incident angle.</p></div>
+    <p class="guide-footnote">The notebook labels calculated values as model results. Add separate physical measurements if available. The diagram shows geometry only: no intensity, polarization, or real ray tracing.</p>
+    <button id="guide-start" class="button primary">Back to the lab<svg class="icon"><use href="#i-arrow"/></svg></button>
+  </dialog>
+  <noscript><div class="noscript-notice">JavaScript is required for the interactive lab. Enable JavaScript and reload; no internet connection is needed.</div></noscript>
+</body>
+</html>

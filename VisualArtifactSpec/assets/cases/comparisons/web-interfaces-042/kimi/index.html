@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two-Dimensional Refraction Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Two-Dimensional Refraction Lab</h1>
+    <p class="tagline">
+      Ideal planar interface. Angles are measured from the normal.
+      Refractive index range 1–2.5, angle of incidence 0–89.9&deg;.
+      Intensity, polarization, and real ray tracing are not simulated.
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls" aria-labelledby="controls-heading">
+      <h2 id="controls-heading">Experiment conditions</h2>
+
+      <div class="control-group">
+        <label for="n1-slider">Refractive index n1 (upper medium, incident side)</label>
+        <div class="control-row">
+          <input type="range" id="n1-slider" min="1" max="2.5" step="0.01" value="1"
+                 aria-describedby="n1-hint">
+          <input type="number" id="n1-number" min="1" max="2.5" step="0.01" value="1"
+                 aria-label="Refractive index n1, numeric input">
+        </div>
+        <p class="hint" id="n1-hint">Allowed range: 1 to 2.5.</p>
+        <p class="field-error" id="n1-error" role="alert" hidden></p>
+      </div>
+
+      <div class="control-group">
+        <label for="n2-slider">Refractive index n2 (lower medium)</label>
+        <div class="control-row">
+          <input type="range" id="n2-slider" min="1" max="2.5" step="0.01" value="1.5"
+                 aria-describedby="n2-hint">
+          <input type="number" id="n2-number" min="1" max="2.5" step="0.01" value="1.5"
+                 aria-label="Refractive index n2, numeric input">
+        </div>
+        <p class="hint" id="n2-hint">Allowed range: 1 to 2.5.</p>
+        <p class="field-error" id="n2-error" role="alert" hidden></p>
+      </div>
+
+      <div class="control-group">
+        <label for="angle-slider">Angle of incidence &theta;1 (degrees from the normal)</label>
+        <div class="control-row">
+          <input type="range" id="angle-slider" min="0" max="89.9" step="0.1" value="30"
+                 aria-describedby="angle-hint">
+          <input type="number" id="angle-number" min="0" max="89.9" step="0.1" value="30"
+                 aria-label="Angle of incidence in degrees, numeric input">
+        </div>
+        <p class="hint" id="angle-hint">Allowed range: 0 to 89.9 degrees.</p>
+        <p class="field-error" id="angle-error" role="alert" hidden></p>
+      </div>
+
+      <button type="button" id="save-point" class="primary">Save experiment point</button>
+      <p id="live-announce" class="visually-hidden" aria-live="polite"></p>
+    </section>
+
+    <section class="panel diagram" aria-labelledby="diagram-heading">
+      <h2 id="diagram-heading">Ray diagram</h2>
+      <svg id="ray-diagram" viewBox="0 0 440 320" role="img"
+           aria-labelledby="diagram-title diagram-desc">
+        <title id="diagram-title">Refraction ray diagram</title>
+        <desc id="diagram-desc">Animated diagram of the incident and refracted rays at a planar interface.</desc>
+      </svg>
+    </section>
+
+    <section class="panel results" aria-labelledby="results-heading">
+      <h2 id="results-heading">Current result (ideal model)</h2>
+      <table class="result-table">
+        <tbody>
+          <tr><th scope="row">n1 &rarr; n2</th><td id="res-media"></td></tr>
+          <tr><th scope="row">Angle of incidence &theta;1</th><td id="res-theta1"></td></tr>
+          <tr><th scope="row">Snell term s = n1&middot;sin&theta;1 / n2</th><td id="res-s"></td></tr>
+          <tr><th scope="row">Angle of refraction &theta;2</th><td id="res-theta2"></td></tr>
+          <tr><th scope="row">Status</th><td id="res-status"></td></tr>
+          <tr id="critical-row"><th scope="row">Critical angle &theta;c</th><td id="res-critical"></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Observed values come from the ideal Snell model; surface roughness,
+        absorption, and scattering are not simulated.</p>
+    </section>
+
+    <section class="panel suggested" aria-labelledby="suggested-heading">
+      <h2 id="suggested-heading">Suggested experiments</h2>
+      <p class="hint">Load a suggested condition, observe, then save your own points.
+        E1 and E2 are the swapped-media pair.</p>
+      <ul id="experiment-list" class="experiment-list"></ul>
+    </section>
+
+    <section class="panel saved" aria-labelledby="saved-heading">
+      <h2 id="saved-heading">Saved experiment points</h2>
+      <p class="hint">Each saved point is an independent snapshot of the conditions at save
+        time; moving the sliders afterwards never changes it. Select up to two points to
+        compare side by side.</p>
+      <p id="saved-empty" class="empty-state">No saved points yet. Adjust the conditions and
+        choose &ldquo;Save experiment point&rdquo;.</p>
+      <div class="table-scroll">
+        <table class="saved-table" id="saved-table" hidden>
+          <caption class="visually-hidden">Saved experiment points with complete conditions and results</caption>
+          <thead>
+            <tr>
+              <th scope="col">Compare</th>
+              <th scope="col">Point</th>
+              <th scope="col">n1</th>
+              <th scope="col">n2</th>
+              <th scope="col">&theta;1 (&deg;)</th>
+              <th scope="col">&theta;2 (&deg;)</th>
+              <th scope="col">Status</th>
+              <th scope="col">&theta;c (&deg;)</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="saved-tbody"></tbody>
+        </table>
+      </div>
+      <div class="export-row">
+        <button type="button" id="export-csv">Export CSV</button>
+        <button type="button" id="export-json">Export JSON</button>
+        <button type="button" id="print-table">Print table</button>
+      </div>
+      <p class="field-error" id="export-error" role="alert" hidden></p>
+
+      <div id="compare-panel" class="compare-panel" hidden>
+        <h3>Side-by-side comparison</h3>
+        <div class="compare-grid" id="compare-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="physics.js"></script>
+  <script src="data/experiments.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
